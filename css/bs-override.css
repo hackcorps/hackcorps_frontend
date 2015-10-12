@@ -1,0 +1,132 @@
+body {
+  font-family: Roboto;
+}
+.container-full-width {
+  padding: 0;
+}
+
+.container-non-responsive {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.navbar-default {
+  background-color: white;
+}
+
+.container-fluid .jumbotron {
+  border-radius: 0;
+  padding: 160px 160px;
+  margin-bottom: 0;
+}
+
+.jumbotron-primary {
+  background-color: #8bC34A;
+  color: white;
+}
+
+.jumbotron-secondary {
+  background-color: #F06292;
+  color: white;
+}
+
+.container-fluid .jumbotron-secondary {
+  padding: 160px 200px;
+}
+
+.jumbotron h1 {
+  font-weight: 400;
+}
+
+.jumbotron .lead {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.full-width-image {
+  width: 100%;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.vertically-center {
+  margin: auto;
+}
+
+.col-sm-fixed-width {
+  width: 500px;
+  height: 490px;
+  overflow: hidden;
+}
+
+.col-sm-fixed-height {
+  height: 490px;
+}
+
+.display-1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-weight: 400;
+}
+
+.panel-container-secondary {
+  background-color: #eeeeee;
+}
+
+.text-panel {
+  padding: 50px;
+}
+
+.text-panel-grey {
+  background-color: #eeeeee
+}
+
+.panel-buzzword {
+  height: 415px;
+}
+
+.panel-overlay-outer {
+  position: relative;
+}
+
+.panel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white;
+  opacity: .5;
+  transition: all .3s ease;
+}
+
+.panel-overlay:hover {
+  opacity: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+input.quote-email {
+  width: 630px !important;
+  margin-right: 20px;
+  border: none;
+  border-radius: 0;
+}
+
+.btn {
+  border-radius: 0;
+}
