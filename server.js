@@ -1,8 +1,8 @@
 /*global process*/
 (function () {
     'use strict';
-    var host           = 'localhost',
-        port           = 9000;
+    var host           = process.env.HOST,
+        port           = process.env.PORT;
 
     console.log('Test-proxy running on: ' + host + ':' + port);
     //................
