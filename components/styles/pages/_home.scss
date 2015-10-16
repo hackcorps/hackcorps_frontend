@@ -1,0 +1,28 @@
+/*USER CREATE PASSWORD*/
+.user_password_container {
+	background-color: #81ac50;
+
+	form {
+		margin-top: 10%;
+		background-color: #f3f3f3;
+	}
+
+	.form-group {
+		margin-top: 3%;
+
+		div {
+			padding-right: 5%;
+		}
+	}
+
+	label {
+		color: #333;
+	}
+
+	.error {
+		visibility: hidden;
+		color: red;
+		font-style: italic;
+	}
+}
+/*USER CREATE PASSWORD*/
