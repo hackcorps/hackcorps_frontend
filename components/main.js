@@ -30,12 +30,7 @@ App.navigate = function(route,  options){
   Backbone.history.navigate(route, options);
 };
 
-/*App.vent.on("authentication:logged_out", function() {
-	App.trigger('hack:home');
-});*/
-
 App.on('start', function() {
-	debugger;
 	Backbone.history.start();
 	if(this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home') {
 		App.trigger('hack:home');
@@ -43,8 +38,6 @@ App.on('start', function() {
 		App.trigger('hack:register');
 	}
 });
-
-
 
 module.exports = App;
 
