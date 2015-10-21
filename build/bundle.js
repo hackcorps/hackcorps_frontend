@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/public/";
+/******/ 	__webpack_require__.p = "/public/assets";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -45,6 +45,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	/*var imgKnowledge = */
 
 	var App = __webpack_require__(1);
 
@@ -102,14 +104,18 @@
 		Backbone.history.navigate(route, options);
 	};
 
-	App.on('start', function () {
-		Backbone.history.start();
-		console.log(this.getCurrentRoute());
-		if (this.getCurrentRoute() === '') {
-			App.trigger('hack:home');
-			console.log(this.getCurrentRoute());
-		};
+	/*App.vent.on("authentication:logged_out", function() {
 		App.trigger('hack:home');
+	});*/
+
+	App.on('start', function () {
+		debugger;
+		Backbone.history.start();
+		if (this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home') {
+			App.trigger('hack:home');
+		} else if (this.getCurrentRoute() === 'home/register') {
+			App.trigger('hack:register');
+		}
 	});
 
 	module.exports = App;
@@ -151,7 +157,7 @@
 
 
 	// module
-	exports.push([module.id, "/*USER CREATE PASSWORD*/\n.user_password_container {\n  background-color: #81ac50; }\n  .user_password_container form {\n    margin-top: 10%;\n    background-color: #f3f3f3; }\n  .user_password_container .form-group {\n    margin-top: 3%; }\n    .user_password_container .form-group div {\n      padding-right: 5%; }\n  .user_password_container label {\n    color: #333; }\n  .user_password_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*USER CREATE PASSWORD*/\nbody {\n  color: #ffffff;\n  background-color: #81ac50; }\n", ""]);
+	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n/*FINISH HEADER*/\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50; }\n  .user_registration_container form {\n    margin-top: 10%;\n    background-color: #f3f3f3; }\n  .user_registration_container .form-group {\n    margin-top: 3%; }\n    .user_registration_container .form-group div {\n      padding-right: 5%; }\n  .user_registration_container label {\n    color: #333; }\n  .user_registration_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*FINISH REGISTER*/\n/*USER REGISTER*/\n.user_login_container .form-group {\n  margin-top: 3%; }\n  .user_login_container .form-group div {\n    padding-right: 5%; }\n\n.user_login_container label {\n  color: #333; }\n\n.user_login_container .error {\n  visibility: hidden;\n  color: red;\n  font-style: italic; }\n\n.user_login_container div.forgot_password {\n  float: left; }\n\n.user_login_container a {\n  color: #555; }\n\n/*FINISH REGISTER*/\nbody {\n  color: #ffffff;\n  background-color: #81ac50; }\n", ""]);
 
 	// exports
 
@@ -17268,24 +17274,45 @@
 
 	'use strict';
 
-	var App = __webpack_require__(1);
-	var Marionette = __webpack_require__(10);
-	var UserPasswordView = __webpack_require__(16);
+	var Backbone = __webpack_require__(6),
+
+	/*	App = require('./main.js'),*/
+	Marionette = __webpack_require__(10),
+	    headerView = __webpack_require__(16),
+	    HomeView = __webpack_require__(22),
+	    userRegistrationView = __webpack_require__(19);
 
 	var Router = Marionette.AppRouter.extend({
 		appRoutes: {
 			'home': 'showHome'
+		},
+		routes: {
+			'home/register': 'showRegister'
 		}
 	});
 
 	var API = {
+		showRegister: function showRegister() {
+			App.regions.auth.show(userRegistrationView);
+		},
 		showHome: function showHome() {
-			var staticUserPasswordView = new UserPasswordView();
-			App.regions.auth.show(staticUserPasswordView);
+			var staticHomeView = new HomeView();
+			App.regions.main.show(staticHomeView);
+
+			App.regions.header.show(headerView);
 		}
 	};
 
+	App.on('hack:register', function () {
+		new Router({
+			controller: API
+		});
+		App.navigate('home/register');
+		API.showRegister();
+	});
+
 	App.on('hack:home', function () {
+		debugger;
 		new Router({
 			controller: API
 		});
@@ -17301,25 +17328,238 @@
 
 	var Backbone = __webpack_require__(6),
 	    Marionette = __webpack_require__(10),
-	    template = __webpack_require__(17),
-	    UserPasswordModel = __webpack_require__(18);
+	    CurrentUserModel = __webpack_require__(17),
+	    template = __webpack_require__(18),
+	    userRegistrationView = __webpack_require__(19);
 
-	var UserPasswordView = Marionette.ItemView.extend({
+	var HeaderView = Marionette.ItemView.extend({
 
-		className: 'row user_password_container',
+		className: 'user_login_container',
 
 		template: template,
 
-		model: new UserPasswordModel(),
+		model: new CurrentUserModel(),
 
-		ui: {
-			inputUsername: '#username',
-			inputPassword: '#password',
-			inputConfirm: '#confirm',
-			errorUsername: '.username_error',
-			errorPassword: '.password_error',
-			errorConfirm: '.error_confirm'
+		events: {
+			'focusin input': 'focusedInput',
+			'focusout input': 'validateLogin',
+			'click .login_link': 'showLoginModal',
+			'click .close_modal': 'hideLoginModal',
+			'click .submit_button': 'loginUser',
+			'click .forgot_link': 'showRecoveryModal',
+			'click .close_recovery': 'hideRecoveryModal',
+			'click .send_recovery': 'recoveryPassword',
+			'click .logout_link': 'logoutUser'
 		},
+
+		showLoginModal: function showLoginModal(e) {
+			e.preventDefault();
+
+			$('.login_modal').show();
+		},
+
+		hideLoginModal: function hideLoginModal(e) {
+			e.preventDefault();
+
+			$('.login_modal').hide();
+		},
+
+		showRecoveryModal: function showRecoveryModal(e) {
+			e.preventDefault();
+
+			$('.login_modal').hide();
+
+			$('.recovery_modal').show();
+		},
+
+		hideRecoveryModal: function hideRecoveryModal(e) {
+			e.preventDefault();
+
+			$('.recovery_modal').hide();
+		},
+
+		recoveryPassword: function recoveryPassword(e) {
+			e.preventDefault();
+		},
+
+		focusedInput: function focusedInput(e) {
+			e.preventDefault();
+
+			var selector = '.' + e.target.id + '_error';
+			$(selector).css('visibility', 'hidden');
+		},
+
+		validateLogin: function validateLogin(e) {
+			e.preventDefault();
+
+			var regExEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
+			    regExPassword = /^.{8,}$/,
+			    //1 digit, 1 small char, 1 big char, 8 char min
+			email = $('#email_login').val(),
+			    password = $('#password_login').val();
+
+			if (!regExEmail.test(email)) {
+				this.$('.email_login_error').css('visibility', 'visible');
+				return false;
+			} else if (!regExPassword.test(password)) {
+				this.$('.password_login_error').css('visibility', 'visible');
+				return false;
+			} else {
+				return true;
+			}
+		},
+
+		loginUser: function loginUser(e) {
+
+			e.preventDefault;
+
+			if (this.validateLogin()) {
+				debugger;
+
+				this.model.set({
+					email: this.$('#email_login').val(),
+					password: this.$('#password_login').val()
+				});
+
+				console.log(this.model);
+
+				var self = this;
+
+				this.model.save({}, {
+					success: function success(response) {
+						console.log(response);
+					},
+					error: function error(model, xhr, options) {
+						console.log(xhr);
+					}
+				});
+			}
+		},
+
+		logoutUser: function logoutUser(e) {
+			debugger;
+			e.preventDefault();
+			/*	console.log(this.currentUser);
+	  	console.log(this.model);
+	  
+	  	this.model.set('auth_token', userRegistrationView.model.attributes.invite_token);
+	  	console.log(userRegistrationView.model.attributes.invite_token);
+	  	console.log(this.model);*/
+
+			var auth_token = window.localStorage.getItem('auth_token'),
+			    email = window.localStorage.getItem('email');
+
+			this.model.set({
+				auth_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0N…oyMX0.vb5PXAnIkVqSeJ9SDer72YjxtSwC3Y1FT9BPeqCp-bQ'
+			});
+
+			console.log(this.model);
+
+			/*App.vent.trigger("authentication:logged_out");*/
+
+			$.ajax({
+				type: 'DELETE',
+				url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
+				/*	url: 'http://localhost:3002/people/1',*/
+				dataType: 'json',
+				crossDomain: true,
+				xhrFields: { withCredentials: false },
+				data: {
+					auth_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NDYwMzQ4ODAsImlkIjoyNH0.Zhm5iAZPbYsFOp_GC1c4Ysmg5VZwxaKA42chCwWwXr8'
+				},
+				success: function success(data) {
+					console.log(data);
+				},
+				error: function error(data) {
+					console.log(data);
+				}
+			});
+
+			/*		this.model.destroy({
+	  			
+	  
+	  			success: function(response) {
+	  
+	  				debugger;
+	  				console.log(response);
+	  
+	  				window.localStorage.setItem('auth_token', self.currentUser.auth_token);
+	  				window.localStorage.setItem('email', self.currentUser.email);
+	  
+	  			},
+	  			error: function (model, xhr, options) {
+	  				console.log(xhr);
+	  			}
+	  		});*/
+
+			/*	this.model = 
+	  
+	  	App.on('register:success', function() {
+	  		alert();
+	  	});
+	  
+	  	console.log(this.currentUser);*/
+		},
+
+		/*	setCurrentUser: function() {
+	 		debugger;
+	 		App.on('register:success');
+	 		console.log(currentUser);
+	 	},*/
+
+		currentUser: null
+
+	});
+
+	var headerView = new HeaderView();
+	module.exports = headerView;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var CurrentUserModel = Backbone.Model.extend({
+		/*	urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',*/
+		urlRoot: 'http://localhost:3002/people',
+
+		defaults: {
+			email: '',
+			password: '',
+			auth_token: '',
+			id: 2
+		}
+	});
+
+	module.exports = CurrentUserModel;
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container-fluid container-full-width\">\r\n\r\n  <nav class=\"navbar navbar-light\">\r\n    <a class=\"navbar-brand\" href=\"#\">Hack Mochi</a>\r\n    <ul class=\"nav navbar-nav\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Get a quote</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"nav navbar-nav navbar-right navbar_right\">\r\n      <li><a href=\"#\" class=\"login_link\">Login</a></li>\r\n      <li><a href=\"#\" class=\"logout_link\">Logout</a></li>\r\n    </ul>\r\n  </nav>\r\n\r\n  <div class=\"jumbotron jumbotron-primary\">\r\n    <h1 class=\"display-2\">Spin up an engineering team</h1>\r\n    <p class=\"lead\">and don't let code be your bottleneck. Contract one of our agile teams, we can start tomorrow.</p>\r\n  </div>\r\n\r\n  <!-- Modal login-->\r\n  <div class=\"modal login_modal\">\r\n    <div class=\"modal-dialog\">\r\n      <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n          <button type=\"button\" class=\"close close_modal\"><span>&times;</span></button>\r\n          <h4 class=\"modal-title\">Modal title</h4>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <form class=\"form-horizontal\">\r\n            <div class=\"form-group\">\r\n              <label for=\"email\" class=\"col-sm-2 control-label\">Email:</label>\r\n              <div class=\"col-sm-9\">\r\n                <input type=\"email\" class=\"form-control email_login\" id=\"email_login\" placeholder=\"Enter email\">\r\n                <p class=\"error  email_login_error\">Enter a valid Email!</p>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"password\" class=\"col-sm-2 control-label\">Password:</label>\r\n              <div class=\"col-sm-9\">\r\n                <input type=\"password\" class=\"form-control password_login\" id=\"password_login\" placeholder=\"Enter password\">\r\n                <p class=\"error password_login_error\">Pis more then 8 symbols!</p>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n          <div class=\"forgot_password\"><a href=\"#\" class=\"forgot_link\">Forgot your password?</a></div>\r\n          <button type=\"button\" class=\"btn btn-default submit_button\">Login</button>\r\n        </div>\r\n      </div><!-- /.modal-content -->\r\n    </div><!-- /.modal-dialog -->\r\n  </div><!-- /.modal -->\r\n\r\n  <!-- Modal recovery-->\r\n  <div class=\"modal recovery_modal\">\r\n    <div class=\"modal-dialog\">\r\n      <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n          <button type=\"button\" class=\"close close_recovery\"><span>&times;</span></button>\r\n          <h4 class=\"modal-title\">Modal title</h4>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n          <form class=\"form-horizontal\">\r\n            <div class=\"form-group\">\r\n              <label for=\"email\" class=\"col-sm-2 control-label\">Email:</label>\r\n              <div class=\"col-sm-9\">\r\n                <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"Enter email\">\r\n                <p class=\"error email_error\">Enter a valid Email!</p>\r\n              </div>\r\n            </div>\r\n          </form>\r\n        </div>\r\n        <div class=\"modal-footer\">\r\n          <button type=\"button\" class=\"btn btn-default send_recovery\">Send</button>\r\n        </div>\r\n      </div><!-- /.modal-content -->\r\n    </div><!-- /.modal-dialog -->\r\n  </div><!-- /.modal -->\r\n\r\n</div>\r\n\r\n";
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+
+	var Backbone = __webpack_require__(6),
+	    Marionette = __webpack_require__(10),
+	    template = __webpack_require__(20),
+	    headerView = __webpack_require__(16),
+	    UserRegistrationModel = __webpack_require__(21);
+
+	var UserRegistrationView = Marionette.ItemView.extend({
+
+		className: 'row user_registration_container',
+
+		template: template,
+
+		model: new UserRegistrationModel(),
 
 		events: {
 			'focusin input': 'focusedInput',
@@ -17328,38 +17568,47 @@
 		},
 
 		registerUser: function registerUser(e) {
-			/*debugger;*/
+			debugger;
 			e.preventDefault;
 
-			if (this.validateForm('signup')) {
-				debugger;
-				console.log(this.model);
-				console.log(this.model.get('username'));
-				console.log(this.$('#username').val());
+			console.log(App);
 
-				var self = this;
+			var self = this;
+
+			if (this.validateForm('signup')) {
 
 				this.model.set({
-					username: this.$('#username').val(),
+					full_name: this.$('#username').val(),
 					password: this.$('#password').val(),
-					confirm: this.$('#confirm').val()
+					password_confirmation: this.$('#confirm').val()
 				});
 
-				console.log(this.model.get('username'));
+				window.localStorage.setItem('auth_token', self.model.get('invite_token'));
+				window.localStorage.setItem('email', self.model.get('email'));
 
 				this.model.save({}, {
-					success: function success(response) {
+					success: function success(model, response, options) {
+
 						debugger;
+
+						console.log(model);
 						console.log(response);
-						/*window.localStorage.setItem('token', response.get('token'));*/
+						console.log(options);
+
+						console.log(self.model);
+
+						/*	if (response.user) {
+	     			console.log(response.user);
+	     			console.log(response.user.email);
+	     			console.info(model.get('auth_token'));
+	     			console.info(self.model.get('auth_token'));
+	     	
+	     	}*/
+
+						/*App.vent.trigger("authentication:logged_out");*/
 					},
 					error: function error(model, xhr, options) {
-						debugger;
-						//fake-rest-api -c ./fake_rest_api_backup/config.json start
-
-						/*var errors = xhr.responseJSON.message;*/
 						console.log(xhr);
-						//hie errors
 					}
 				});
 			}
@@ -17371,9 +17620,8 @@
 		},
 
 		validateForm: function validateForm(dataValidate, data) {
-			/*debugger;*/
-			var /*regexTextValid = /^([A-Z][a-z ,.'`-]{2,30})$)/,*/
-			regexTextValid = /^.{8,}$/,
+
+			var regexTextValid = /^([A-Z][a-z ,.'`-]{2,30})$/,
 			    regexPasswordValid = /^.{8,}$/,
 			    inputs;
 
@@ -17400,7 +17648,6 @@
 			};
 
 			function chooseValid(choose, data) {
-				/*debugger;*/
 
 				switch (choose) {
 					case 'username':
@@ -17420,9 +17667,9 @@
 		},
 
 		checkForm: function checkForm(e) {
-			/*debugger;*/
-			console.log(this);
+
 			var data, selector;
+
 			selector = e.target.id;
 			data = this.$('#' + selector).val();
 
@@ -17440,34 +17687,76 @@
 
 	});
 
-	module.exports = UserPasswordView;
+	var userRegistrationView = new UserRegistrationView();
+	module.exports = userRegistrationView;
+
+	/*App.reqres.setHandler('register:current:user', function(){
+		return userRegistrationView.model;
+	});*/
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 17 */
+/* 20 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\r\n  <form class=\"form-horizontal col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-sm-2\" for=\"text\">Full name:</label>\r\n      <div class=\"col-sm-10\">\r\n        <input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"Enter full name\" autofocus>\r\n        <p class=\"error username_error\">Enter a valid Full Name!</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-sm-2\" for=\"password\">Password:</label>\r\n      <div class=\"col-sm-10\"> \r\n        <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Enter password\">\r\n        <p class=\"error password_error\">Pis more then 8 symbols!</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-sm-2\" for=\"password\">Confirm password:</label>\r\n      <div class=\"col-sm-10\"> \r\n        <input type=\"password\" class=\"form-control\" id=\"confirm\" placeholder=\"Enter confirm password\">\r\n        <p class=\"error confirm_error\">Confirm should be the same!</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\"> \r\n      <div class=\"col-sm-offset-2 col-sm-10\">\r\n        <button type=\"submit\" class=\"btn btn-default\" id=\"registerButton\">Submit</button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>";
+	module.exports = "<div class=\"container\">\r\n  <form class=\"form-horizontal col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-sm-2\" for=\"text\">Full name:</label>\r\n      <div class=\"col-sm-10\">\r\n        <input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"Enter full name\">\r\n        <p class=\"error username_error\">Enter a valid Full Name!</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-sm-2\" for=\"password\">Password:</label>\r\n      <div class=\"col-sm-10\"> \r\n        <input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Enter password\">\r\n        <p class=\"error password_error\">Pis more then 8 symbols!</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-sm-2\" for=\"password\">Confirm password:</label>\r\n      <div class=\"col-sm-10\"> \r\n        <input type=\"password\" class=\"form-control\" id=\"confirm\" placeholder=\"Enter confirm password\">\r\n        <p class=\"error confirm_error\">Confirm should be the same!</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\"> \r\n      <div class=\"col-sm-offset-2 col-sm-10\">\r\n        <button type=\"submit\" class=\"btn btn-default\" id=\"registerButton\">Submit</button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>";
 
 /***/ },
-/* 18 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	var UserPasswordModel = Backbone.Model.extend({
-		urlRoot: 'curl -X POST http://localhost:8880/fake/users',
+	var UserRegistrationModel = Backbone.Model.extend({
+		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',
+		/*	urlRoot: 'http://localhost:3002/people',*/
 
 		defaults: {
-			email: 'vitalika',
-			username: 'vit',
+			email: 'vitalik@gmail.con',
+			full_name: '',
 			password: '',
-			confirm: '',
-			token: ''
+			password_confirmation: '',
+			invite_token: 'aQjfcNN1zw2InudTCO4olw'
 		}
 	});
 
-	module.exports = UserPasswordModel;
+	module.exports = UserRegistrationModel;
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Backbone = __webpack_require__(6),
+	    Marionette = __webpack_require__(10),
+	    template = __webpack_require__(23);
+
+	var HomeView = Marionette.ItemView.extend({
+
+		template: template
+
+	});
+
+	module.exports = HomeView;
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "   <div class=\"container-non-responsive\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 panel-overlay-outer\">\r\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(24) + "\" />\r\n          <div class=\"panel-overlay\"></div>\r\n        </div>\r\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n          <div class=\"vertically-center text-panel\">\r\n            <h2 class=\"display-1\">Transparency shouldnt just be a buzzword</h2>\r\n            <p class=\"lead\">Use our dashboard to track progress towards your milestones, and exactly how much you paid for each feature</p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"panel-container-secondary\">\r\n      <div class=\"container-non-responsive\">\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n            <div class=\"vertically-center text-panel\">\r\n              <h2 class=\"display-1\">Be proud of your code</h2>\r\n              <p class=\"lead\">We dont just ship features,\r\n                we deliver code that your buisiness can build on for years.</p>\r\n              <p>Each PR gets a full code review from the whole team.\r\n                Every project comes with automated tests, documentation, and KPI tracking.</p>\r\n\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-5 panel-buzzword img-tracking flexbox panel-overlay-outer\">\r\n            <div class=\"panel-overlay\"></div>\r\n            <pre class=\"vertically-center\">\r\nfunction postStatus (status) {\r\n   KPI.add('status_update');\r\n   Status.post(status, User.get('id'))\r\n   .done(function () {\r\n      KPI.get('status_update').success();\r\n    })\r\n    .fail(function (msg) {\r\n       ErrorTrack.send('status_update', msg);\r\n     });\r\n}\r\n            </pre>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"container-non-responsive\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 panel-overlay-outer\">\r\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(25) + "\" />\r\n          <div class=\"panel-overlay\"></div>\r\n        </div>\r\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n          <div class=\"vertically-center text-panel\">\r\n            <h2 class=\"display-1\">Knowledge is bliss</h2>\r\n            <p class=\"lead\">See every status update, sprint retrospective, and commit\r\n            without remembering your Jira password</p>\r\n            <p>Our dashboard hooks into all major ticketing and code hosting systems, so it's always up-to-date.\r\n              Don't need to see a stream of cimmit messages? Our product managers post daily and weekly summaries.</p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"container-fluid container-full-width\">\r\n      <div class=\"jumbotron jumbotron-secondary\">\r\n        <h1 class=\"display-2 text-center\">Let's get started</h1>\r\n        <p class=\"lead\">Shoot us your email address and we'll get back to you by tomorrow to pick your brain,\r\n        figure out the best team for your project, and give you a quote.</p>\r\n        <label for=\"email\">Email</label>\r\n        <form class=\"form-inline\">\r\n\r\n          <fieldset class=\"form-group\">\r\n\r\n            <input type=\"text\" class=\"form-control quote-email\" id=\"email\" placeholder=\"tyrion@casterlyrock.gov\">\r\n            <button class=\"btn btn-secondary\">Get Mochi</button>\r\n          </fieldset>\r\n        </form>\r\n      </div>\r\n    </div>\r\n\r\n  </div>";
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "2bc874ec655bb341874a8462a4a11256.png"
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "7b5d6c349a9e66580857c5815f415139.png"
 
 /***/ }
 /******/ ]);

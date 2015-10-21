@@ -1,5 +1,5 @@
-/*USER CREATE PASSWORD*/
-.user_password_container {
+/*USER REGISTER*/
+.user_registration_container {
 	background-color: #81ac50;
 
 	form {
@@ -25,4 +25,35 @@
 		font-style: italic;
 	}
 }
-/*USER CREATE PASSWORD*/
+/*FINISH REGISTER*/
+
+/*USER REGISTER*/
+.user_login_container {
+
+	.form-group {
+		margin-top: 3%;
+
+		div {
+			padding-right: 5%;
+		}
+	}
+
+	label {
+		color: #333;
+	}
+
+	.error {
+		visibility: hidden;
+		color: red;
+		font-style: italic;
+	}
+
+	div.forgot_password {
+		float: left;
+	}
+
+	a {
+		color: #555;
+	}
+}
+/*FINISH REGISTER*/

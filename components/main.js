@@ -30,16 +30,23 @@ App.navigate = function(route,  options){
   Backbone.history.navigate(route, options);
 };
 
-App.on('start', function() {
-	Backbone.history.start();
-	console.log(this.getCurrentRoute());
-	if(this.getCurrentRoute() === '') {
-		App.trigger('hack:home');
-		console.log(this.getCurrentRoute());
-	};
+/*App.vent.on("authentication:logged_out", function() {
 	App.trigger('hack:home');
+});*/
+
+App.on('start', function() {
+	debugger;
+	Backbone.history.start();
+	if(this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home') {
+		App.trigger('hack:home');
+	} else if (this.getCurrentRoute() === 'home/register') {
+		App.trigger('hack:register');
+	}
 });
+
+
 
 module.exports = App;
 
 require ('./router.js');
+

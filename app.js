@@ -1,5 +1,7 @@
 'use strict';
 
+/*var imgKnowledge = */
+
 var App = require('./components/main.js');
 
 App.start();
