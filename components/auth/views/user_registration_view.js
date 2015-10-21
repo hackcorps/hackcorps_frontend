@@ -2,25 +2,17 @@
 
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
-	template = require('../templates/user_password_template.html'),
-	UserPasswordModel = require('../entities/user_password_model.js');
+	template = require('../templates/user_registration_template.html'),
+	headerView = require ('../../layout/header/views/header_view.js'),
+	UserRegistrationModel = require('../entities/user_registration_model.js');
 
-	var UserPasswordView = Marionette.ItemView.extend({
+	var UserRegistrationView = Marionette.ItemView.extend({
 
-		className: 'row user_password_container',
+		className: 'row user_registration_container',
 
 		template: template,
 
-		model: new UserPasswordModel(),
-
-		ui: {
-			inputUsername: '#username',
-			inputPassword: '#password',
-			inputConfirm:  '#confirm',
-			errorUsername: '.username_error',
-			errorPassword: '.password_error',
-			errorConfirm: '.error_confirm'
-		},
+		model: new UserRegistrationModel(),
 
 		events: {
 			'focusin input': 'focusedInput',
@@ -29,43 +21,56 @@ var Backbone = require('backbone'),
 		},
 
 		registerUser: function(e) {
-			/*debugger;*/
+			debugger;
 			e.preventDefault;
 
-			if(this.validateForm('signup')) {
-				debugger;
-				console.log(this.model);
-				console.log(this.model.get('username'));
-				console.log(this.$('#username').val());
+			console.log(App);
 
-				var self = this;
+			var self = this;
+
+			if(this.validateForm('signup')) {
 
 				this.model.set({
-					username: this.$('#username').val(),
+					full_name: this.$('#username').val(),
 					password: this.$('#password').val(),
-					confirm: this.$('#confirm').val(),
+					password_confirmation: this.$('#confirm').val(),
 				});
 
-				console.log(this.model.get('username'));
+			window.localStorage.setItem('auth_token', self.model.get('invite_token'));
+			window.localStorage.setItem('email', self.model.get('email'));
 
 				this.model.save({}, {
-					success: function(response) {
+					success: function(model, response, options) {
+
 						debugger;
+
+						console.log(model);
 						console.log(response);
-						/*window.localStorage.setItem('token', response.get('token'));*/
+						console.log(options);
+
+						console.log(self.model);
+
+					/*	if (response.user) {
+
+						console.log(response.user);
+
+						console.log(response.user.email);
+
+						console.info(model.get('auth_token'));
+
+						console.info(self.model.get('auth_token'));
+						
+						}*/
+
+					/*App.vent.trigger("authentication:logged_out");*/
+
 					},
 					error: function (model, xhr, options) {
-						debugger;
-						//fake-rest-api -c ./fake_rest_api_backup/config.json start
-
-						/*var errors = xhr.responseJSON.message;*/
 						console.log(xhr);
-						//hie errors
 					}
 				});
 			}
 		},
-
 
 		focusedInput: function(e) {
 			var selector = '.' + e.target.id + '_error';
@@ -73,9 +78,8 @@ var Backbone = require('backbone'),
 		},
 
 		validateForm: function(dataValidate, data) {
-			/*debugger;*/
-			var /*regexTextValid = /^([A-Z][a-z ,.'`-]{2,30})$)/,*/
-				regexTextValid = /^.{8,}$/,
+
+			var regexTextValid = /^([A-Z][a-z ,.'`-]{2,30})$/,
 				regexPasswordValid = /^.{8,}$/,
 				inputs;
 
@@ -109,7 +113,6 @@ var Backbone = require('backbone'),
 			};
 
 			function chooseValid (choose, data) {
-				/*debugger;*/
 
 				switch(choose) {
 					case 'username':
@@ -129,10 +132,10 @@ var Backbone = require('backbone'),
 		},
 
 		checkForm: function (e) {
-			/*debugger;*/
-			console.log(this);
+
 			var data,
 				selector;
+
 			selector = e.target.id;
 			data = this.$('#' + selector).val();
 
@@ -151,4 +154,9 @@ var Backbone = require('backbone'),
 		
 	});
 
-module.exports = UserPasswordView;
+var userRegistrationView = new UserRegistrationView();
+module.exports = userRegistrationView;
+
+/*App.reqres.setHandler('register:current:user', function(){
+	return userRegistrationView.model;
+});*/

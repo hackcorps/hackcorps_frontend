@@ -1,1 +1,0 @@
-module.exports = 'String from header.js';

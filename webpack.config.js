@@ -8,7 +8,7 @@ module.exports = {
 	output: {
 		path: './build/', 
 		filename: 'bundle.js',
-		publicPath: '/public/'
+		publicPath: '/public/assets'
 	},
 	resolve: {
 		modulesDirectories: ['node_modules', 'bower_components', 'web_modules'],
