@@ -1,7 +1,6 @@
 'use strict';
 
 var Backbone = require('backbone'),
-/*	App = require('./main.js'),*/
 	Marionette = require('backbone.marionette'),
 	headerView = require('./layout/header/views/header_view.js'),
 	HomeView = require('./pages/home/views/home_view.js'),
@@ -37,7 +36,6 @@ App.on('hack:register', function() {
 });
 
 App.on('hack:home', function() {
-	debugger;
 	new Router({
 		controller: API
 	});

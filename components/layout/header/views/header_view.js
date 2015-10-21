@@ -65,7 +65,7 @@ var HeaderView = Marionette.ItemView.extend({
 	},
 
 	validateLogin: function(e) {
-		e.preventDefault();
+		/*	e.preventDefault();*/
 		
 		var regExEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
 			regExPassword = /^.{8,}$/, //1 digit, 1 small char, 1 big char, 8 char min
@@ -84,11 +84,9 @@ var HeaderView = Marionette.ItemView.extend({
 	},
 
 	loginUser: function(e) {
-
-		e.preventDefault;
+		/*	e.preventDefault();*/
 
 		if(this.validateLogin()) {
-			debugger;
 
 			this.model.set({
 				email: this.$('#email_login').val(),
@@ -111,14 +109,8 @@ var HeaderView = Marionette.ItemView.extend({
 	},
 
 	logoutUser: function (e) {
-		debugger;
-		e.preventDefault();
-	/*	console.log(this.currentUser);
-		console.log(this.model);
 
-		this.model.set('auth_token', userRegistrationView.model.attributes.invite_token);
-		console.log(userRegistrationView.model.attributes.invite_token);
-		console.log(this.model);*/
+		e.preventDefault();
 
 		var auth_token = window.localStorage.getItem('auth_token'),
 			email = window.localStorage.getItem('email');
@@ -150,11 +142,7 @@ var HeaderView = Marionette.ItemView.extend({
 		});
 
 /*		this.model.destroy({
-			
-
 			success: function(response) {
-
-				debugger;
 				console.log(response);
 
 				window.localStorage.setItem('auth_token', self.currentUser.auth_token);
@@ -166,24 +154,7 @@ var HeaderView = Marionette.ItemView.extend({
 			}
 		});*/
 
-	/*	this.model = 
-
-		App.on('register:success', function() {
-			alert();
-		});
-
-		console.log(this.currentUser);*/
-
 	},
-
-/*	setCurrentUser: function() {
-		debugger;
-		App.on('register:success');
-		console.log(currentUser);
-	},*/
-
-	currentUser: null
-
 
 });
 

@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var BowerWebpackPlugin = require("bower-webpack-plugin");
 /*var ExtractTextPlugin = require('extract-text-webpack-plugin');*/
 
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
 		publicPath: '/public/assets'
 	},
 	resolve: {
-		modulesDirectories: ['node_modules', 'bower_components', 'web_modules'],
+		modulesDirectories: ['node_modules'],
 		extensions: ['', '.js', '.es6']
 	},
 	module: {
@@ -26,12 +25,12 @@ module.exports = {
 			{
 				test: /\.(png|jpg|ttf|eot|woff)$/,
 				loader: 'url-loader?limit=10000',
-				exclude: /(node_modules|bower_components|web_modules)/
+				exclude: /(node_modules)/
 			},
 			{
 				test: /\.js/,
 				loader: 'babel',
-				exclude: /(node_modules|bower_components|web_modules)/
+				exclude: /(node_modules)/
 			},
 /*			{
 				test: /\.scss$/,

@@ -104,12 +104,7 @@
 		Backbone.history.navigate(route, options);
 	};
 
-	/*App.vent.on("authentication:logged_out", function() {
-		App.trigger('hack:home');
-	});*/
-
 	App.on('start', function () {
-		debugger;
 		Backbone.history.start();
 		if (this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home') {
 			App.trigger('hack:home');
@@ -157,7 +152,7 @@
 
 
 	// module
-	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n/*FINISH HEADER*/\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50; }\n  .user_registration_container form {\n    margin-top: 10%;\n    background-color: #f3f3f3; }\n  .user_registration_container .form-group {\n    margin-top: 3%; }\n    .user_registration_container .form-group div {\n      padding-right: 5%; }\n  .user_registration_container label {\n    color: #333; }\n  .user_registration_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*FINISH REGISTER*/\n/*USER REGISTER*/\n.user_login_container .form-group {\n  margin-top: 3%; }\n  .user_login_container .form-group div {\n    padding-right: 5%; }\n\n.user_login_container label {\n  color: #333; }\n\n.user_login_container .error {\n  visibility: hidden;\n  color: red;\n  font-style: italic; }\n\n.user_login_container div.forgot_password {\n  float: left; }\n\n.user_login_container a {\n  color: #555; }\n\n/*FINISH REGISTER*/\nbody {\n  color: #ffffff;\n  background-color: #81ac50; }\n", ""]);
+	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n/*FINISH HEADER*/\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50; }\n  .user_registration_container form {\n    margin-top: 10%;\n    background-color: #f3f3f3; }\n  .user_registration_container .form-group {\n    margin-top: 3%; }\n    .user_registration_container .form-group div {\n      padding-right: 5%; }\n  .user_registration_container label {\n    color: #333; }\n  .user_registration_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*FINISH REGISTER*/\n/*USER LOGIN*/\n.user_login_container .form-group {\n  margin-top: 3%; }\n  .user_login_container .form-group div {\n    padding-right: 5%; }\n\n.user_login_container label {\n  color: #333; }\n\n.user_login_container .error {\n  visibility: hidden;\n  color: red;\n  font-style: italic; }\n\n.user_login_container div.forgot_password {\n  float: left; }\n\n.user_login_container a {\n  color: #555; }\n\n/*FINISH LOGIN*/\nbody {\n  color: #ffffff;\n  background-color: #81ac50; }\n", ""]);
 
 	// exports
 
@@ -17275,9 +17270,7 @@
 	'use strict';
 
 	var Backbone = __webpack_require__(6),
-
-	/*	App = require('./main.js'),*/
-	Marionette = __webpack_require__(10),
+	    Marionette = __webpack_require__(10),
 	    headerView = __webpack_require__(16),
 	    HomeView = __webpack_require__(22),
 	    userRegistrationView = __webpack_require__(19);
@@ -17312,7 +17305,6 @@
 	});
 
 	App.on('hack:home', function () {
-		debugger;
 		new Router({
 			controller: API
 		});
@@ -17390,7 +17382,7 @@
 		},
 
 		validateLogin: function validateLogin(e) {
-			e.preventDefault();
+			/*	e.preventDefault();*/
 
 			var regExEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
 			    regExPassword = /^.{8,}$/,
@@ -17410,11 +17402,9 @@
 		},
 
 		loginUser: function loginUser(e) {
-
-			e.preventDefault;
+			/*	e.preventDefault();*/
 
 			if (this.validateLogin()) {
-				debugger;
 
 				this.model.set({
 					email: this.$('#email_login').val(),
@@ -17437,14 +17427,8 @@
 		},
 
 		logoutUser: function logoutUser(e) {
-			debugger;
+
 			e.preventDefault();
-			/*	console.log(this.currentUser);
-	  	console.log(this.model);
-	  
-	  	this.model.set('auth_token', userRegistrationView.model.attributes.invite_token);
-	  	console.log(userRegistrationView.model.attributes.invite_token);
-	  	console.log(this.model);*/
 
 			var auth_token = window.localStorage.getItem('auth_token'),
 			    email = window.localStorage.getItem('email');
@@ -17476,11 +17460,7 @@
 			});
 
 			/*		this.model.destroy({
-	  			
-	  
 	  			success: function(response) {
-	  
-	  				debugger;
 	  				console.log(response);
 	  
 	  				window.localStorage.setItem('auth_token', self.currentUser.auth_token);
@@ -17491,23 +17471,7 @@
 	  				console.log(xhr);
 	  			}
 	  		});*/
-
-			/*	this.model = 
-	  
-	  	App.on('register:success', function() {
-	  		alert();
-	  	});
-	  
-	  	console.log(this.currentUser);*/
-		},
-
-		/*	setCurrentUser: function() {
-	 		debugger;
-	 		App.on('register:success');
-	 		console.log(currentUser);
-	 	},*/
-
-		currentUser: null
+		}
 
 	});
 
@@ -17522,14 +17486,14 @@
 	'use strict';
 
 	var CurrentUserModel = Backbone.Model.extend({
-		/*	urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',*/
-		urlRoot: 'http://localhost:3002/people',
+		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
+		/*	urlRoot: 'http://localhost:3002/people',*/
+		paramRoot: 'user',
 
 		defaults: {
 			email: '',
 			password: '',
-			auth_token: '',
-			id: 2
+			auth_token: ''
 		}
 	});
 
@@ -17568,10 +17532,7 @@
 		},
 
 		registerUser: function registerUser(e) {
-			debugger;
 			e.preventDefault;
-
-			console.log(App);
 
 			var self = this;
 
@@ -17589,21 +17550,7 @@
 				this.model.save({}, {
 					success: function success(model, response, options) {
 
-						debugger;
-
-						console.log(model);
 						console.log(response);
-						console.log(options);
-
-						console.log(self.model);
-
-						/*	if (response.user) {
-	     			console.log(response.user);
-	     			console.log(response.user.email);
-	     			console.info(model.get('auth_token'));
-	     			console.info(self.model.get('auth_token'));
-	     	
-	     	}*/
 
 						/*App.vent.trigger("authentication:logged_out");*/
 					},
@@ -17689,10 +17636,6 @@
 
 	var userRegistrationView = new UserRegistrationView();
 	module.exports = userRegistrationView;
-
-	/*App.reqres.setHandler('register:current:user', function(){
-		return userRegistrationView.model;
-	});*/
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
@@ -17703,16 +17646,18 @@
 
 /***/ },
 /* 21 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	__webpack_require__(26);
 
 	var UserRegistrationModel = Backbone.Model.extend({
-		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',
-		/*	urlRoot: 'http://localhost:3002/people',*/
+		/*urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',*/
+		urlRoot: 'http://localhost:3002/people',
+		paramRoot: 'user',
 
 		defaults: {
-			email: 'vitalik@gmail.con',
+			email: '',
 			full_name: '',
 			password: '',
 			password_confirmation: '',
@@ -17757,6 +17702,48 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "7b5d6c349a9e66580857c5815f415139.png"
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var $        = __webpack_require__(8);
+	var Backbone = __webpack_require__(6);
+	var _        = __webpack_require__(7);
+
+
+	Backbone._sync = Backbone.sync;
+
+	Backbone.sync = function(method, model, options) {
+	  if (!options.noCSRF) {
+	    var beforeSend = options.beforeSend;
+
+	    // Set X-CSRF-Token HTTP header
+	    options.beforeSend = function(xhr) {
+	      var token = $('meta[name="csrf-token"]').attr('content');
+	      if (token) { xhr.setRequestHeader('X-CSRF-Token', token); }
+	      if (beforeSend) { return beforeSend.apply(this, arguments); }
+	    };
+	  }
+
+	  // Serialize data, optionally using paramRoot
+	  if (!options.data && model && (method === 'create' || method === 'update' || method === 'patch')) {
+	    options.contentType = 'application/json';
+	    var data = JSON.stringify(options.attrs || model.toJSON(options));
+	    if (model.paramRoot) {
+	      data = {};
+	      data[model.paramRoot] = model.toJSON(options);
+	    } else {
+	      data = model.toJSON();
+	    }
+	    options.data = JSON.stringify(data);
+	  }
+
+	  return Backbone._sync(method, model, options);
+	};
+
 
 /***/ }
 /******/ ]);

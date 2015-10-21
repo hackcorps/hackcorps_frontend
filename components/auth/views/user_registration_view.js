@@ -21,10 +21,7 @@ var Backbone = require('backbone'),
 		},
 
 		registerUser: function(e) {
-			debugger;
 			e.preventDefault;
-
-			console.log(App);
 
 			var self = this;
 
@@ -42,25 +39,7 @@ var Backbone = require('backbone'),
 				this.model.save({}, {
 					success: function(model, response, options) {
 
-						debugger;
-
-						console.log(model);
 						console.log(response);
-						console.log(options);
-
-						console.log(self.model);
-
-					/*	if (response.user) {
-
-						console.log(response.user);
-
-						console.log(response.user.email);
-
-						console.info(model.get('auth_token'));
-
-						console.info(self.model.get('auth_token'));
-						
-						}*/
 
 					/*App.vent.trigger("authentication:logged_out");*/
 
@@ -156,7 +135,3 @@ var Backbone = require('backbone'),
 
 var userRegistrationView = new UserRegistrationView();
 module.exports = userRegistrationView;
-
-/*App.reqres.setHandler('register:current:user', function(){
-	return userRegistrationView.model;
-});*/
