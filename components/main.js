@@ -2,8 +2,8 @@
 
 require('./styles/main.scss');
 
-var Backbone = require('backbone');
-var Marionette = require('backbone.marionette');
+var Backbone = require('backbone'),
+	Marionette = require('backbone.marionette');
 
 var App = window.App = new Marionette.Application();
 
@@ -14,7 +14,7 @@ App.on('before:start', function() {
 		regions: {
 			header: '#header-region',
 			main: '#main-region',
-			auth: '#auth-region'
+			auth: '#auth-region',
 		}
 	});
 
@@ -22,21 +22,40 @@ App.on('before:start', function() {
 });
 
 App.getCurrentRoute = function(){
-  return Backbone.history.fragment;
+	return Backbone.history.fragment;
 };
 
 App.navigate = function(route,  options){
-  options || (options = {});
-  Backbone.history.navigate(route, options);
+	options || (options = {});
+	Backbone.history.navigate(route, options);
 };
+
+function findHashValue (hash, str) {
+	return hash.indexOf(str) != (-1) ? true : false;
+};
+
+function findToken (arr) {
+	return hashArr[1] ? true : false;
+};
+
+var currentHash = window.location.hash,
+	hashArr = currentHash.split('='),
+	strRegister = 'register',
+	strRecovery = 'recovery',
+	strInvite = 'invite_token';
 
 App.on('start', function() {
 	Backbone.history.start();
-	if(this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home') {
-		App.trigger('hack:home');
-	} else if (this.getCurrentRoute() === 'home/register') {
-		App.trigger('hack:register');
-	}
+	if( this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home' ) {
+		App.vent.trigger('hack:home');
+	} else if (  findHashValue(currentHash, strRegister) && findToken(hashArr) ) {
+		window.localStorage.setItem('invite_token', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+		window.localStorage.setItem('email', 'vitalika1988@gmail.com');
+		App.vent.trigger('hack:register');
+	} else if (  findHashValue(currentHash, strRecovery) && findToken(hashArr) ) {
+		window.localStorage.setItem('recovery_token', 'ssssssssssssssssssssssss');
+		App.vent.trigger('hack:recovery');
+	} else ( App.vent.trigger('hack:home') );
 });
 
 module.exports = App;
