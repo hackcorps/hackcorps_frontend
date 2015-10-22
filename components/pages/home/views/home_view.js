@@ -10,4 +10,5 @@ var HomeView = Marionette.ItemView.extend({
 
 });
 
-module.exports = HomeView;
+var homeView = new HomeView();
+module.exports = homeView;

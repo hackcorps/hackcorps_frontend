@@ -67,12 +67,11 @@ module.exports = {
     },*/
 	plugins: [
 /*		new ExtractTextPlugin(),*/
-		new BowerWebpackPlugin(),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
 			'window.jQuery': 'jquery',
-			_: 'underscore'
+			'_': 'underscore'
 		})
 	],
 	watch: true
