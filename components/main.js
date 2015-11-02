@@ -19,6 +19,7 @@ App.on('before:start', function() {
 	});
 
 	App.regions = new RegionContainer();
+
 });
 
 App.getCurrentRoute = function(){
@@ -45,10 +46,9 @@ var currentHash = window.location.hash,
 	strInvite = 'invite_token';
 
 App.on('start', function() {
-	Backbone.history.start();
 	if( this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home' ) {
 		App.vent.trigger('hack:home');
-	} else if (  findHashValue(currentHash, strRegister) && findToken(hashArr) ) {
+	} else if (  findHashValue(currentHash, strRegister) /*&& findToken(hashArr)*/ ) {
 		window.localStorage.setItem('invite_token', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 		window.localStorage.setItem('email', 'vitalika1988@gmail.com');
 		App.vent.trigger('hack:register');

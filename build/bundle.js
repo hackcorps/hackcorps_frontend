@@ -119,14 +119,13 @@
 	    strInvite = 'invite_token';
 
 	App.on('start', function () {
-		Backbone.history.start();
 		if (this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home') {
 			App.vent.trigger('hack:home');
-		} else if (findHashValue(currentHash, strRegister) && findToken(hashArr)) {
-			window.localStorage.setItem('invite_token', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-			window.localStorage.setItem('email', 'vitalika1988@gmail.com');
-			App.vent.trigger('hack:register');
-		} else if (findHashValue(currentHash, strRecovery) && findToken(hashArr)) {
+		} else if (findHashValue(currentHash, strRegister) /*&& findToken(hashArr)*/) {
+				window.localStorage.setItem('invite_token', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+				window.localStorage.setItem('email', 'vitalika1988@gmail.com');
+				App.vent.trigger('hack:register');
+			} else if (findHashValue(currentHash, strRecovery) && findToken(hashArr)) {
 			window.localStorage.setItem('recovery_token', 'ssssssssssssssssssssssss');
 			App.vent.trigger('hack:recovery');
 		} else App.vent.trigger('hack:home');
@@ -171,7 +170,7 @@
 
 
 	// module
-	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n/*FINISH HEADER*/\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50; }\n  .user_registration_container form {\n    margin-top: 10%;\n    background-color: #f3f3f3; }\n  .user_registration_container .form-group {\n    margin-top: 3%; }\n    .user_registration_container .form-group div {\n      padding-right: 5%; }\n  .user_registration_container label {\n    color: #333; }\n  .user_registration_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*FINISH REGISTER*/\n/*USER LOGIN*/\n.user_login_container {\n  margin-top: -200px; }\n  .user_login_container .form-group {\n    margin-top: 3%; }\n    .user_login_container .form-group div {\n      padding-right: 5%; }\n  .user_login_container label {\n    color: #333; }\n  .user_login_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n  .user_login_container div.forgot_password {\n    float: left; }\n  .user_login_container a {\n    color: #555; }\n\n/*FINISH LOGIN*/\n/*USER LOGIN*/\n.user_login_container {\n  margin-top: -200px; }\n  .user_login_container .form-group {\n    margin-top: 3%; }\n    .user_login_container .form-group div {\n      padding-right: 5%; }\n  .user_login_container label {\n    color: #333; }\n  .user_login_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n  .user_login_container div.forgot_password {\n    float: left; }\n  .user_login_container a {\n    color: #555; }\n\n/*FINISH LOGIN*/\n/*RECOVERY PASSWORD*/\n.recovery_password_container {\n  margin-top: -200px; }\n  .recovery_password_container .form-group {\n    margin-top: 3%; }\n    .recovery_password_container .form-group div {\n      padding-right: 5%; }\n  .recovery_password_container label {\n    color: #333; }\n  .recovery_password_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*FINISH RECOVERY PASSWORD*/\n/*NEW PASSWORD*/\n.recovery_password_create_container form {\n  margin-top: 10%;\n  background-color: #f3f3f3; }\n\n.recovery_password_create_container .form-group {\n  margin-top: 3%; }\n  .recovery_password_create_container .form-group div {\n    padding-right: 5%; }\n\n.recovery_password_create_container label {\n  color: #333; }\n\n.recovery_password_create_container .error {\n  visibility: hidden;\n  color: red;\n  font-style: italic; }\n\n/*FINISH NEW PASSWORD*/\nbody {\n  color: #ffffff;\n  background-color: #81ac50; }\n", ""]);
+	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n/*FINISH HEADER*/\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_registration_container .registration_header {\n    background-color: #dddddd;\n    font-size: 1.5em; }\n    .user_registration_container .registration_header .left_block {\n      float: left; }\n    .user_registration_container .registration_header .right_block {\n      float: right; }\n    .user_registration_container .registration_header p {\n      margin: 5px; }\n  .user_registration_container form {\n    margin-top: 8%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_registration_container form .invite_description {\n      margin: 10px 0px; }\n      .user_registration_container form .invite_description .header_description {\n        font-size: 2em;\n        font-weight: bold; }\n      .user_registration_container form .invite_description .description {\n        font-size: 1.5em;\n        font-weight: bold; }\n    .user_registration_container form .form-group {\n      margin-top: 3%; }\n      .user_registration_container form .form-group label {\n        font-size: 1.5em;\n        font-weight: normal; }\n      .user_registration_container form .form-group input {\n        border-color: #000000;\n        border-radius: 0px; }\n      .user_registration_container form .form-group button {\n        float: right;\n        margin: 15px 0px;\n        color: #000000;\n        background-color: #dddddd;\n        border-color: #000000; }\n      .user_registration_container form .form-group .error {\n        font-size: 1.5em;\n        visibility: hidden;\n        color: red;\n        font-style: italic; }\n\n/*FINISH REGISTER*/\n/*USER LOGIN*/\n.user_login_container {\n  margin-top: -200px; }\n  .user_login_container .form-group {\n    margin-top: 3%; }\n    .user_login_container .form-group div {\n      padding-right: 5%; }\n  .user_login_container label {\n    color: #333; }\n  .user_login_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n  .user_login_container div.forgot_password {\n    float: left; }\n  .user_login_container a {\n    color: #555; }\n\n/*FINISH LOGIN*/\n/*USER LOGIN*/\n.user_login_container {\n  margin-top: -200px; }\n  .user_login_container .form-group {\n    margin-top: 3%; }\n    .user_login_container .form-group div {\n      padding-right: 5%; }\n  .user_login_container label {\n    color: #333; }\n  .user_login_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n  .user_login_container div.forgot_password {\n    float: left; }\n  .user_login_container a {\n    color: #555; }\n\n/*FINISH LOGIN*/\n/*RECOVERY PASSWORD*/\n.recovery_password_container {\n  margin-top: -200px; }\n  .recovery_password_container .form-group {\n    margin-top: 3%; }\n    .recovery_password_container .form-group div {\n      padding-right: 5%; }\n  .recovery_password_container label {\n    color: #333; }\n  .recovery_password_container .error {\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*FINISH RECOVERY PASSWORD*/\n/*NEW PASSWORD*/\n.recovery_password_create_container form {\n  margin-top: 10%;\n  background-color: #f3f3f3; }\n\n.recovery_password_create_container .form-group {\n  margin-top: 3%; }\n  .recovery_password_create_container .form-group div {\n    padding-right: 5%; }\n\n.recovery_password_create_container label {\n  color: #333; }\n\n.recovery_password_create_container .error {\n  visibility: hidden;\n  color: red;\n  font-style: italic; }\n\n/*FINISH NEW PASSWORD*/\nbody {\n  font-size: 1em;\n  /*\tcolor: $white;\r\n\tbackground-color: #81ac50;*/ }\n", ""]);
 
 	// exports
 
@@ -17273,7 +17272,7 @@
 	var Backbone = __webpack_require__(6),
 	    Marionette = __webpack_require__(9),
 	    headerView = __webpack_require__(13),
-	    homeView = __webpack_require__(22),
+	    homeView = __webpack_require__(25),
 	    userRegistrationView = __webpack_require__(15),
 	    recoveryPasswordCreateView = __webpack_require__(29);
 
@@ -17430,7 +17429,12 @@
 		events: {
 			'focusin input': 'focusedInput',
 			'focusout input': 'checkForm',
-			'click #registerButton': 'registerUser'
+			'click #registerButton': 'registerUser',
+			'onload window': 'pre'
+		},
+
+		pre: function pre() {
+			alert();
 		},
 
 		registerUser: function registerUser(e) {
@@ -17524,12 +17528,12 @@
 
 		checkForm: function checkForm(e) {
 
-			var data = this.$('#' + selector).val(),
-			    selector = e.target.id;
+			var selector = e.target.id,
+			    data = this.$('#' + selector).val();
 
 			if (data) {
 				if (selector === 'confirm') {
-					data = [data, this.$('#password').val()];
+					data = [data, $('#password').val()];
 				};
 				if (!this.validateForm(selector, data)) {
 					this.$('.' + selector + '_error').css('visibility', 'visible');
@@ -17549,7 +17553,7 @@
 /* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\r\n\t<form class=\"form-horizontal col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2\" role=\"form\">\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"control-label col-sm-2\" for=\"text\">Full name:</label>\r\n\t\t\t<div class=\"col-sm-10\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"Enter full name\">\r\n\t\t\t\t<p class=\"error username_error\">Enter a valid Full Name!</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"control-label col-sm-2\" for=\"password\">Password:</label>\r\n\t\t\t<div class=\"col-sm-10\"> \r\n\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Enter password\">\r\n\t\t\t\t<p class=\"error password_error\">Pis more then 8 symbols!</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"control-label col-sm-2\" for=\"password\">Confirm password:</label>\r\n\t\t\t<div class=\"col-sm-10\"> \r\n\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"confirm\" placeholder=\"Enter confirm password\">\r\n\t\t\t\t<p class=\"error confirm_error\">Confirm should be the same!</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\"> \r\n\t\t\t<div class=\"col-sm-offset-2 col-sm-10\">\r\n\t\t\t\t<button type=\"submit\" class=\"btn btn-default\" id=\"registerButton\">Submit</button>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n</div>";
+	module.exports = "<div class=\"container\">\r\n\t<div class=\"registration_header col-xs-12\">\r\n\t\t<div class=\"left_block\"><p>HackCorps</p></div>\r\n\t\t<div class=\"right_block\"><p>org_name</p></div>\r\n\t</div>\r\n\t<form class=\"col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2\" role=\"form\">\r\n\t\t<div class=\"invite_description\">\r\n\t\t\t<p class=\"header_description\">You've been invited to <span class=\"org_name\"><span></p>\r\n\t\t\t<p class=\"description\">Enter your display name and set a password below.</p>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label for=\"username\">Name</label>\r\n\t\t\t<input type=\"text\" class=\"form-control\" id=\"username\">\r\n\t\t\t<p class=\"error username_error\">Enter a valid Full Name!</p>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label for=\"password\">Password</label> \r\n\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\">\r\n\t\t\t<p class=\"error password_error\">Pis more then 8 symbols!</p>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label for=\"confirm\">Confirm password</label >\r\n\t\t\t<input type=\"password\" class=\"form-control\" id=\"confirm\">\r\n\t\t\t<p class=\"error confirm_error\">Confirm should be the same!</p>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\"> \r\n\t\t\t<div class=\"button\">\r\n\t\t\t\t<button type=\"submit\" class=\"btn btn-default\" id=\"registerButton\">Create account</button>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n</div>";
 
 /***/ },
 /* 17 */
@@ -17626,8 +17630,8 @@
 	    Marionette = __webpack_require__(9),
 	    template = __webpack_require__(20),
 	    headerView = __webpack_require__(13),
-	    recoveryPasswordView = __webpack_require__(26),
-	    UserLoginModel = __webpack_require__(21);
+	    recoveryPasswordView = __webpack_require__(21),
+	    UserLoginModel = __webpack_require__(24);
 
 	var UserLoginView = Marionette.ItemView.extend({
 
@@ -17725,70 +17729,13 @@
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-	__webpack_require__(18);
-
-	var UserLoginModel = Backbone.Model.extend({
-		/*	urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_in',*/
-		urlRoot: 'http://localhost:3002/people',
-		paramRoot: 'user',
-
-		defaults: {
-			email: '',
-			password: ''
-		}
-	});
-
-	module.exports = UserLoginModel;
-
-/***/ },
-/* 22 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Backbone = __webpack_require__(6),
-	    Marionette = __webpack_require__(9),
-	    template = __webpack_require__(23);
-
-	var HomeView = Marionette.ItemView.extend({
-
-		template: template
-
-	});
-
-	var homeView = new HomeView();
-	module.exports = homeView;
-
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "   <div class=\"container-non-responsive\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 panel-overlay-outer\">\r\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(24) + "\" />\r\n          <div class=\"panel-overlay\"></div>\r\n        </div>\r\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n          <div class=\"vertically-center text-panel\">\r\n            <h2 class=\"display-1\">Transparency shouldnt just be a buzzword</h2>\r\n            <p class=\"lead\">Use our dashboard to track progress towards your milestones, and exactly how much you paid for each feature</p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"panel-container-secondary\">\r\n      <div class=\"container-non-responsive\">\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n            <div class=\"vertically-center text-panel\">\r\n              <h2 class=\"display-1\">Be proud of your code</h2>\r\n              <p class=\"lead\">We dont just ship features,\r\n                we deliver code that your buisiness can build on for years.</p>\r\n              <p>Each PR gets a full code review from the whole team.\r\n                Every project comes with automated tests, documentation, and KPI tracking.</p>\r\n\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-5 panel-buzzword img-tracking flexbox panel-overlay-outer\">\r\n            <div class=\"panel-overlay\"></div>\r\n            <pre class=\"vertically-center\">\r\nfunction postStatus (status) {\r\n   KPI.add('status_update');\r\n   Status.post(status, User.get('id'))\r\n   .done(function () {\r\n      KPI.get('status_update').success();\r\n    })\r\n    .fail(function (msg) {\r\n       ErrorTrack.send('status_update', msg);\r\n     });\r\n}\r\n            </pre>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"container-non-responsive\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 panel-overlay-outer\">\r\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(25) + "\" />\r\n          <div class=\"panel-overlay\"></div>\r\n        </div>\r\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n          <div class=\"vertically-center text-panel\">\r\n            <h2 class=\"display-1\">Knowledge is bliss</h2>\r\n            <p class=\"lead\">See every status update, sprint retrospective, and commit\r\n            without remembering your Jira password</p>\r\n            <p>Our dashboard hooks into all major ticketing and code hosting systems, so it's always up-to-date.\r\n              Don't need to see a stream of cimmit messages? Our product managers post daily and weekly summaries.</p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"container-fluid container-full-width\">\r\n      <div class=\"jumbotron jumbotron-secondary\">\r\n        <h1 class=\"display-2 text-center\">Let's get started</h1>\r\n        <p class=\"lead\">Shoot us your email address and we'll get back to you by tomorrow to pick your brain,\r\n        figure out the best team for your project, and give you a quote.</p>\r\n        <label for=\"email\">Email</label>\r\n        <form class=\"form-inline\">\r\n\r\n          <fieldset class=\"form-group\">\r\n\r\n            <input type=\"text\" class=\"form-control quote-email\" id=\"email\" placeholder=\"tyrion@casterlyrock.gov\">\r\n            <button class=\"btn btn-secondary\">Get Mochi</button>\r\n          </fieldset>\r\n        </form>\r\n      </div>\r\n    </div>\r\n\r\n  </div>";
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "2bc874ec655bb341874a8462a4a11256.png"
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "7b5d6c349a9e66580857c5815f415139.png"
-
-/***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	var Backbone = __webpack_require__(6),
 	    Marionette = __webpack_require__(9),
-	    template = __webpack_require__(27),
+	    template = __webpack_require__(22),
 	    headerView = __webpack_require__(13),
-	    RecoveryPasswordModel = __webpack_require__(28);
+	    RecoveryPasswordModel = __webpack_require__(23);
 
 	var RecoveryPasswordView = Marionette.ItemView.extend({
 
@@ -17861,13 +17808,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
-/* 27 */
+/* 22 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal recovery_modal\">\r\n\t<div class=\"modal-dialog\">\r\n\t\t<div class=\"modal-content\">\r\n\t\t\t<div class=\"modal-header\">\r\n\t\t\t\t<button type=\"button\" class=\"close close_recovery\"><span>&times;</span></button>\r\n\t\t\t\t<h4 class=\"modal-title\">Modal title</h4>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"modal-body\">\r\n\t\t\t\t<form class=\"form-horizontal\">\r\n\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t<label for=\"email\" class=\"col-sm-2 control-label\">Email:</label>\r\n\t\t\t\t\t\t<div class=\"col-sm-9\">\r\n\t\t\t\t\t\t\t<input type=\"email\" class=\"form-control email_recovery\" id=\"email\" placeholder=\"Enter email\">\r\n\t\t\t\t\t\t\t<p class=\"error email_error\">Enter a valid Email!</p>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</form>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"modal-footer\">\r\n\t\t\t\t<button type=\"button\" class=\"btn btn-default send_recovery\">Send</button>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
 
 /***/ },
-/* 28 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17887,6 +17834,63 @@
 	module.exports = RecoveryPasswordModel;
 
 /***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	__webpack_require__(18);
+
+	var UserLoginModel = Backbone.Model.extend({
+		/*	urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_in',*/
+		urlRoot: 'http://localhost:3002/people',
+		paramRoot: 'user',
+
+		defaults: {
+			email: '',
+			password: ''
+		}
+	});
+
+	module.exports = UserLoginModel;
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Backbone = __webpack_require__(6),
+	    Marionette = __webpack_require__(9),
+	    template = __webpack_require__(26);
+
+	var HomeView = Marionette.ItemView.extend({
+
+		template: template
+
+	});
+
+	var homeView = new HomeView();
+	module.exports = homeView;
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "   <div class=\"container-non-responsive\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 panel-overlay-outer\">\r\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(27) + "\" />\r\n          <div class=\"panel-overlay\"></div>\r\n        </div>\r\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n          <div class=\"vertically-center text-panel\">\r\n            <h2 class=\"display-1\">Transparency shouldnt just be a buzzword</h2>\r\n            <p class=\"lead\">Use our dashboard to track progress towards your milestones, and exactly how much you paid for each feature</p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"panel-container-secondary\">\r\n      <div class=\"container-non-responsive\">\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n            <div class=\"vertically-center text-panel\">\r\n              <h2 class=\"display-1\">Be proud of your code</h2>\r\n              <p class=\"lead\">We dont just ship features,\r\n                we deliver code that your buisiness can build on for years.</p>\r\n              <p>Each PR gets a full code review from the whole team.\r\n                Every project comes with automated tests, documentation, and KPI tracking.</p>\r\n\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-5 panel-buzzword img-tracking flexbox panel-overlay-outer\">\r\n            <div class=\"panel-overlay\"></div>\r\n            <pre class=\"vertically-center\">\r\nfunction postStatus (status) {\r\n   KPI.add('status_update');\r\n   Status.post(status, User.get('id'))\r\n   .done(function () {\r\n      KPI.get('status_update').success();\r\n    })\r\n    .fail(function (msg) {\r\n       ErrorTrack.send('status_update', msg);\r\n     });\r\n}\r\n            </pre>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"container-non-responsive\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-5 panel-overlay-outer\">\r\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(28) + "\" />\r\n          <div class=\"panel-overlay\"></div>\r\n        </div>\r\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\r\n          <div class=\"vertically-center text-panel\">\r\n            <h2 class=\"display-1\">Knowledge is bliss</h2>\r\n            <p class=\"lead\">See every status update, sprint retrospective, and commit\r\n            without remembering your Jira password</p>\r\n            <p>Our dashboard hooks into all major ticketing and code hosting systems, so it's always up-to-date.\r\n              Don't need to see a stream of cimmit messages? Our product managers post daily and weekly summaries.</p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"container-fluid container-full-width\">\r\n      <div class=\"jumbotron jumbotron-secondary\">\r\n        <h1 class=\"display-2 text-center\">Let's get started</h1>\r\n        <p class=\"lead\">Shoot us your email address and we'll get back to you by tomorrow to pick your brain,\r\n        figure out the best team for your project, and give you a quote.</p>\r\n        <label for=\"email\">Email</label>\r\n        <form class=\"form-inline\">\r\n\r\n          <fieldset class=\"form-group\">\r\n\r\n            <input type=\"text\" class=\"form-control quote-email\" id=\"email\" placeholder=\"tyrion@casterlyrock.gov\">\r\n            <button class=\"btn btn-secondary\">Get Mochi</button>\r\n          </fieldset>\r\n        </form>\r\n      </div>\r\n    </div>\r\n\r\n  </div>";
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "2bc874ec655bb341874a8462a4a11256.png"
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "7b5d6c349a9e66580857c5815f415139.png"
+
+/***/ },
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -17894,9 +17898,9 @@
 
 	var Backbone = __webpack_require__(6),
 	    Marionette = __webpack_require__(9),
-	    template = __webpack_require__(31),
+	    template = __webpack_require__(30),
 	    headerView = __webpack_require__(13),
-	    RecoveryPasswordCreateModel = __webpack_require__(30);
+	    RecoveryPasswordCreateModel = __webpack_require__(31);
 
 	var RecoveryPasswordCreateView = Marionette.ItemView.extend({
 
@@ -17974,6 +17978,12 @@
 
 /***/ },
 /* 30 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container\">\r\n\t<form class=\"form-horizontal col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2\" role=\"form\">\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"control-label col-sm-2\" for=\"password\">New password:</label>\r\n\t\t\t<div class=\"col-sm-10\"> \r\n\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Enter new password\">\r\n\t\t\t\t<p class=\"error password_error\">Pis more then 8 symbols!</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"control-label col-sm-2\" for=\"password\">Confirm password:</label>\r\n\t\t\t<div class=\"col-sm-10\"> \r\n\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"confirm\" placeholder=\"Enter confirm password\">\r\n\t\t\t\t<p class=\"error confirm_error\">Confirm should be the same!</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\"> \r\n\t\t\t<div class=\"col-sm-offset-2 col-sm-10\">\r\n\t\t\t\t<button type=\"submit\" class=\"btn btn-default send_recovery\">Submit</button>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n</div>";
+
+/***/ },
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17992,12 +18002,6 @@
 	});
 
 	module.exports = RecoveryPasswordCreateModel;
-
-/***/ },
-/* 31 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"container\">\r\n\t<form class=\"form-horizontal col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2\" role=\"form\">\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"control-label col-sm-2\" for=\"password\">New password:</label>\r\n\t\t\t<div class=\"col-sm-10\"> \r\n\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Enter new password\">\r\n\t\t\t\t<p class=\"error password_error\">Pis more then 8 symbols!</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\">\r\n\t\t\t<label class=\"control-label col-sm-2\" for=\"password\">Confirm password:</label>\r\n\t\t\t<div class=\"col-sm-10\"> \r\n\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"confirm\" placeholder=\"Enter confirm password\">\r\n\t\t\t\t<p class=\"error confirm_error\">Confirm should be the same!</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"form-group\"> \r\n\t\t\t<div class=\"col-sm-offset-2 col-sm-10\">\r\n\t\t\t\t<button type=\"submit\" class=\"btn btn-default send_recovery\">Submit</button>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</form>\r\n</div>";
 
 /***/ }
 /******/ ]);

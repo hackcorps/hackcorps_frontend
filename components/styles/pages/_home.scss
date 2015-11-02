@@ -1,28 +1,79 @@
 /*USER REGISTER*/
 .user_registration_container {
 	background-color: #81ac50;
+	color: $black;
 
-	form {
-		margin-top: 10%;
-		background-color: #f3f3f3;
-	}
+	.registration_header {
 
-	.form-group {
-		margin-top: 3%;
+		background-color: $form_button_background;
 
-		div {
-			padding-right: 5%;
+		font-size: 1.5em;
+
+		.left_block {
+			float: left;
+		}
+
+		.right_block {
+			float: right;
+		}
+
+		p {
+			margin: 5px;
 		}
 	}
 
-	label {
-		color: #333;
-	}
+	form {
+		margin-top: 8%;
+		margin-bottom: 8%;
+		background-color: #f3f3f3;
 
-	.error {
-		visibility: hidden;
-		color: red;
-		font-style: italic;
+		border: 7px solid $border_form;
+
+		.invite_description {
+
+			margin: 10px 0px;
+
+			.header_description {
+				font-size: 2em;
+				font-weight: bold;
+			}
+
+			.description {
+				font-size: 1.5em;
+				font-weight: bold;
+			}
+
+		}
+
+		.form-group {
+			margin-top: 3%;
+
+			label {
+				font-size:1.5em;
+				font-weight: normal;
+			}
+
+			input {
+				border-color: #000000;
+				border-radius: 0px;
+			}
+
+			button {
+				float: right;
+				margin: 15px 0px;
+				color: #000000;
+				background-color: $form_button_background;
+				border-color: #000000;
+			}
+
+			.error {
+				font-size: 1.5em;
+				visibility: hidden;
+				color: red;
+				font-style: italic;
+			}
+		}
+
 	}
 }
 /*FINISH REGISTER*/
