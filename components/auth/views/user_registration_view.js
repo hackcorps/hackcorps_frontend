@@ -17,7 +17,12 @@ var UserRegistrationView = Marionette.ItemView.extend({
 	events: {
 		'focusin input': 'focusedInput',
 		'focusout input': 'checkForm',
-		'click #registerButton': 'registerUser'
+		'click #registerButton': 'registerUser',
+		'onload window': 'pre'
+	},
+
+	pre: function() {
+		alert();
 	},
 
 	registerUser: function(e) {
@@ -119,12 +124,12 @@ var UserRegistrationView = Marionette.ItemView.extend({
 
 	checkForm: function (e) {
 
-		var data = this.$('#' + selector).val(),
-			selector = e.target.id;
+		var selector = e.target.id,
+			data = this.$('#' + selector).val();
 
 		if(data) {
 			if(selector === 'confirm') {
-				data = [data, this.$('#password').val()];
+				data = [data, $('#password').val()];
 			};
 			if(!this.validateForm(selector, data)) {
 				this.$('.' + selector + '_error').css('visibility', 'visible');
