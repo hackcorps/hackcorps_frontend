@@ -109,7 +109,7 @@
 	};
 
 	function findToken(arr) {
-		return hashArr[1] ? true : false;
+		return arr[1];
 	};
 
 	var currentHash = window.location.hash,
@@ -119,6 +119,13 @@
 	    strInvite = 'invite_token';
 
 	App.on('start', function () {
+		if (Backbone.history) {
+			Backbone.history.start();
+		}
+
+		console.log(App.getCurrentRoute());
+		App.navigate('hello');
+
 		if (this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home') {
 			App.vent.trigger('hack:home');
 		} else if (findHashValue(currentHash, strRegister) /*&& findToken(hashArr)*/) {
@@ -132,7 +139,6 @@
 	});
 
 	module.exports = App;
-
 	__webpack_require__(12);
 
 /***/ },
@@ -17456,11 +17462,13 @@
 
 				this.model.save({}, {
 					success: function success(model, response, options) {
+						debugger;
 
 						console.log(response);
+						console.log(model);
 
-						window.localStorage.setItem('auth_token', self.model.get('invite_token'));
-						window.localStorage.setItem('email', self.model.get('email'));
+						window.localStorage.setItem('auth_token', model.get('auth_token'));
+						window.localStorage.setItem('email', model.get('email'));
 
 						App.vent.trigger("authentication:logged_in");
 
@@ -17572,7 +17580,8 @@
 			full_name: '',
 			password: '',
 			password_confirmation: '',
-			invite_token: ''
+			invite_token: '',
+			auth_token: ''
 		}
 	});
 
@@ -17598,6 +17607,8 @@
 	    // Set X-CSRF-Token HTTP header
 	    options.beforeSend = function(xhr) {
 	      var token = $('meta[name="csrf-token"]').attr('content');
+	      var auth_token = window.localStorage.getItem('auth_token');
+	      if (auth_token) { xhr.setRequestHeader('Authorization', auth_token); }
 	      if (token) { xhr.setRequestHeader('X-CSRF-Token', token); }
 	      if (beforeSend) { return beforeSend.apply(this, arguments); }
 	    };
@@ -17688,8 +17699,11 @@
 					success: function success(model, response, options) {
 						console.log(response);
 
-						window.localStorage.setItem('auth_token', 'nnnnnnnnnnnnnnnnnnn');
-						window.localStorage.setItem('email', 'vitalik@');
+						window.localStorage.setItem('auth_token', model.get('auth_token'));
+						window.localStorage.setItem('email', model.get('email'));
+
+						/*window.localStorage.setItem('auth_token', 'nnnnnnnnnnnnnnnnnnn');
+	     window.localStorage.setItem('email', 'vitalik@');*/
 
 						App.vent.trigger("authentication:logged_in");
 

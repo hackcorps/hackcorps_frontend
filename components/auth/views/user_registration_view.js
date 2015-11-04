@@ -44,11 +44,13 @@ var UserRegistrationView = Marionette.ItemView.extend({
 
 			this.model.save({}, {
 				success: function(model, response, options) {
+					debugger;
 
 					console.log(response);
+					console.log(model);
 					
-					window.localStorage.setItem('auth_token', self.model.get('invite_token'));
-					window.localStorage.setItem('email', self.model.get('email'));
+					window.localStorage.setItem('auth_token', model.get('auth_token'));
+					window.localStorage.setItem('email', model.get('email'));
 
 					App.vent.trigger("authentication:logged_in");
 

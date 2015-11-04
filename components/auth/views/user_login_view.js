@@ -61,8 +61,11 @@ var UserLoginView = Marionette.ItemView.extend({
 				success: function(model, response, options) {
 					console.log(response);
 
-					window.localStorage.setItem('auth_token', 'nnnnnnnnnnnnnnnnnnn');
-					window.localStorage.setItem('email', 'vitalik@');
+					window.localStorage.setItem('auth_token', model.get('auth_token'));
+					window.localStorage.setItem('email', model.get('email'));
+
+					/*window.localStorage.setItem('auth_token', 'nnnnnnnnnnnnnnnnnnn');
+					window.localStorage.setItem('email', 'vitalik@');*/
 
 					App.vent.trigger("authentication:logged_in");
 

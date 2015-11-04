@@ -36,7 +36,7 @@ function findHashValue (hash, str) {
 };
 
 function findToken (arr) {
-	return hashArr[1] ? true : false;
+	return arr[1];
 };
 
 var currentHash = window.location.hash,
@@ -46,6 +46,13 @@ var currentHash = window.location.hash,
 	strInvite = 'invite_token';
 
 App.on('start', function() {
+	if(Backbone.history) {
+		Backbone.history.start();
+	}
+
+	console.log(App.getCurrentRoute());
+	App.navigate('hello');
+
 	if( this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home' ) {
 		App.vent.trigger('hack:home');
 	} else if (  findHashValue(currentHash, strRegister) /*&& findToken(hashArr)*/ ) {
@@ -59,6 +66,5 @@ App.on('start', function() {
 });
 
 module.exports = App;
-
 require ('./router.js');
 
