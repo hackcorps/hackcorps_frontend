@@ -13,6 +13,8 @@ module.exports = {
 		modulesDirectories: ['node_modules'],
 		extensions: ['', '.js', '.es6']
 	},
+	watch: true,
+	devtool: 'sourse-map',
 	module: {
 		/*preLoaders: [
 			{
@@ -73,6 +75,5 @@ module.exports = {
 			'window.jQuery': 'jquery',
 			'_': 'underscore'
 		})
-	],
-	watch: true
+	]
 }

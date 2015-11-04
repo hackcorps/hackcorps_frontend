@@ -11,7 +11,8 @@ var UserRegistrationModel = Backbone.Model.extend({
 		full_name: '',
 		password: '',
 		password_confirmation: '',
-		invite_token: ''
+		invite_token: '',
+		auth_token: ''
 	}
 });
 
