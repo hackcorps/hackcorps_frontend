@@ -3,12 +3,11 @@
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
 	template = require('../templates/recovery_password_create_template.html'),
-	headerView = require ('../../layout/header/views/header_view.js'),
 	RecoveryPasswordCreateModel = require('../entities/recovery_password_create_model.js');
 
 var RecoveryPasswordCreateView = Marionette.ItemView.extend({
 
-	className: 'recovery_password_create_container',
+	className: 'row recovery_password_create_container',
 
 	template: template,
 
@@ -19,6 +18,10 @@ var RecoveryPasswordCreateView = Marionette.ItemView.extend({
 		'focusout input': 'validateRecovery',
 		'click .send_recovery': 'recoveryPassword'
 	},
+
+	onDomRefresh: function() {
+        $('.recovery_password_create_container').css('height', window.innerHeight);
+  	},
 
 	focusedInput: function(e) {
 		e.preventDefault();
@@ -48,35 +51,43 @@ var RecoveryPasswordCreateView = Marionette.ItemView.extend({
 
 	recoveryPassword: function () {
 
-		var recoveryToken = window.localStorage.getItem('recovery_token'),
+		var recoveryToken = window.localStorage.getItem('reset_password_token'),
+			password = this.$('#password').val(),
+			password_confirmation = this.$('#confirm').val(),
 			self = this;
 
-		if(this.validateRecovery()) {
-
-			this.model.set({
-				password: this.$('#password').val(),
-				password_confirmation: this.$('#confirm').val(),
-				recovery_token: recoveryToken
-			});
-
-			this.model.save({}, {
-				success: function(model, response, options) {
-
-					console.log(response);
-					
-					window.localStorage.setItem('auth_token', 'bbbbbbbbbbbbbbbbbbb');
-
-					window.location.replace('/#');
-					window.location.reload();
-				},
-				error: function (model, xhr, options) {
-					console.log(xhr);
+		$.ajax({
+			type: 'PUT',
+			url: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
+			dataType: 'json',
+			crossDomain: true,
+			xhrFields: {withCredentials: false},
+			data: {
+				user: {
+					reset_password_token: recoveryToken,
+					password: password,
+					password_confirmation: password_confirmation
 				}
-			});
-		}
+			},
+			headers: {
+				'Authorization': window.localStorage.getItem('auth_token')
+			},
+			success: function (data) {
+
+				window.location.replace('#');
+				window.location.reload();
+
+			},
+			error: function (data) {
+
+				alert('Some error!');
+
+				window.location.replace('#');
+				window.location.reload();
+			}
+		});
 	},
 	
 });
 
-var recoveryPasswordCreateView = new RecoveryPasswordCreateView();
-module.exports = recoveryPasswordCreateView;
+module.exports = RecoveryPasswordCreateView;

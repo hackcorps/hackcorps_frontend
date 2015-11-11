@@ -1,6 +1,13 @@
 @import './base/_color.scss';
 @import './layout/_header.scss';
 @import './pages/_home.scss';
+@import './pages/_auth.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
 body {
 	font-size: 1em;

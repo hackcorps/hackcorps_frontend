@@ -2,8 +2,7 @@
 
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
-	template = require('../templates/user_registration_template.html'),
-	headerView = require ('../../layout/header/views/header_view.js'),
+	template = require('../templates/user_registration_template.hbs'),
 	UserRegistrationModel = require('../entities/user_registration_model.js');
 
 var UserRegistrationView = Marionette.ItemView.extend({
@@ -17,25 +16,22 @@ var UserRegistrationView = Marionette.ItemView.extend({
 	events: {
 		'focusin input': 'focusedInput',
 		'focusout input': 'checkForm',
-		'click #registerButton': 'registerUser',
-		'onload window': 'pre'
+		'click #registerButton': 'registerUser'
 	},
 
-	pre: function() {
-		alert();
-	},
+	onDomRefresh: function() {
+        $('.user_registration_container').css('height', window.innerHeight);
+  	},
 
 	registerUser: function(e) {
 		e.preventDefault;
 
 		var self = this,
-			inviteToken = window.localStorage.getItem('invite_token'),
-			email = window.localStorage.getItem('email');
+			inviteToken = window.localStorage.getItem('invite_token');
 
 		if(this.validateForm('signup')) {
 
 			this.model.set({
-				email: email,
 				full_name: this.$('#username').val(),
 				password: this.$('#password').val(),
 				password_confirmation: this.$('#confirm').val(),
@@ -44,30 +40,36 @@ var UserRegistrationView = Marionette.ItemView.extend({
 
 			this.model.save({}, {
 				success: function(model, response, options) {
-					debugger;
-
-					console.log(response);
-					console.log(model);
 					
-					window.localStorage.setItem('auth_token', model.get('auth_token'));
-					window.localStorage.setItem('email', model.get('email'));
+					window.localStorage.setItem('auth_token', response.user.auth_token);
+					window.localStorage.setItem('email', response.user.email);
+					window.localStorage.setItem('role', response.user.role);
 
-					App.vent.trigger("authentication:logged_in");
-
-					window.location.replace('/#');
-					window.location.reload();
-
+					window.location.replace('#');
+					window.location.reload();				
 				},
 				error: function (model, xhr, options) {
-					console.log(xhr);
+					
+					alert('Some error!');
+
+					window.location.replace('#');
+					window.location.reload();
 				}
 			});
 		}
 	},
 
 	focusedInput: function(e) {
-		var selector = '.' + e.target.id + '_error';
-		$(selector).css('visibility', 'hidden');
+
+		var selector = '.' + e.target.id;
+
+		if(selector == '.username') {
+			this.$(selector + '_error').css('visibility', 'hidden').text('Enter a valid Full Name!');
+		} else if (selector == '.password') {
+			this.$(selector + '_error').css('visibility', 'hidden').text('Pis more then 8 symbols!');
+		} else if (selector == '.confirm') {
+			this.$(selector + '_error').css('visibility', 'hidden').text('Confirm should be the same!');
+		}
 	},
 
 	validateForm: function(dataValidate, data) {
@@ -144,5 +146,4 @@ var UserRegistrationView = Marionette.ItemView.extend({
 	
 });
 
-var userRegistrationView = new UserRegistrationView();
-module.exports = userRegistrationView;
+module.exports = UserRegistrationView;

@@ -2,9 +2,7 @@
 
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
-	template = require('../templates/header_template.html'),
-	userRegistrationView = require ('../../../auth/views/user_registration_view.js'),
-	userLoginView = require ('../../../auth/views/user_login_view.js');
+	template = require('../templates/header_template.html');
 	
 var HeaderView = Marionette.ItemView.extend({
 
@@ -15,56 +13,53 @@ var HeaderView = Marionette.ItemView.extend({
 		'click .logout_link': 'logoutUser'
 	},
 
+	onBeforeShow: function() {
+		if(App.currentUser) {
+			this.$('.login_link').css({'display': 'none'});
+		} else {
+			this.$('.logout_link').css({'display': 'none'});
+		}
+	},
+
 	showLoginModal: function (e) {
 		e.preventDefault();
-		App.regions.auth.show(userLoginView);
+
+		App.regions.header.empty( {preventDestroy: true} );
+		App.regions.main.empty( {preventDestroy: true} );
+		App.vent.trigger('hack:login');
 	},
 
 	logoutUser: function (e) {
-		debugger;
 		e.preventDefault();
 
-		var auth_token = window.localStorage.getItem('auth_token'),
-			email = window.localStorage.getItem('email');
-
-			console.log(auth_token);
+		var self = this;
+		var auth_token = window.localStorage.getItem('auth_token');
 
 		$.ajax({
 			type: 'DELETE',
-			/*url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',*/
-			url: 'http://localhost:3002/people/4',
+			url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
 			dataType: 'json',
 			crossDomain: true,
 			xhrFields: {withCredentials: false},
-			data: {
-				auth_token: auth_token,
-				email: email
+			headers: {
+				'Authorization': window.localStorage.getItem('auth_token')
 			},
 			success: function (data) {
-				debugger;
-				console.log(data);
+				
+				window.localStorage.setItem('auth_token', '');
 
-				window.localStorage.setItem('auth_token', ' ');
-				window.localStorage.setItem('email', ' ');
+				App.execute('logged_out');
 
-				console.log(window.localStorage.auth_token);
-
-				App.vent.trigger("authentication:logged_out");
 			},
 			error: function (data) {
-				debugger;
-				console.log(data);
 
-				window.localStorage.setItem('auth_token', '');
-				window.localStorage.setItem('email', '');
+				alert('Some error!');
 
-				console.log(window.localStorage.auth_token);
+				window.location.replace('#');
+				window.location.reload();
 			}
 		});
-
 	}
-
 });
 
-var headerView = new HeaderView();
-module.exports = headerView;
+module.exports = HeaderView;

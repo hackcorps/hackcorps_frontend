@@ -1,0 +1,203 @@
+/*variables*/
+$header_background: #dddddd;
+$container_background: #81ac50;
+$form_background_color: #f3f3f3;
+$form_border_color: #689337;
+$form_button_background: #dddddd;
+$form_text_color: #000000;
+
+/*extend*/
+.modal_header {
+	background-color: $header_background;
+
+	font-size: 1.5em;
+
+	.left_block {
+		float: left;
+	}
+
+	.right_block {
+		float: right;
+	}
+
+	p {
+		margin: 5px;
+	}
+}
+
+.form_group_content {
+	margin-top: 3%;
+
+	label {
+		font-size:1.5em;
+		font-weight: normal;
+	}
+
+	input {
+		border-color: #000000;
+		border-radius: 0px;
+	}
+
+	button {
+		float: right;
+		margin: 15px 0px;
+		color: #000000;
+		background-color: $form_button_background;
+		border-color: #000000;
+	}
+
+	.error {
+		font-size: 1.5em;
+		visibility: hidden;
+		color: red;
+		font-style: italic;
+	}
+}
+
+/*USER REGISTER*/
+.user_registration_container {
+	background-color: $container_background;
+	color: $form_text_color;
+
+	.registration_header {
+
+		@extend .modal_header
+	}
+
+	form {
+		margin-top: 7%;
+		margin-bottom: 8%;
+		background-color: $form_background_color;
+
+		border: 7px solid $form_border_color;
+
+		.invite_description {
+
+			margin: 10px 0px;
+
+			.header_description {
+				font-size: 2em;
+				font-weight: bold;
+			}
+
+			.description {
+				font-size: 1.5em;
+				font-weight: bold;
+			}
+
+		}
+
+		.form-group {
+			
+			@extend .form_group_content
+		}
+	}
+}
+/*FINISH REGISTER*/
+
+/*USER LOGIN*/
+.user_login_container {
+	background-color: $container_background;
+	color: $form_text_color;
+
+	.login_header {
+
+		@extend .modal_header
+	}
+
+	form {
+		margin-top: 13%;
+		background-color: $form_background_color;
+
+		border: 7px solid $form_border_color;
+
+		.form-group {
+			
+			@extend .form_group_content
+
+		}
+
+		.login_footer {
+
+			.forgot_link {
+				float: left;
+				margin: 15px 0px;
+			}
+
+			a {
+				color: #555;
+			}
+
+			.submit_button {
+				float: right;
+				margin: 15px 0px;
+				color: #000000;
+				background-color: $form_button_background;
+				border-color: #000000;
+			}
+		}
+	}
+}
+/*FINISH LOGIN*/
+
+/*RECOVERY PASSWORD*/
+.recovery_password_container {
+	background-color: $container_background;
+	color: $form_text_color;
+
+	.recovery_header {
+
+		@extend .modal_header
+	}
+
+	form {
+		margin-top: 17%;
+		background-color: $form_background_color;
+
+		border: 7px solid $form_border_color;
+
+		.form-group {
+			
+			@extend .form_group_content
+
+		}
+
+		.recovery_footer {
+
+			.send_recovery {
+				float: right;
+				margin: 15px 0px;
+				color: #000000;
+				background-color: $form_button_background;
+				border-color: #000000;
+			}
+		}
+	}
+}
+/*FINISH RECOVERY PASSWORD*/
+
+/*NEW PASSWORD*/
+.recovery_password_create_container {
+	background-color: $container_background;
+	color: $form_text_color;
+
+	.recovery_header {
+
+		@extend .modal_header
+	}
+
+	form {
+		margin-top: 13%;
+		margin-bottom: 8%;
+		background-color: $form_background_color;
+
+		border: 7px solid $form_border_color;
+
+		.form-group {
+			
+			@extend .form_group_content
+
+		}
+	}
+}
+/*FINISH NEW PASSWORD*/

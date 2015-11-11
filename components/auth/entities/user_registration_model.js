@@ -2,17 +2,15 @@
 require('backbone-rails-sync');
 
 var UserRegistrationModel = Backbone.Model.extend({
-	/*urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',*/
-	urlRoot: 'http://localhost:3002/people',
+	urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',
 	paramRoot: 'user',
 
 	defaults: {
-		email: '',
 		full_name: '',
 		password: '',
 		password_confirmation: '',
 		invite_token: '',
-		auth_token: ''
+		org_name: ''
 	}
 });
 
