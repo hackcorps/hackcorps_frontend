@@ -35,34 +35,51 @@ function findHashValue (hash, str) {
 	return hash.indexOf(str) != (-1) ? true : false;
 };
 
-function findToken (arr) {
-	return arr[1];
-};
-
 var currentHash = window.location.hash,
 	hashArr = currentHash.split('='),
 	strRegister = 'register',
-	strRecovery = 'recovery',
-	strInvite = 'invite_token';
+	strRecovery = 'recovery';
+
+if(window.localStorage.getItem('auth_token')) {
+	App.currentUser = {};
+} else {
+	App.currentUser = null;
+}
+
+App.commands.setHandler('logged_out', function() {
+	App.currentUser = null;
+  	App.vent.trigger('hack:login');
+});
+
+App.commands.setHandler('logged_in', function() {
+	App.currentUser = {};
+  	App.vent.trigger('hack:home');
+});
 
 App.on('start', function() {
 	if(Backbone.history) {
 		Backbone.history.start();
 	}
 
-	console.log(App.getCurrentRoute());
-	App.navigate('hello');
-
-	if( this.getCurrentRoute() === '' || this.getCurrentRoute() === 'home' ) {
-		App.vent.trigger('hack:home');
-	} else if (  findHashValue(currentHash, strRegister) /*&& findToken(hashArr)*/ ) {
-		window.localStorage.setItem('invite_token', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-		window.localStorage.setItem('email', 'vitalika1988@gmail.com');
+	if(App.currentUser) {
+    	App.execute('logged_in');
+  	} else if (findHashValue(currentHash, strRegister)) {
+		var	orgName = hashArr[2],
+			inviteToken = hashArr[1].split('&')[0];
+		window.localStorage.setItem('invite_token', inviteToken);
+		window.localStorage.setItem('org_name', orgName);
+		App.reqres.setHandler('orgname:register', function() {
+			return {org_name: orgName};
+		});
 		App.vent.trigger('hack:register');
-	} else if (  findHashValue(currentHash, strRecovery) && findToken(hashArr) ) {
-		window.localStorage.setItem('recovery_token', 'ssssssssssssssssssssssss');
+	} else if (findHashValue(currentHash, strRecovery)) {
+		var	recoveryToken = hashArr[1];
+		window.localStorage.setItem('reset_password_token', recoveryToken);
 		App.vent.trigger('hack:recovery');
-	} else ( App.vent.trigger('hack:home') );
+	} else {
+    	App.execute('logged_out');
+  	}
+
 });
 
 module.exports = App;

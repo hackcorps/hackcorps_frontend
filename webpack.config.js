@@ -27,20 +27,22 @@ module.exports = {
 			{
 				test: /\.(png|jpg|ttf|eot|woff)$/,
 				loader: 'url-loader?limit=10000',
-				exclude: /(node_modules)/
+				exclude: /node_modules/
 			},
 			{
 				test: /\.js/,
 				loader: 'babel',
-				exclude: /(node_modules)/
+				exclude: /node_modules/
 			},
-/*			{
+	/*		{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'sass-loader?sourceMap')
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader?sourceMap'),
+				exclude: /node_modules/
 			},
 			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap'),
+				exclude: /node_modules/
 			},*/
 			{
 				test: /\.scss$/,
@@ -68,7 +70,7 @@ module.exports = {
         fs: "empty"
     },*/
 	plugins: [
-/*		new ExtractTextPlugin(),*/
+		/*new ExtractTextPlugin('styles.css'),*/
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',

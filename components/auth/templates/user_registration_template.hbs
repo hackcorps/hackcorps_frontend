@@ -1,0 +1,32 @@
+<div>
+	<div class="registration_header col-xs-12">
+		<div class="left_block"><p>HackCorps</p></div>
+		<div class="right_block"><p>{{org_name}}</p></div>
+	</div>
+	<form class="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2" role="form">
+		<div class="invite_description">
+			<p class="header_description">You've been invited to <span class="org_name">{{org_name}}<span></p>
+			<p class="description">Enter your display name and set a password below.</p>
+		</div>
+		<div class="form-group">
+			<label for="username">Name</label>
+			<input type="text" class="form-control" id="username">
+			<p class="error username_error">Enter a valid Full Name!</p>
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label> 
+			<input type="password" class="form-control" id="password">
+			<p class="error password_error">Pis more then 8 symbols!</p>
+		</div>
+		<div class="form-group">
+			<label for="confirm">Confirm password</label >
+			<input type="password" class="form-control" id="confirm">
+			<p class="error confirm_error">Confirm should be the same!</p>
+		</div>
+		<div class="form-group"> 
+			<div class="button">
+				<button type="submit" class="btn btn-default" id="registerButton">Create account</button>
+			</div>
+		</div>
+	</form>
+</div>

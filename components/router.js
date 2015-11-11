@@ -2,17 +2,16 @@
 
 var	Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
-	headerView = require('./layout/header/views/header_view.js'),
+	HeaderView = require('./layout/header/views/header_view.js'),
 	homeView = require('./pages/home/views/home_view.js'),
-	userRegistrationView = require ('./auth/views/user_registration_view.js'),
-	recoveryPasswordCreateView = require ('./auth/views/recovery_password_create_view.js');
+	AuthController = require ('./auth/auth_controller.js');
 
 var Router = Marionette.AppRouter.extend({
 	appRoutes: {
-		'home': 'showHomeView'
+		'': 'showHomeView'
 	},
 	routes: {
-		'home/register': 'showRegisterView'
+		'register': 'showRegisterView'
 	}
 });
 
@@ -20,31 +19,62 @@ App.API = {
 
 	showHomeView: function() {
 		App.regions.main.show(homeView);
-		App.regions.header.show(headerView);
+		App.regions.header.show(new HeaderView);
+	},
+
+	showLoginView: function() {
+		App.regions.header.empty( {preventDestroy: true} );
+		App.regions.main.empty( {preventDestroy: true} );
+
+		var authController = new AuthController();
+		authController.renderUserLoginView();
 	},
 
 	showRegisterView: function() {
-		App.regions.auth.show(userRegistrationView);
+		var orgName = App.reqres.request('orgname:register');
+		var authController = new AuthController();
+		authController.renderUserRegistrationView(orgName);
+	},
+
+	showRecoveryPasswordView: function() {
+		var authController = new AuthController();
+		authController.renderRecoveryPasswordView();
 	},
 
 	showRecoveryCreateView: function() {
-		App.regions.auth.show(recoveryPasswordCreateView);
+		var authController = new AuthController();
+		authController.renderRecoveryPasswordCreateView();
 	}
 };
+
+App.commands.setHandler('show:recovery:modal', function() {
+	new Router({
+		controller: App.API
+	});
+	App.API.showRecoveryPasswordView();
+});
 
 App.vent.on('hack:home', function() {
 	new Router({
 		controller: App.API
 	});
-	App.navigate('home');
+/*	App.navigate('');*/
 	App.API.showHomeView();
+});
+
+App.vent.on('hack:login', function() {
+	new Router({
+		controller: App.API
+	});
+/*	App.navigate('login');*/
+	App.API.showLoginView();
 });
 
 App.vent.on('hack:register', function() {
 	new Router({
 		controller: App.API
 	});
-	App.navigate('home/register');
+/*	App.navigate('register');*/
 	App.API.showRegisterView();
 });
 
@@ -52,7 +82,7 @@ App.vent.on('hack:recovery', function() {
 	new Router({
 		controller: App.API
 	});
-	App.navigate('home/recovery');
+/*	App.navigate('recovery');*/
 	App.API.showRecoveryCreateView();
 });
 
