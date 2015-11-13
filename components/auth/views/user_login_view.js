@@ -94,7 +94,7 @@ var UserLoginView = Marionette.ItemView.extend({
 	hideLoginModal: function(e) {
 		e.preventDefault();
 		App.regions.auth.empty({preventDestroy: true});
-		App.vent.trigger('hack:home');
+		App.vent.trigger('hack:index');
 	},
 
 	showRecoveryModal: function(e) {

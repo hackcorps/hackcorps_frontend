@@ -1,0 +1,53 @@
+/*variables*/
+$left_header_background: #8bc34a;
+$right_header_background: #81ac50;
+$left_container_background: #ffffff;
+$left_container_background: #f3f3f3;
+
+$panel_divider_color: #6a8d40;
+$panel_text_color: #000000;
+
+/*extend*/
+
+/*LEFT PANEL*/
+.status-panel {
+	padding-right: 0px;
+	padding-left: 0px;
+
+	.status-panel-header {
+		width: 100%;
+
+		background-color: $left_header_background;
+
+		text-align: center;
+
+		p {	
+			color: #ffffff;
+			font-size: 5em;
+			padding: 20px;
+		}
+	}
+}
+/*FINISH LEFT PANEL*/
+
+
+/*RIGHT PANEL*/
+.milestones-panel {
+	padding-right: 0px;
+	padding-left: 0px;
+
+	.milestones-panel-header {
+		width: 100%;
+
+		background-color: $right_header_background;
+
+		text-align: center;
+
+		p {	
+			color: #ffffff;
+			font-size: 5em;
+			padding: 20px;
+		}
+	}
+}
+/*FINISH RIGHT PANEL*/

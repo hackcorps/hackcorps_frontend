@@ -103,7 +103,7 @@
 
 	App.commands.setHandler('logged_out', function () {
 		App.currentUser = null;
-		App.vent.trigger('hack:login');
+		App.vent.trigger('hack:index');
 	});
 
 	App.commands.setHandler('logged_in', function () {
@@ -174,7 +174,7 @@
 
 
 	// module
-	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n/*FINISH HEADER*/\n/*variables*/\n/*extend*/\n.modal_header, .user_registration_container .registration_header, .user_login_container .login_header, .recovery_password_container .recovery_header, .recovery_password_create_container .recovery_header {\n  background-color: #dddddd;\n  font-size: 1.5em; }\n  .modal_header .left_block, .user_registration_container .registration_header .left_block, .user_login_container .login_header .left_block, .recovery_password_container .recovery_header .left_block, .recovery_password_create_container .recovery_header .left_block {\n    float: left; }\n  .modal_header .right_block, .user_registration_container .registration_header .right_block, .user_login_container .login_header .right_block, .recovery_password_container .recovery_header .right_block, .recovery_password_create_container .recovery_header .right_block {\n    float: right; }\n  .modal_header p, .user_registration_container .registration_header p, .user_login_container .login_header p, .recovery_password_container .recovery_header p, .recovery_password_create_container .recovery_header p {\n    margin: 5px; }\n\n.form_group_content, .user_registration_container form .form-group, .user_login_container form .form-group, .recovery_password_container form .form-group, .recovery_password_create_container form .form-group {\n  margin-top: 3%; }\n  .form_group_content label, .user_registration_container form .form-group label, .user_login_container form .form-group label, .recovery_password_container form .form-group label, .recovery_password_create_container form .form-group label {\n    font-size: 1.5em;\n    font-weight: normal; }\n  .form_group_content input, .user_registration_container form .form-group input, .user_login_container form .form-group input, .recovery_password_container form .form-group input, .recovery_password_create_container form .form-group input {\n    border-color: #000000;\n    border-radius: 0px; }\n  .form_group_content button, .user_registration_container form .form-group button, .user_login_container form .form-group button, .recovery_password_container form .form-group button, .recovery_password_create_container form .form-group button {\n    float: right;\n    margin: 15px 0px;\n    color: #000000;\n    background-color: #dddddd;\n    border-color: #000000; }\n  .form_group_content .error, .user_registration_container form .form-group .error, .user_login_container form .form-group .error, .recovery_password_container form .form-group .error, .recovery_password_create_container form .form-group .error {\n    font-size: 1.5em;\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_registration_container form {\n    margin-top: 7%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_registration_container form .invite_description {\n      margin: 10px 0px; }\n      .user_registration_container form .invite_description .header_description {\n        font-size: 2em;\n        font-weight: bold; }\n      .user_registration_container form .invite_description .description {\n        font-size: 1.5em;\n        font-weight: bold; }\n\n/*FINISH REGISTER*/\n/*USER LOGIN*/\n.user_login_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_login_container form {\n    margin-top: 13%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_login_container form .login_footer .forgot_link {\n      float: left;\n      margin: 15px 0px; }\n    .user_login_container form .login_footer a {\n      color: #555; }\n    .user_login_container form .login_footer .submit_button {\n      float: right;\n      margin: 15px 0px;\n      color: #000000;\n      background-color: #dddddd;\n      border-color: #000000; }\n\n/*FINISH LOGIN*/\n/*RECOVERY PASSWORD*/\n.recovery_password_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .recovery_password_container form {\n    margin-top: 17%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .recovery_password_container form .recovery_footer .send_recovery {\n      float: right;\n      margin: 15px 0px;\n      color: #000000;\n      background-color: #dddddd;\n      border-color: #000000; }\n\n/*FINISH RECOVERY PASSWORD*/\n/*NEW PASSWORD*/\n.recovery_password_create_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .recovery_password_create_container form {\n    margin-top: 13%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n\n/*FINISH NEW PASSWORD*/\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  font-size: 1em;\n  /*\tcolor: $white;\n\tbackground-color: #81ac50;*/ }\n", ""]);
+	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n.org_name {\n  visibility: hidden; }\n\n/*FINISH HEADER*/\n.container-full-width {\n  padding: 0; }\n\n.container-non-responsive {\n  width: 1000px;\n  margin: 0 auto; }\n\n.navbar {\n  border-radius: 0;\n  margin-bottom: 0; }\n\n.navbar-default {\n  background-color: white; }\n\n.container-fluid .jumbotron {\n  border-radius: 0;\n  padding: 160px 160px;\n  margin-bottom: 0; }\n\n.jumbotron-primary {\n  background-color: #8bC34A;\n  color: white; }\n\n.jumbotron-secondary {\n  background-color: #F06292;\n  color: white; }\n\n.container-fluid .jumbotron-secondary {\n  padding: 160px 200px; }\n\n.jumbotron h1 {\n  font-weight: 400; }\n\n.jumbotron .lead {\n  font-size: 1.5rem;\n  font-weight: 300; }\n\n.full-width-image {\n  width: 100%; }\n\n.flexbox {\n  display: flex; }\n\n.vertically-center {\n  margin: auto; }\n\n.col-sm-fixed-width {\n  width: 500px;\n  height: 490px;\n  overflow: hidden; }\n\n.col-sm-fixed-height {\n  height: 490px; }\n\n.display-1 {\n  font-size: 2.5rem;\n  font-weight: 400;\n  margin-bottom: 1rem; }\n\n.lead {\n  font-weight: 400; }\n\n.panel-container-secondary {\n  background-color: #eeeeee; }\n\n.text-panel {\n  padding: 50px; }\n\n.text-panel-grey {\n  background-color: #eeeeee; }\n\n.panel-buzzword {\n  height: 415px; }\n\n.panel-overlay-outer {\n  position: relative; }\n\n.panel-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  z-index: 1000;\n  background-color: white;\n  opacity: .5;\n  transition: all 0.3s ease; }\n\n.panel-overlay:hover {\n  opacity: 0; }\n\n.text-center {\n  text-align: center; }\n\ninput.quote-email {\n  width: 630px !important;\n  margin-right: 20px;\n  border: none;\n  border-radius: 0; }\n\n.btn {\n  border-radius: 0; }\n\n/*variables*/\n/*extend*/\n/*LEFT PANEL*/\n.status-panel {\n  padding-right: 0px;\n  padding-left: 0px; }\n  .status-panel .status-panel-header {\n    width: 100%;\n    background-color: #8bc34a;\n    text-align: center; }\n    .status-panel .status-panel-header p {\n      color: #ffffff;\n      font-size: 5em;\n      padding: 20px; }\n\n/*FINISH LEFT PANEL*/\n/*RIGHT PANEL*/\n.milestones-panel {\n  padding-right: 0px;\n  padding-left: 0px; }\n  .milestones-panel .milestones-panel-header {\n    width: 100%;\n    background-color: #81ac50;\n    text-align: center; }\n    .milestones-panel .milestones-panel-header p {\n      color: #ffffff;\n      font-size: 5em;\n      padding: 20px; }\n\n/*FINISH RIGHT PANEL*/\n/*variables*/\n/*extend*/\n.modal_header, .user_registration_container .registration_header, .user_login_container .login_header, .recovery_password_container .recovery_header, .recovery_password_create_container .recovery_header {\n  background-color: #dddddd;\n  font-size: 1.5em; }\n  .modal_header .left_block, .user_registration_container .registration_header .left_block, .user_login_container .login_header .left_block, .recovery_password_container .recovery_header .left_block, .recovery_password_create_container .recovery_header .left_block {\n    float: left; }\n  .modal_header .right_block, .user_registration_container .registration_header .right_block, .user_login_container .login_header .right_block, .recovery_password_container .recovery_header .right_block, .recovery_password_create_container .recovery_header .right_block {\n    float: right; }\n  .modal_header p, .user_registration_container .registration_header p, .user_login_container .login_header p, .recovery_password_container .recovery_header p, .recovery_password_create_container .recovery_header p {\n    margin: 5px; }\n\n.form_group_content, .user_registration_container form .form-group, .user_login_container form .form-group, .recovery_password_container form .form-group, .recovery_password_create_container form .form-group {\n  margin-top: 3%; }\n  .form_group_content label, .user_registration_container form .form-group label, .user_login_container form .form-group label, .recovery_password_container form .form-group label, .recovery_password_create_container form .form-group label {\n    font-size: 1.5em;\n    font-weight: normal; }\n  .form_group_content input, .user_registration_container form .form-group input, .user_login_container form .form-group input, .recovery_password_container form .form-group input, .recovery_password_create_container form .form-group input {\n    border-color: #000000;\n    border-radius: 0px; }\n  .form_group_content button, .user_registration_container form .form-group button, .user_login_container form .form-group button, .recovery_password_container form .form-group button, .recovery_password_create_container form .form-group button {\n    float: right;\n    margin: 15px 0px;\n    color: #000000;\n    background-color: #dddddd;\n    border-color: #000000; }\n  .form_group_content .error, .user_registration_container form .form-group .error, .user_login_container form .form-group .error, .recovery_password_container form .form-group .error, .recovery_password_create_container form .form-group .error {\n    font-size: 1.5em;\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_registration_container form {\n    margin-top: 7%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_registration_container form .invite_description {\n      margin: 10px 0px; }\n      .user_registration_container form .invite_description .header_description {\n        font-size: 2em;\n        font-weight: bold; }\n      .user_registration_container form .invite_description .description {\n        font-size: 1.5em;\n        font-weight: bold; }\n\n/*FINISH REGISTER*/\n/*USER LOGIN*/\n.user_login_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_login_container form {\n    margin-top: 13%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_login_container form .login_footer .forgot_link {\n      float: left;\n      margin: 15px 0px; }\n    .user_login_container form .login_footer a {\n      color: #555; }\n    .user_login_container form .login_footer .submit_button {\n      float: right;\n      margin: 15px 0px;\n      color: #000000;\n      background-color: #dddddd;\n      border-color: #000000; }\n\n/*FINISH LOGIN*/\n/*RECOVERY PASSWORD*/\n.recovery_password_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .recovery_password_container form {\n    margin-top: 17%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .recovery_password_container form .recovery_footer .send_recovery {\n      float: right;\n      margin: 15px 0px;\n      color: #000000;\n      background-color: #dddddd;\n      border-color: #000000; }\n\n/*FINISH RECOVERY PASSWORD*/\n/*NEW PASSWORD*/\n.recovery_password_create_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .recovery_password_create_container form {\n    margin-top: 13%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n\n/*FINISH NEW PASSWORD*/\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  font-family: Roboto;\n  font-size: 1em;\n  /*\tcolor: $white;\n\tbackground-color: #81ac50;*/ }\n", ""]);
 
 	// exports
 
@@ -17276,8 +17276,9 @@
 	var Backbone = __webpack_require__(6),
 	    Marionette = __webpack_require__(9),
 	    HeaderView = __webpack_require__(13),
-	    homeView = __webpack_require__(15),
-	    AuthController = __webpack_require__(19);
+	    IndexView = __webpack_require__(15),
+	    AuthController = __webpack_require__(19),
+	    HomeController = __webpack_require__(52);
 
 	var Router = Marionette.AppRouter.extend({
 		appRoutes: {
@@ -17290,9 +17291,14 @@
 
 	App.API = {
 
-		showHomeView: function showHomeView() {
-			App.regions.main.show(homeView);
+		showIndexView: function showIndexView() {
+			App.regions.main.show(new IndexView());
 			App.regions.header.show(new HeaderView());
+		},
+		showHomeView: function showHomeView() {
+			App.regions.header.show(new HeaderView());
+			var homeController = new HomeController();
+			homeController.renderAppLayoutView();
 		},
 
 		showLoginView: function showLoginView() {
@@ -17325,6 +17331,14 @@
 			controller: App.API
 		});
 		App.API.showRecoveryPasswordView();
+	});
+
+	App.vent.on('hack:index', function () {
+		new Router({
+			controller: App.API
+		});
+		/*	App.navigate('');*/
+		App.API.showIndexView();
 	});
 
 	App.vent.on('hack:home', function () {
@@ -17381,6 +17395,8 @@
 		onBeforeShow: function onBeforeShow() {
 			if (App.currentUser) {
 				this.$('.login_link').css({ 'display': 'none' });
+				this.$('.org_name').text(window.localStorage.getItem('org_name'));
+				this.$('.org_name').css({ 'visibility': 'visible' });
 			} else {
 				this.$('.logout_link').css({ 'display': 'none' });
 			}
@@ -17403,6 +17419,7 @@
 			$.ajax({
 				type: 'DELETE',
 				url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
+				/*url: 'http://localhost:3000/api/v1/users/sign_out',*/
 				dataType: 'json',
 				crossDomain: true,
 				xhrFields: { withCredentials: false },
@@ -17417,6 +17434,7 @@
 				},
 				error: function error(data) {
 
+					console.log(data);
 					alert('Some error!');
 
 					window.location.replace('#');
@@ -17433,7 +17451,7 @@
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container-fluid container-full-width\">\n\t<nav class=\"navbar navbar-light\">\n\t\t<a class=\"navbar-brand\" href=\"#\">Hack Mochi</a>\n\t\t<ul class=\"nav navbar-nav\">\n\t\t\t<li class=\"nav-item\">\n\t\t\t\t<a class=\"nav-link\" href=\"#\">Get a quote</a>\n\t\t\t</li>\n\t\t</ul>\n\t\t<ul class=\"nav navbar-nav navbar-right navbar_right\">\n\t\t\t<li><a href=\"#\" class=\"login_link\">Login</a></li>\n\t\t\t<li><a href=\"#\" class=\"logout_link\">Logout</a></li>\n\t\t</ul>\n\t</nav>\n\t<div class=\"jumbotron jumbotron-primary\">\n\t\t<h1 class=\"display-2\">Spin up an engineering team</h1>\n\t\t<p class=\"lead\">and don't let code be your bottleneck. Contract one of our agile teams, we can start tomorrow.</p>\n\t</div>\n</div>";
+	module.exports = "<div class=\"container-fluid container-full-width\">\n\t<nav class=\"navbar navbar-light\">\n\t\t<a class=\"navbar-brand\" href=\"#\">Hack Mochi</a>\n\t\t<ul class=\"nav navbar-nav\">\n\t\t\t<li class=\"nav-item\">\n\t\t\t\t<a class=\"nav-link\" href=\"#\">Get a quote</a>\n\t\t\t</li>\n\t\t</ul>\n\t\t<ul class=\"nav navbar-nav navbar-right navbar_right\">\n\t\t\t<li><a href=\"#\" class=\"org_name\"></a></li>\n\t\t\t<li><a href=\"#\" class=\"login_link\">Login</a></li>\n\t\t\t<li><a href=\"#\" class=\"logout_link\">Logout</a></li>\n\t\t</ul>\n\t</nav>\n</div>";
 
 /***/ },
 /* 15 */
@@ -17445,20 +17463,19 @@
 	    Marionette = __webpack_require__(9),
 	    template = __webpack_require__(16);
 
-	var HomeView = Marionette.ItemView.extend({
+	var IndexView = Marionette.ItemView.extend({
 
 		template: template
 
 	});
 
-	var homeView = new HomeView();
-	module.exports = homeView;
+	module.exports = IndexView;
 
 /***/ },
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "   <div class=\"container-non-responsive\">\n      <div class=\"row\">\n        <div class=\"col-sm-5 panel-overlay-outer\">\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(17) + "\" />\n          <div class=\"panel-overlay\"></div>\n        </div>\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\n          <div class=\"vertically-center text-panel\">\n            <h2 class=\"display-1\">Transparency shouldnt just be a buzzword</h2>\n            <p class=\"lead\">Use our dashboard to track progress towards your milestones, and exactly how much you paid for each feature</p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"panel-container-secondary\">\n      <div class=\"container-non-responsive\">\n        <div class=\"row\">\n          <div class=\"col-sm-7 flexbox panel-buzzword\">\n            <div class=\"vertically-center text-panel\">\n              <h2 class=\"display-1\">Be proud of your code</h2>\n              <p class=\"lead\">We dont just ship features,\n                we deliver code that your buisiness can build on for years.</p>\n              <p>Each PR gets a full code review from the whole team.\n                Every project comes with automated tests, documentation, and KPI tracking.</p>\n\n            </div>\n          </div>\n          <div class=\"col-sm-5 panel-buzzword img-tracking flexbox panel-overlay-outer\">\n            <div class=\"panel-overlay\"></div>\n            <pre class=\"vertically-center\">\nfunction postStatus (status) {\n   KPI.add('status_update');\n   Status.post(status, User.get('id'))\n   .done(function () {\n      KPI.get('status_update').success();\n    })\n    .fail(function (msg) {\n       ErrorTrack.send('status_update', msg);\n     });\n}\n            </pre>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container-non-responsive\">\n      <div class=\"row\">\n        <div class=\"col-sm-5 panel-overlay-outer\">\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(18) + "\" />\n          <div class=\"panel-overlay\"></div>\n        </div>\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\n          <div class=\"vertically-center text-panel\">\n            <h2 class=\"display-1\">Knowledge is bliss</h2>\n            <p class=\"lead\">See every status update, sprint retrospective, and commit\n            without remembering your Jira password</p>\n            <p>Our dashboard hooks into all major ticketing and code hosting systems, so it's always up-to-date.\n              Don't need to see a stream of cimmit messages? Our product managers post daily and weekly summaries.</p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container-fluid container-full-width\">\n      <div class=\"jumbotron jumbotron-secondary\">\n        <h1 class=\"display-2 text-center\">Let's get started</h1>\n        <p class=\"lead\">Shoot us your email address and we'll get back to you by tomorrow to pick your brain,\n        figure out the best team for your project, and give you a quote.</p>\n        <label for=\"email\">Email</label>\n        <form class=\"form-inline\">\n\n          <fieldset class=\"form-group\">\n\n            <input type=\"text\" class=\"form-control quote-email\" id=\"email\" placeholder=\"tyrion@casterlyrock.gov\">\n            <button class=\"btn btn-secondary\">Get Mochi</button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n\n  </div>";
+	module.exports = "<div>\n\n    <div class=\"container-fluid container-full-width\">\n\n      <div class=\"jumbotron jumbotron-primary\">\n        <h1 class=\"display-2\">Spin up an engineering team</h1>\n        <p class=\"lead\">and don't let code be your bottleneck. Contract one of our agile teams, we can start tomorrow.</p>\n      </div>\n\n    </div>\n    <div class=\"container-non-responsive\">\n      <div class=\"row\">\n        <div class=\"col-sm-5 panel-overlay-outer\">\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(17) + "\" />\n          <div class=\"panel-overlay\"></div>\n        </div>\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\n          <div class=\"vertically-center text-panel\">\n            <h2 class=\"display-1\">Transparency shouldn't just be a buzzword</h2>\n            <p class=\"lead\">Use our dashboard to track progress towards your milestones, and exactly how much you paid for each feature</p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"panel-container-secondary\">\n      <div class=\"container-non-responsive\">\n        <div class=\"row\">\n          <div class=\"col-sm-7 flexbox panel-buzzword\">\n            <div class=\"vertically-center text-panel\">\n              <h2 class=\"display-1\">Be proud of your code</h2>\n              <p class=\"lead\">We don't just ship features,\n                we deliver code that your buisiness can build on for years.</p>\n              <p>Each PR gets a full code review from the whole team.\n                Every project comes with automated tests, documentation, and KPI tracking.</p>\n\n            </div>\n          </div>\n          <div class=\"col-sm-5 panel-buzzword img-tracking flexbox panel-overlay-outer\">\n            <div class=\"panel-overlay\"></div>\n            <pre class=\"vertically-center\">\nfunction postStatus (status) {\n   KPI.add('status_update');\n   Status.post(status, User.get('id'))\n   .done(function () {\n      KPI.get('status_update').success();\n    })\n    .fail(function (msg) {\n       ErrorTrack.send('status_update', msg);\n     });\n}\n            </pre>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container-non-responsive\">\n      <div class=\"row\">\n        <div class=\"col-sm-5 panel-overlay-outer\">\n          <img class=\"full-width-image\" src=\"" + __webpack_require__(18) + "\" />\n          <div class=\"panel-overlay\"></div>\n        </div>\n        <div class=\"col-sm-7 flexbox panel-buzzword\">\n          <div class=\"vertically-center text-panel\">\n            <h2 class=\"display-1\">Knowledge is bliss</h2>\n            <p class=\"lead\">See every status update, sprint retrospective, and commit\n            without remembering your Jira password</p>\n            <p>Our dashboard hooks into all major ticketing and code hosting systems, so it's always up-to-date.\n              Don't need to see a stream of cimmit messages? Our product managers post daily and weekly summaries.</p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"container-fluid container-full-width\">\n      <div class=\"jumbotron jumbotron-secondary\">\n        <h1 class=\"display-2 text-center\">Let's get started</h1>\n        <p class=\"lead\">Shoot us your email address and we'll get back to you by tomorrow to pick your brain,\n        figure out the best team for your project, and give you a quote.</p>\n        <label for=\"email\">Email</label>\n        <form class=\"form-inline\">\n\n          <fieldset class=\"form-group\">\n\n            <input type=\"text\" class=\"form-control quote-email\" id=\"email\" placeholder=\"tyrion@casterlyrock.gov\">\n            <button class=\"btn btn-secondary\">Get Mochi</button>\n          </fieldset>\n        </form>\n      </div>\n    </div>\n\n</div>";
 
 /***/ },
 /* 17 */
@@ -18868,6 +18885,7 @@
 
 	var UserRegistrationModel = Backbone.Model.extend({
 		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',
+		/*urlRoot: 'http://localhost:3000/api/v1/users',*/
 		paramRoot: 'user',
 
 		defaults: {
@@ -19025,7 +19043,7 @@
 		hideLoginModal: function hideLoginModal(e) {
 			e.preventDefault();
 			App.regions.auth.empty({ preventDestroy: true });
-			App.vent.trigger('hack:home');
+			App.vent.trigger('hack:index');
 		},
 
 		showRecoveryModal: function showRecoveryModal(e) {
@@ -19053,6 +19071,7 @@
 
 	var UserLoginModel = Backbone.Model.extend({
 		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_in',
+		/*urlRoot: 'http://localhost:3000/api/v1/users/sign_in',*/
 		paramRoot: 'user',
 
 		defaults: {
@@ -19163,6 +19182,8 @@
 
 	var RecoveryPasswordModel = Backbone.Model.extend({
 		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
+		/*urlRoot: 'http://localhost:3000/api/v1/users/password',*/
+
 		paramRoot: 'user',
 
 		defaults: {
@@ -19236,6 +19257,7 @@
 			$.ajax({
 				type: 'PUT',
 				url: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
+				/*	urlRoot: 'http://localhost:3000/api/v1/users/password',*/
 				dataType: 'json',
 				crossDomain: true,
 				xhrFields: { withCredentials: false },
@@ -19294,6 +19316,59 @@
 	});
 
 	module.exports = RecoveryPasswordCreateModel;
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Backbone = __webpack_require__(6),
+	    Marionette = __webpack_require__(9),
+	    AppLayoutView = __webpack_require__(53);
+
+	var HomeController = Marionette.ItemView.extend({
+
+	    appLayoutView: new AppLayoutView(),
+
+	    initialize: function initialize() {
+	        App.vent.on('render:app_layout_view', this.renderAppLayoutView, this);
+	    },
+
+	    renderAppLayoutView: function renderAppLayoutView() {
+	        App.regions.main.show(this.appLayoutView, { preventDestroy: true });
+	    }
+
+	});
+
+	module.exports = HomeController;
+
+/***/ },
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Backbone = __webpack_require__(6),
+	    Marionette = __webpack_require__(9),
+	    template = __webpack_require__(54);
+
+	var AppLayoutView = Marionette.LayoutView.extend({
+	    template: template,
+
+	    regions: {
+	        status: "#left-region",
+	        milestones: "#right-region"
+	    }
+	});
+
+	module.exports = AppLayoutView;
+
+/***/ },
+/* 54 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\n\t<div id=\"left-region\" class=\"status-panel col-xs-7\">\n\t\t<div class=\"status-panel-header\">\n\t\t\t<p>Updates</p>\n\t\t</div>\n\t</div>\n\t<div id=\"right-region\" class=\"milestones-panel col-xs-5\">\n\t\t<div class=\"milestones-panel-header\">\n\t\t\t<p>Milestones</p>\n\t\t</div>\n\t</div>\n<div>";
 
 /***/ }
 /******/ ]);

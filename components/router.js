@@ -3,8 +3,9 @@
 var	Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
 	HeaderView = require('./layout/header/views/header_view.js'),
-	homeView = require('./pages/home/views/home_view.js'),
-	AuthController = require ('./auth/auth_controller.js');
+	IndexView = require('./pages/index/views/index_view.js'),
+	AuthController = require ('./auth/auth_controller.js'),
+	HomeController = require ('./pages/home/home_controller.js');
 
 var Router = Marionette.AppRouter.extend({
 	appRoutes: {
@@ -17,9 +18,14 @@ var Router = Marionette.AppRouter.extend({
 
 App.API = {
 
-	showHomeView: function() {
-		App.regions.main.show(homeView);
+	showIndexView: function() {
+		App.regions.main.show(new IndexView);
 		App.regions.header.show(new HeaderView);
+	},
+	showHomeView: function() {
+		App.regions.header.show(new HeaderView);
+		var homeController = new HomeController();
+		homeController.renderAppLayoutView();
 	},
 
 	showLoginView: function() {
@@ -52,6 +58,15 @@ App.commands.setHandler('show:recovery:modal', function() {
 		controller: App.API
 	});
 	App.API.showRecoveryPasswordView();
+});
+
+
+App.vent.on('hack:index', function() {
+	new Router({
+		controller: App.API
+	});
+/*	App.navigate('');*/
+	App.API.showIndexView();
 });
 
 App.vent.on('hack:home', function() {
