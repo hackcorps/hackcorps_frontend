@@ -1,5 +1,6 @@
 @import './base/_color.scss';
 @import './layout/_header.scss';
+@import './pages/_index.scss';
 @import './pages/_home.scss';
 @import './pages/_auth.scss';
 
@@ -10,6 +11,7 @@
 }
 
 body {
+	font-family: Roboto;
 	font-size: 1em;
 /*	color: $white;
 	background-color: #81ac50;*/

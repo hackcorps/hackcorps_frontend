@@ -48,7 +48,7 @@ if(window.localStorage.getItem('auth_token')) {
 
 App.commands.setHandler('logged_out', function() {
 	App.currentUser = null;
-  	App.vent.trigger('hack:login');
+  	App.vent.trigger('hack:index');
 });
 
 App.commands.setHandler('logged_in', function() {
