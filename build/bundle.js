@@ -174,7 +174,7 @@
 
 
 	// module
-	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n.org_name {\n  visibility: hidden; }\n\n/*FINISH HEADER*/\n.container-full-width {\n  padding: 0; }\n\n.container-non-responsive {\n  width: 1000px;\n  margin: 0 auto; }\n\n.navbar {\n  border-radius: 0;\n  margin-bottom: 0; }\n\n.navbar-default {\n  background-color: white; }\n\n.container-fluid .jumbotron {\n  border-radius: 0;\n  padding: 160px 160px;\n  margin-bottom: 0; }\n\n.jumbotron-primary {\n  background-color: #8bC34A;\n  color: white; }\n\n.jumbotron-secondary {\n  background-color: #F06292;\n  color: white; }\n\n.container-fluid .jumbotron-secondary {\n  padding: 160px 200px; }\n\n.jumbotron h1 {\n  font-weight: 400; }\n\n.jumbotron .lead {\n  font-size: 1.5rem;\n  font-weight: 300; }\n\n.full-width-image {\n  width: 100%; }\n\n.flexbox {\n  display: flex; }\n\n.vertically-center {\n  margin: auto; }\n\n.col-sm-fixed-width {\n  width: 500px;\n  height: 490px;\n  overflow: hidden; }\n\n.col-sm-fixed-height {\n  height: 490px; }\n\n.display-1 {\n  font-size: 2.5rem;\n  font-weight: 400;\n  margin-bottom: 1rem; }\n\n.lead {\n  font-weight: 400; }\n\n.panel-container-secondary {\n  background-color: #eeeeee; }\n\n.text-panel {\n  padding: 50px; }\n\n.text-panel-grey {\n  background-color: #eeeeee; }\n\n.panel-buzzword {\n  height: 415px; }\n\n.panel-overlay-outer {\n  position: relative; }\n\n.panel-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  z-index: 1000;\n  background-color: white;\n  opacity: .5;\n  transition: all 0.3s ease; }\n\n.panel-overlay:hover {\n  opacity: 0; }\n\n.text-center {\n  text-align: center; }\n\ninput.quote-email {\n  width: 630px !important;\n  margin-right: 20px;\n  border: none;\n  border-radius: 0; }\n\n.btn {\n  border-radius: 0; }\n\n/*variables*/\n/*extend*/\n/*LEFT PANEL*/\n.status-panel {\n  padding-right: 0px;\n  padding-left: 0px; }\n  .status-panel .status-panel-header {\n    width: 100%;\n    background-color: #8bc34a;\n    text-align: center; }\n    .status-panel .status-panel-header p {\n      color: #ffffff;\n      font-size: 5em;\n      padding: 20px; }\n\n/*FINISH LEFT PANEL*/\n/*RIGHT PANEL*/\n.milestones-panel {\n  padding-right: 0px;\n  padding-left: 0px; }\n  .milestones-panel .milestones-panel-header {\n    width: 100%;\n    background-color: #81ac50;\n    text-align: center; }\n    .milestones-panel .milestones-panel-header p {\n      color: #ffffff;\n      font-size: 5em;\n      padding: 20px; }\n\n/*FINISH RIGHT PANEL*/\n/*variables*/\n/*extend*/\n.modal_header, .user_registration_container .registration_header, .user_login_container .login_header, .recovery_password_container .recovery_header, .recovery_password_create_container .recovery_header {\n  background-color: #dddddd;\n  font-size: 1.5em; }\n  .modal_header .left_block, .user_registration_container .registration_header .left_block, .user_login_container .login_header .left_block, .recovery_password_container .recovery_header .left_block, .recovery_password_create_container .recovery_header .left_block {\n    float: left; }\n  .modal_header .right_block, .user_registration_container .registration_header .right_block, .user_login_container .login_header .right_block, .recovery_password_container .recovery_header .right_block, .recovery_password_create_container .recovery_header .right_block {\n    float: right; }\n  .modal_header p, .user_registration_container .registration_header p, .user_login_container .login_header p, .recovery_password_container .recovery_header p, .recovery_password_create_container .recovery_header p {\n    margin: 5px; }\n\n.form_group_content, .user_registration_container form .form-group, .user_login_container form .form-group, .recovery_password_container form .form-group, .recovery_password_create_container form .form-group {\n  margin-top: 3%; }\n  .form_group_content label, .user_registration_container form .form-group label, .user_login_container form .form-group label, .recovery_password_container form .form-group label, .recovery_password_create_container form .form-group label {\n    font-size: 1.5em;\n    font-weight: normal; }\n  .form_group_content input, .user_registration_container form .form-group input, .user_login_container form .form-group input, .recovery_password_container form .form-group input, .recovery_password_create_container form .form-group input {\n    border-color: #000000;\n    border-radius: 0px; }\n  .form_group_content button, .user_registration_container form .form-group button, .user_login_container form .form-group button, .recovery_password_container form .form-group button, .recovery_password_create_container form .form-group button {\n    float: right;\n    margin: 15px 0px;\n    color: #000000;\n    background-color: #dddddd;\n    border-color: #000000; }\n  .form_group_content .error, .user_registration_container form .form-group .error, .user_login_container form .form-group .error, .recovery_password_container form .form-group .error, .recovery_password_create_container form .form-group .error {\n    font-size: 1.5em;\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_registration_container form {\n    margin-top: 7%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_registration_container form .invite_description {\n      margin: 10px 0px; }\n      .user_registration_container form .invite_description .header_description {\n        font-size: 2em;\n        font-weight: bold; }\n      .user_registration_container form .invite_description .description {\n        font-size: 1.5em;\n        font-weight: bold; }\n\n/*FINISH REGISTER*/\n/*USER LOGIN*/\n.user_login_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_login_container form {\n    margin-top: 13%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_login_container form .login_footer .forgot_link {\n      float: left;\n      margin: 15px 0px; }\n    .user_login_container form .login_footer a {\n      color: #555; }\n    .user_login_container form .login_footer .submit_button {\n      float: right;\n      margin: 15px 0px;\n      color: #000000;\n      background-color: #dddddd;\n      border-color: #000000; }\n\n/*FINISH LOGIN*/\n/*RECOVERY PASSWORD*/\n.recovery_password_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .recovery_password_container form {\n    margin-top: 17%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .recovery_password_container form .recovery_footer .send_recovery {\n      float: right;\n      margin: 15px 0px;\n      color: #000000;\n      background-color: #dddddd;\n      border-color: #000000; }\n\n/*FINISH RECOVERY PASSWORD*/\n/*NEW PASSWORD*/\n.recovery_password_create_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .recovery_password_create_container form {\n    margin-top: 13%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n\n/*FINISH NEW PASSWORD*/\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  font-family: Roboto;\n  font-size: 1em;\n  /*\tcolor: $white;\n\tbackground-color: #81ac50;*/ }\n", ""]);
+	exports.push([module.id, "/*HEADER*/\nul.navbar_right {\n  margin-right: 0; }\n\n.org_name {\n  visibility: hidden; }\n\n/*FINISH HEADER*/\n.container-full-width {\n  padding: 0; }\n\n.container-non-responsive {\n  width: 1000px;\n  margin: 0 auto; }\n\n.navbar {\n  border-radius: 0;\n  margin-bottom: 0; }\n\n.navbar-default {\n  background-color: white; }\n\n.container-fluid .jumbotron {\n  border-radius: 0;\n  padding: 160px 160px;\n  margin-bottom: 0; }\n\n.jumbotron-primary {\n  background-color: #8bC34A;\n  color: white; }\n\n.jumbotron-secondary {\n  background-color: #F06292;\n  color: white; }\n\n.container-fluid .jumbotron-secondary {\n  padding: 160px 200px; }\n\n.jumbotron h1 {\n  font-weight: 400; }\n\n.jumbotron .lead {\n  font-size: 1.5rem;\n  font-weight: 300; }\n\n.full-width-image {\n  width: 100%; }\n\n.flexbox {\n  display: flex; }\n\n.vertically-center {\n  margin: auto; }\n\n.col-sm-fixed-width {\n  width: 500px;\n  height: 490px;\n  overflow: hidden; }\n\n.col-sm-fixed-height {\n  height: 490px; }\n\n.display-1 {\n  font-size: 2.5rem;\n  font-weight: 400;\n  margin-bottom: 1rem; }\n\n.lead {\n  font-weight: 400; }\n\n.panel-container-secondary {\n  background-color: #eeeeee; }\n\n.text-panel {\n  padding: 50px; }\n\n.text-panel-grey {\n  background-color: #eeeeee; }\n\n.panel-buzzword {\n  height: 415px; }\n\n.panel-overlay-outer {\n  position: relative; }\n\n.panel-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  z-index: 1000;\n  background-color: white;\n  opacity: .5;\n  transition: all 0.3s ease; }\n\n.panel-overlay:hover {\n  opacity: 0; }\n\n.text-center {\n  text-align: center; }\n\ninput.quote-email {\n  width: 630px !important;\n  margin-right: 20px;\n  border: none;\n  border-radius: 0; }\n\n.btn {\n  border-radius: 0; }\n\n/*variables*/\n/*extend*/\n/*LEFT PANEL*/\n.status-panel {\n  padding-right: 0px;\n  padding-left: 0px; }\n  .status-panel .status-panel-header {\n    width: 100%;\n    background-color: #8bc34a;\n    text-align: center; }\n    .status-panel .status-panel-header p {\n      color: #ffffff;\n      font-size: 5em;\n      padding: 20px; }\n\n/*FINISH LEFT PANEL*/\n/*RIGHT PANEL*/\n.milestones-panel {\n  padding-right: 0px;\n  padding-left: 0px; }\n  .milestones-panel .milestones-panel-header {\n    width: 100%;\n    background-color: #81ac50;\n    text-align: center; }\n    .milestones-panel .milestones-panel-header p {\n      color: #ffffff;\n      font-size: 5em;\n      padding: 20px;\n      margin: 0px; }\n  .milestones-panel .milestones-panel-content {\n    background-color: #f3f3f3; }\n    .milestones-panel .milestones-panel-content .new-milestone-container {\n      height: 50px; }\n    .milestones-panel .milestones-panel-content button {\n      float: right;\n      margin: 10px; }\n    .milestones-panel .milestones-panel-content .no-milestones {\n      font-size: 1.5em; }\n  .milestones-panel .milestone-container {\n    margin: 15px 0px; }\n    .milestones-panel .milestone-container .milestone-header {\n      margin-left: 50px;\n      font-size: 1.5em;\n      font-weight: bold; }\n    .milestones-panel .milestone-container .milestone-progres-container {\n      margin-left: 50px;\n      padding: 0;\n      border-radius: 0px;\n      background-color: #ffffff; }\n    .milestones-panel .milestone-container .milestone-cost p {\n      margin: 0px;\n      margin-top: 3px; }\n\n/*FINISH RIGHT PANEL*/\n/*variables*/\n/*extend*/\n.modal_header, .user_registration_container .registration_header, .user_login_container .login_header, .recovery_password_container .recovery_header, .recovery_password_create_container .recovery_header {\n  background-color: #dddddd;\n  font-size: 1.5em; }\n  .modal_header .left_block, .user_registration_container .registration_header .left_block, .user_login_container .login_header .left_block, .recovery_password_container .recovery_header .left_block, .recovery_password_create_container .recovery_header .left_block {\n    float: left; }\n  .modal_header .right_block, .user_registration_container .registration_header .right_block, .user_login_container .login_header .right_block, .recovery_password_container .recovery_header .right_block, .recovery_password_create_container .recovery_header .right_block {\n    float: right; }\n  .modal_header p, .user_registration_container .registration_header p, .user_login_container .login_header p, .recovery_password_container .recovery_header p, .recovery_password_create_container .recovery_header p {\n    margin: 5px; }\n\n.form_group_content, .user_registration_container form .form-group, .user_login_container form .form-group, .recovery_password_container form .form-group, .recovery_password_create_container form .form-group {\n  margin-top: 3%; }\n  .form_group_content label, .user_registration_container form .form-group label, .user_login_container form .form-group label, .recovery_password_container form .form-group label, .recovery_password_create_container form .form-group label {\n    font-size: 1.5em;\n    font-weight: normal; }\n  .form_group_content input, .user_registration_container form .form-group input, .user_login_container form .form-group input, .recovery_password_container form .form-group input, .recovery_password_create_container form .form-group input {\n    border-color: #000000;\n    border-radius: 0px; }\n  .form_group_content button, .user_registration_container form .form-group button, .user_login_container form .form-group button, .recovery_password_container form .form-group button, .recovery_password_create_container form .form-group button {\n    float: right;\n    margin: 15px 0px;\n    color: #000000;\n    background-color: #dddddd;\n    border-color: #000000; }\n  .form_group_content .error, .user_registration_container form .form-group .error, .user_login_container form .form-group .error, .recovery_password_container form .form-group .error, .recovery_password_create_container form .form-group .error {\n    font-size: 1.5em;\n    visibility: hidden;\n    color: red;\n    font-style: italic; }\n\n/*USER REGISTER*/\n.user_registration_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_registration_container form {\n    margin-top: 7%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_registration_container form .invite_description {\n      margin: 10px 0px; }\n      .user_registration_container form .invite_description .header_description {\n        font-size: 2em;\n        font-weight: bold; }\n      .user_registration_container form .invite_description .description {\n        font-size: 1.5em;\n        font-weight: bold; }\n\n/*FINISH REGISTER*/\n/*USER LOGIN*/\n.user_login_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .user_login_container form {\n    margin-top: 13%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .user_login_container form .login_footer .forgot_link {\n      float: left;\n      margin: 15px 0px; }\n    .user_login_container form .login_footer a {\n      color: #555; }\n    .user_login_container form .login_footer .submit_button {\n      float: right;\n      margin: 15px 0px;\n      color: #000000;\n      background-color: #dddddd;\n      border-color: #000000; }\n\n/*FINISH LOGIN*/\n/*RECOVERY PASSWORD*/\n.recovery_password_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .recovery_password_container form {\n    margin-top: 17%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n    .recovery_password_container form .recovery_footer .send_recovery {\n      float: right;\n      margin: 15px 0px;\n      color: #000000;\n      background-color: #dddddd;\n      border-color: #000000; }\n\n/*FINISH RECOVERY PASSWORD*/\n/*NEW PASSWORD*/\n.recovery_password_create_container {\n  background-color: #81ac50;\n  color: #000000; }\n  .recovery_password_create_container form {\n    margin-top: 13%;\n    margin-bottom: 8%;\n    background-color: #f3f3f3;\n    border: 7px solid #689337; }\n\n/*FINISH NEW PASSWORD*/\n/*@import './vendor/bootstrap.css';*/\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nbody {\n  font-family: Roboto;\n  font-size: 1em;\n  /*\tcolor: $white;\n\tbackground-color: #81ac50;*/ }\n", ""]);
 
 	// exports
 
@@ -17586,12 +17586,16 @@
 				this.model.save({}, {
 					success: function success(model, response, options) {
 
+						window.localStorage.clear();
 						window.localStorage.setItem('auth_token', response.user.auth_token);
 						window.localStorage.setItem('email', response.user.email);
 						window.localStorage.setItem('role', response.user.role);
+						window.localStorage.setItem('organization', response.user.organization);
 
-						window.location.replace('#');
-						window.location.reload();
+						console.log(response);
+
+						/*window.location.replace('#');
+	     window.location.reload();*/
 					},
 					error: function error(model, xhr, options) {
 
@@ -19257,7 +19261,7 @@
 			$.ajax({
 				type: 'PUT',
 				url: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
-				/*	urlRoot: 'http://localhost:3000/api/v1/users/password',*/
+				/*urlRoot: 'http://localhost:3000/api/v1/users/password',*/
 				dataType: 'json',
 				crossDomain: true,
 				xhrFields: { withCredentials: false },
@@ -19347,28 +19351,352 @@
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	var Backbone = __webpack_require__(6),
 	    Marionette = __webpack_require__(9),
-	    template = __webpack_require__(54);
+	    MilestonesCollection = __webpack_require__(54),
+	    MilestonesCollectionView = __webpack_require__(55),
+	    template = __webpack_require__(61);
 
 	var AppLayoutView = Marionette.LayoutView.extend({
 	    template: template,
 
 	    regions: {
-	        status: "#left-region",
-	        milestones: "#right-region"
+	        status: '#left-region',
+	        dialog: '#dialog-region',
+	        milestones: '#milestones-region'
+	    },
+
+	    events: {
+	        'click .new-milestone': 'showMilestoneModal',
+	        'click .close': 'hideMilestoneModal',
+	        'click .add-milestone': 'addMilestoneToCollection'
+	    },
+
+	    childEvents: {
+	        'update:milestone': 'onChildUpdateMilestone'
+	    },
+
+	    ui: {
+	        modelName: 'input#milestone-name',
+	        modelComplete: 'input#percent-complete',
+	        modelStarted: 'input#data-started',
+	        modelDue: 'input#due-date',
+	        modelCost: 'input#milestone-cost'
+	    },
+
+	    onRender: function onRender() {
+
+	        var self = this;
+	        var milestonesCollection = new MilestonesCollection();
+
+	        milestonesCollection.fetch({
+
+	            success: function success(milestonesCollection, response, options) {
+	                self.milestonesCollectionView = new MilestonesCollectionView({ collection: milestonesCollection });
+	                self.showChildView('milestones', self.milestonesCollectionView);
+	            },
+	            error: function error() {
+	                alert('some error');
+	            }
+	        });
+	    },
+
+	    onAttach: function onAttach() {
+	        var selector = $('.milestones-panel-content'),
+	            windowHeight = window.innerHeight,
+	            navbarHeight = document.getElementsByClassName('navbar')[0].clientHeight,
+	            milstonesHeaderHeight = document.getElementsByClassName('milestones-panel-header')[0].clientHeight,
+	            needHeight = windowHeight - (navbarHeight + milstonesHeaderHeight);
+
+	        if ($(selector).height() < needHeight) {
+	            $(selector).css('height', needHeight + 'px');
+	        }
+	    },
+
+	    showMilestoneModal: function showMilestoneModal() {
+	        this.$('#milestonesModal').show();
+	    },
+
+	    hideMilestoneModal: function hideMilestoneModal(e) {
+	        if (e) {
+	            e.stopPropagation();
+	        }
+
+	        this.$('#milestonesModal').hide();
+	    },
+
+	    addMilestoneToCollection: function addMilestoneToCollection() {
+	        var self = this;
+
+	        var milestoneObject = {
+	            name: this.ui.modelName.val(),
+	            percent_complete: this.ui.modelComplete.val(),
+	            data_started: this.ui.modelStarted.val(),
+	            due_date: this.ui.modelDue.val(),
+	            cost: this.ui.modelCost.val()
+	        };
+
+	        this.milestonesCollectionView.collection.create(milestoneObject, {
+	            wait: true,
+	            success: function success(collection, response) {
+	                //self.hideModal();
+
+	                self.hideMilestoneModal();
+	            },
+	            error: function error() {
+	                alert('some error');
+	            }
+	        });
 	    }
 	});
 
 	module.exports = AppLayoutView;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ },
 /* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	__webpack_require__(42);
+
+	var MilestoneModel = Backbone.Model.extend({
+	  urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+	  /*urlRoot: 'http://localhost:3000/api/v1/milestones',*/
+	  paramRoot: 'milestone',
+
+	  defaults: {
+	    name: '',
+	    percent_complete: '',
+	    data_started: '',
+	    due_date: '',
+	    cost: '',
+	    id: null
+	  }
+	});
+
+	var MilestonesCollection = Backbone.Collection.extend({
+	  url: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+	  /*url: 'http://localhost:3000/api/v1/milestones',*/
+	  model: MilestoneModel,
+
+	  parse: function parse(response) {
+	    return response.milestones;
+	  }
+
+	});
+
+	module.exports = MilestonesCollection;
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Backbone = __webpack_require__(6),
+	    Marionette = __webpack_require__(9),
+	    MilestonesCollection = __webpack_require__(54),
+	    NoMilestonesView = __webpack_require__(56),
+	    MilestonesItemView = __webpack_require__(58);
+
+	var MilestonesCollectionView = Marionette.CollectionView.extend({
+
+	    tagName: 'div',
+
+	    className: 'milestones-container',
+
+	    emptyView: NoMilestonesView,
+
+	    childView: MilestonesItemView
+
+	});
+
+	module.exports = MilestonesCollectionView;
+
+/***/ },
+/* 56 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Backbone = __webpack_require__(6),
+	    Marionette = __webpack_require__(9),
+	    template = __webpack_require__(57);
+
+	var NoMilestonesView = Marionette.ItemView.extend({
+
+	    template: template
+
+	});
+
+	module.exports = NoMilestonesView;
+
+/***/ },
+/* 57 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n\t<div id=\"left-region\" class=\"status-panel col-xs-7\">\n\t\t<div class=\"status-panel-header\">\n\t\t\t<p>Updates</p>\n\t\t</div>\n\t</div>\n\t<div id=\"right-region\" class=\"milestones-panel col-xs-5\">\n\t\t<div class=\"milestones-panel-header\">\n\t\t\t<p>Milestones</p>\n\t\t</div>\n\t</div>\n<div>";
+	module.exports = "<div>\n<div class=\"alert alert-warning no-milestones\" role=\"alert\">You have any milestones now.</div>\n</div>";
+
+/***/ },
+/* 58 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Backbone = __webpack_require__(6),
+	    Marionette = __webpack_require__(9),
+	    template = __webpack_require__(59);
+
+	var MilestonesItemView = Marionette.ItemView.extend({
+
+	    template: template,
+
+	    events: {
+	        'click .milestone-container': 'showMilestoneModal',
+	        'click .close': 'hideMilestoneModal',
+	        'click .update-milestone': 'onClickUpdateMilestone',
+	        'click .delete-milestone': 'onClickDeleteMilestone'
+	    },
+
+	    modelEvents: {
+	        'sync': 'onModelChange'
+	    },
+
+	    ui: {
+	        modelName: 'input#milestone-name',
+	        modelComplete: 'input#percent-complete',
+	        modelStarted: 'input#data-started',
+	        modelDue: 'input#due-date',
+	        modelCost: 'input#milestone-cost'
+	    },
+
+	    onModelChange: function onModelChange() {
+	        this.render();
+	    },
+
+	    showMilestoneModal: function showMilestoneModal() {
+	        this.$('#milestonesUpdateModal').show();
+	    },
+
+	    hideMilestoneModal: function hideMilestoneModal(e) {
+	        if (e) {
+	            e.stopPropagation();
+	        }
+
+	        this.$('#milestonesUpdateModal').hide();
+	    },
+
+	    onClickUpdateMilestone: function onClickUpdateMilestone() {
+
+	        var self = this;
+
+	        var milestoneObject = {
+	            name: this.ui.modelName.val(),
+	            percent_complete: this.ui.modelComplete.val(),
+	            data_started: this.ui.modelStarted.val(),
+	            due_date: this.ui.modelDue.val(),
+	            cost: this.ui.modelCost.val()
+	        };
+
+	        this.model.save(milestoneObject, {
+	            wait: true,
+	            success: function success(model, response) {
+
+	                self.hideMilestoneModal();
+	            },
+	            error: function error() {
+	                alert('some error');
+	            }
+	        });
+	    },
+
+	    onClickDeleteMilestone: function onClickDeleteMilestone(e) {
+	        e.stopPropagation();
+
+	        var self = this;
+
+	        this.model.destroy({
+	            wait: true,
+	            success: function success(model, response) {
+
+	                self.hideMilestoneModal();
+	            },
+	            error: function error() {
+	                alert('some error');
+	            }
+	        });
+	    }
+
+	});
+
+	module.exports = MilestonesItemView;
+
+/***/ },
+/* 59 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Handlebars = __webpack_require__(22);
+	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+	    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+
+	  return "<div class=\"row milestone-container\">\n	<div class=\"milestone-header\">\n		<p>"
+	    + alias2(alias1((depth0 != null ? depth0.name : depth0), depth0))
+	    + "</p>\n	</div>\n	<div class=\"progress col-xs-9 milestone-progres-container\">\n		<div class=\"progress-bar progress-bar-success milestone-progres\" role=\"progressbar\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: "
+	    + alias2(alias1((depth0 != null ? depth0.percent_complete : depth0), depth0))
+	    + "%;\">\n		"
+	    + alias2(alias1((depth0 != null ? depth0.percent_complete : depth0), depth0))
+	    + "%\n		</div>\n	</div>\n	<div class=\"col-xs-1 milestone-cost\">\n		<p>$"
+	    + alias2(alias1((depth0 != null ? depth0.cost : depth0), depth0))
+	    + "</p>\n	</div>\n"
+	    + ((stack1 = container.invokePartial(__webpack_require__(60),depth0,{"name":"milestone_update_modal","data":data,"indent":"\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+	    + "</div>";
+	},"usePartial":true,"useData":true});
+
+/***/ },
+/* 60 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Handlebars = __webpack_require__(22);
+	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+	  return "<div id=\"milestonesUpdateModal\" class=\"modal\" role=\"dialog\" aria-labelledby=\"mySmallModalLabel\">\n	  <div class=\"modal-dialog modal-sm\">\n	  	<div class=\"modal-header\">\n	        <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span></button>\n	        <h4 class=\"modal-title\" id=\"gridSystemModalLabel\">Update milestone</h4>\n      	</div>\n	    <div class=\"modal-content\">\n	    	<form>\n			    <div class=\"control-group\">\n			        <label for=\"milestone-name\" class=\"control-label\">Name:</label>\n			        <input id=\"milestone-name\" name=\"name\" type=\"text\" value=\""
+	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+	    + "\"/>\n			    </div>\n			    <div class=\"control-group\">\n			        <label for=\"percent-complete\" class=\"control-label\">Percent complete:</label>\n			        <input id=\"percent-complete\" name=\"complete\" type=\"text\" value=\""
+	    + alias4(((helper = (helper = helpers.percent_complete || (depth0 != null ? depth0.percent_complete : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"percent_complete","hash":{},"data":data}) : helper)))
+	    + "\"/>\n			    </div>\n			     <div class=\"control-group\">\n			        <label for=\"data-started\" class=\"control-label\">Data started:</label>\n			        <input id=\"data-started\" name=\"started\" type=\"text\" value=\""
+	    + alias4(((helper = (helper = helpers.data_started || (depth0 != null ? depth0.data_started : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"data_started","hash":{},"data":data}) : helper)))
+	    + "\"/>\n			    </div>\n			     <div class=\"control-group\">\n			        <label for=\"due-date\" class=\"control-label\">Due date:</label>\n			        <input id=\"due-date\" name=\"due\" type=\"text\" value=\""
+	    + alias4(((helper = (helper = helpers.due_date || (depth0 != null ? depth0.due_date : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"due_date","hash":{},"data":data}) : helper)))
+	    + "\"/>\n			    </div>\n			    <div class=\"control-group\">\n			        <label for=\"cost\" class=\"control-label\">Cost:</label>\n			        <input id=\"milestone-cost\" name=\"cost\" type=\"text\" value=\""
+	    + alias4(((helper = (helper = helpers.cost || (depth0 != null ? depth0.cost : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"cost","hash":{},"data":data}) : helper)))
+	    + "\"/>\n			    </div>\n			</form>\n	    </div>\n	    <div class=\"modal-footer\">\n        	<button class=\"btn update-milestone\">Update</button>\n        	<button class=\"btn delete-milestone\">Delete</button>\n      	</div>\n	</div>\n</div>";
+	},"useData":true});
+
+/***/ },
+/* 61 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Handlebars = __webpack_require__(22);
+	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+	    var stack1;
+
+	  return "<div>\n	<div id=\"left-region\" class=\"status-panel col-xs-7\">\n		<div class=\"status-panel-header\">\n			<p>Updates</p>\n		</div>\n	</div>\n	<div id=\"dialog-region\">\n	</div>\n	<div class=\"milestones-panel col-xs-5\">\n		<div class=\"milestones-panel-header\">\n			<p>Milestones</p>\n		</div>\n		<div class=\"milestones-panel-content\">\n			<div class=\"new-milestone-container\">\n				<button class=\"btn btn-sm btn-default new-milestone\">New milestone</button>\n			</div>\n			<div id=\"milestones-region\"></div>\n		</div>\n	</div>\n"
+	    + ((stack1 = container.invokePartial(__webpack_require__(62),depth0,{"name":"milestone_add_modal","data":data,"indent":"\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+	    + "<div>";
+	},"usePartial":true,"useData":true});
+
+/***/ },
+/* 62 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Handlebars = __webpack_require__(22);
+	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+	    return "<div id=\"milestonesModal\" class=\"modal\" role=\"dialog\" aria-labelledby=\"mySmallModalLabel\">\n	<div class=\"modal-dialog modal-sm\">\n	  	<div class=\"modal-header\">\n	        <button type=\"button\" class=\"close\"><span aria-hidden=\"true\">&times;</span></button>\n	        <h4 class=\"modal-title\" id=\"gridSystemModalLabel\">New milestone</h4>\n      	</div>\n	    <div class=\"modal-content\">\n	    	<form>\n			    <div class=\"control-group\">\n			        <label for=\"milestone-name\" class=\"control-label\">Name:</label>\n			        <input id=\"milestone-name\" name=\"name\" type=\"text\"/>\n			    </div>\n			    <div class=\"control-group\">\n			        <label for=\"percent-complete\" class=\"control-label\">Percent complete:</label>\n			        <input id=\"percent-complete\" name=\"complete\" type=\"text\"/>\n			    </div>\n			     <div class=\"control-group\">\n			        <label for=\"data-started\" class=\"control-label\">Data started:</label>\n			        <input id=\"data-started\" name=\"started\" type=\"text\"/>\n			    </div>\n			     <div class=\"control-group\">\n			        <label for=\"due-date\" class=\"control-label\">Due date:</label>\n			        <input id=\"due-date\" name=\"due\" type=\"text\"/>\n			    </div>\n			    <div class=\"control-group\">\n			        <label for=\"cost\" class=\"control-label\">Cost:</label>\n			        <input id=\"milestone-cost\" name=\"cost\" type=\"text\"/>\n			    </div>\n			</form>\n	    </div>\n	    <div class=\"modal-footer\">\n        	<button class=\"btn add-milestone\">Add</button>\n      	</div>\n	</div>\n</div>\n";
+	},"useData":true});
 
 /***/ }
 /******/ ]);

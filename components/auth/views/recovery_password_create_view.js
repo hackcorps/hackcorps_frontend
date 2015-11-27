@@ -59,7 +59,7 @@ var RecoveryPasswordCreateView = Marionette.ItemView.extend({
 		$.ajax({
 			type: 'PUT',
 			url: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
-		/*	urlRoot: 'http://localhost:3000/api/v1/users/password',*/
+			/*urlRoot: 'http://localhost:3000/api/v1/users/password',*/
 			dataType: 'json',
 			crossDomain: true,
 			xhrFields: {withCredentials: false},

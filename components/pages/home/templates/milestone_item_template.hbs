@@ -1,0 +1,14 @@
+<div class="row milestone-container">
+	<div class="milestone-header">
+		<p>{{name}}</p>
+	</div>
+	<div class="progress col-xs-9 milestone-progres-container">
+		<div class="progress-bar progress-bar-success milestone-progres" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{percent_complete}}%;">
+		{{percent_complete}}%
+		</div>
+	</div>
+	<div class="col-xs-1 milestone-cost">
+		<p>${{cost}}</p>
+	</div>
+	{{> milestone_update_modal}}
+</div>
