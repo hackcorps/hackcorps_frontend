@@ -2,7 +2,7 @@
 $left_header_background: #8bc34a;
 $right_header_background: #81ac50;
 $left_container_background: #ffffff;
-$left_container_background: #f3f3f3;
+$right_container_background: #f3f3f3;
 
 $panel_divider_color: #6a8d40;
 $panel_text_color: #000000;
@@ -47,6 +47,61 @@ $panel_text_color: #000000;
 			color: #ffffff;
 			font-size: 5em;
 			padding: 20px;
+			margin: 0px;
+		}
+	}
+
+	.milestones-panel-content {
+
+		background-color: $right_container_background;
+
+		.new-milestone-container {
+			height: 50px;
+		}
+
+		button {
+
+			float: right;
+			margin: 10px;
+		}
+
+		.no-milestones {
+			font-size: 1.5em;
+		}
+
+	}
+
+	.milestone-container {
+
+		margin: 15px 0px;
+
+		.milestone-header {
+
+			margin-left: 50px;
+			font-size: 1.5em;
+			font-weight: bold;
+		}
+
+		.milestone-progres-container {
+
+			margin-left: 50px;
+			padding: 0;
+			border-radius: 0px;
+			background-color: #ffffff;
+
+			.milestone-progres {
+
+			}
+
+		}
+
+		.milestone-cost {
+
+			p {
+				margin: 0px;
+				margin-top: 3px;
+			}
+
 		}
 	}
 }

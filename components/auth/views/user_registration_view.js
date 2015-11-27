@@ -41,12 +41,16 @@ var UserRegistrationView = Marionette.ItemView.extend({
 			this.model.save({}, {
 				success: function(model, response, options) {
 					
+					window.localStorage.clear();
 					window.localStorage.setItem('auth_token', response.user.auth_token);
 					window.localStorage.setItem('email', response.user.email);
 					window.localStorage.setItem('role', response.user.role);
+					window.localStorage.setItem('organization', response.user.organization);
 
-					window.location.replace('#');
-					window.location.reload();				
+					console.log(response);
+
+					/*window.location.replace('#');
+					window.location.reload();*/				
 				},
 				error: function (model, xhr, options) {
 					

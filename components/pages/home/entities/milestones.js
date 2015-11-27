@@ -1,11 +1,30 @@
-MilestoneModel = Backbone.Model.extend({});
+'use strict';
+require('backbone-rails-sync');
 
-MilestonesCollection = Backbone.Collection.extend({
-  model: MilestoneModel
+var MilestoneModel = Backbone.Model.extend({
+	 urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+  /*urlRoot: 'http://localhost:3000/api/v1/milestones',*/
+  paramRoot: 'milestone',
+
+    defaults: {
+        name: '',
+        percent_complete: '', 
+        data_started: '', 
+        due_date: '', 
+        cost: '', 
+        id: null
+    }
 });
 
-/*milestonesCollection = MilestonesCollection([
-  { id: 1, firstName: "Alice", lastName: "Arten", phoneNumber: "555-0184" },
-  { id: 2, firstName: "Bob", lastName: "Brigham", phoneNumber: "555-0163" },
-  { id: 3, firstName: "Charlie", lastName: "Campbell", phoneNumber: "555-0129" }
-]);*/
+var MilestonesCollection = Backbone.Collection.extend({
+	url: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+  /*url: 'http://localhost:3000/api/v1/milestones',*/
+  model: MilestoneModel,
+
+  parse: function(response) {
+    return response.milestones;
+  }
+
+});
+
+module.exports = MilestonesCollection;
