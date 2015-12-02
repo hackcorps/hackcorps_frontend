@@ -75,7 +75,7 @@ var RecoveryPasswordCreateView = Marionette.ItemView.extend({
 			},
 			success: function (data) {
 
-				window.location.replace('#');
+				window.location.replace('/#');
 				window.location.reload();
 
 			},
@@ -83,7 +83,7 @@ var RecoveryPasswordCreateView = Marionette.ItemView.extend({
 
 				alert('Some error!');
 
-				window.location.replace('#');
+				window.location.replace('/#');
 				window.location.reload();
 			}
 		});

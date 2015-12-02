@@ -1,0 +1,38 @@
+<div id="milestonesModal" class="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+	<form role="form">
+		<button type="button" class="close close_modal"><span>&times;</span></button>
+	    <div class="form-group">
+	        <label for="name">Name:</label>
+	        <input id="new-milestone-name" name="name" type="text" class="form-control" value="{{name}}" />
+	        <p class="error email_login_error">Enter a valid Name!</p>
+	    </div>
+	    <div class="form-group">
+	        <label for="complete">Percent complete:</label>
+	        <input id="new-percent-complete" name="complete" type="text" class="form-control" value="{{percent_complete}}" />
+	        <p class="error email_login_error">Enter a valid Percent!</p>
+	    </div>
+	     <div class="form-group">
+	        <label for="started">Data started:</label>
+	        <input id="new-data-started" name="started" type="text" class="form-control" value="{{data_started}}" />
+	        <p class="error email_login_error">Enter a valid Date!</p>
+	    </div>
+	     <div class="form-group">
+	        <label for="due">Due date:</label>
+	        <input id="new-due-date" name="due" type="text" class="form-control" value="{{due_date}}" />
+	        <p class="error email_login_error">Enter a valid Date!</p>
+	    </div>
+	    <div class="form-group">
+	        <label for="cost">Cost:</label>
+	        <input id="new-milestone-cost" name="cost" type="text" class="form-control" disabled value="{{cost}}" />
+	        <p class="error email_login_error">Enter a valid Cost!</p>
+	    </div>
+	    	<div>
+			{{#if name}}
+			<button type="button" class="btn btn-default delete_button">Delete</button>
+			<button type="button" class="btn btn-default update_button">Update</button>
+			{{else}}
+			<button type="button" class="btn btn-default submit_button">Add</button>
+			{{/if}}
+			</div>
+	</form>
+</div>
