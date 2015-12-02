@@ -69,12 +69,16 @@ module.exports = {
 	/*node: {
         fs: "empty"
     },*/
+    /*amd: { 
+    	jQuery: true 
+    },*/
 	plugins: [
 		/*new ExtractTextPlugin('styles.css'),*/
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
 			'window.jQuery': 'jquery',
+			'root.jQuery': 'jquery',
 			'_': 'underscore'
 		})
 	]

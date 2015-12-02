@@ -55,14 +55,14 @@ var RecoveryPasswordView = Marionette.ItemView.extend({
 			this.model.save({}, {
 				success: function(model, response, options) {
 
-					window.location.replace('#');
+					window.location.replace('/#');
 					window.location.reload();
 				},
 				error: function (model, xhr, options) {
 					
 					alert('Some error!');
 
-					window.location.replace('#');
+					window.location.replace('/#');
 					window.location.reload();
 				}
 			});

@@ -55,8 +55,7 @@ var HeaderView = Marionette.ItemView.extend({
 
 			},
 			error: function (data) {
-
-				console.log(data);
+				
 				alert('Some error!');
 
 				window.location.replace('#');

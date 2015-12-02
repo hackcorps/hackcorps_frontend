@@ -75,11 +75,43 @@ $panel_text_color: #000000;
 
 		margin: 15px 0px;
 
+		cursor: pointer;
+
 		.milestone-header {
 
-			margin-left: 50px;
+			margin-left: 20px;
 			font-size: 1.5em;
 			font-weight: bold;
+
+			li {
+				display: inline-block;
+
+				span {
+					top: 0px;
+				}
+			}
+
+			.name {
+				margin-left: 30px;
+			}
+
+			.ok-button {
+				display:block;
+				position: absolute;
+			    width:20px;
+			    height:20px;
+			    line-height:20px;
+			    margin-right: 5px;
+			    border: 2px solid #acdd71;
+			    border-radius: 50%;
+			    color:black;
+			    text-align:center;
+			    text-decoration:none;
+			    background: #f3f3f3;
+			    box-shadow: 0 0 1px gray;
+			    font-size:10px;
+			    font-weight:bold;
+			}
 		}
 
 		.milestone-progres-container {

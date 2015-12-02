@@ -2,11 +2,15 @@
 
 var Backbone = require('backbone'),
     Marionette = require('backbone.marionette'),
-    MilestonesCollection = require('../entities/milestones.js'),
+    MilestoneItemView = require('./milestone_item_view.js'),
+    NewMilestoneModalItemView = require('./new_milestone_modal_item_view.js'),
+    MilestoneModel = require('../entities/milestone_model.js'),
+    MilestonesCollection = require('../entities/milestones_collections.js'),
     MilestonesCollectionView = require('./milestones_collection_view.js'),
     template = require('../templates/app_layout_template.hbs');
 
 var AppLayoutView = Marionette.LayoutView.extend({
+
     template: template,
 
     regions: {
@@ -17,31 +21,32 @@ var AppLayoutView = Marionette.LayoutView.extend({
 
     events: {
     	'click .new-milestone': 'showMilestoneModal',
-    	'click .close': 'hideMilestoneModal',
-    	'click .add-milestone': 'addMilestoneToCollection'
+    	'click .close': 'hideMilestoneModal'
     },
 
     childEvents: {
-        'update:milestone': 'onChildUpdateMilestone'
+        'added:milestone': 'onChildAddMilestone',
+        'deleted:milestone': 'hideMilestoneModal',
+        'updated:milestone': 'hideMilestoneModal',
+        'click:milestone': 'onChildClickMilestone',
     },
 
-    ui: {
-        modelName: 'input#milestone-name',
-        modelComplete: 'input#percent-complete',
-        modelStarted: 'input#data-started',
-        modelDue: 'input#due-date',
-        modelCost: 'input#milestone-cost'
+    initialize: function() {
+        var self = this;
+
+        App.vent.on('click:milestone', function(message) {
+            self.onChildClickMilestone(message);
+        });
     },
 
     onRender: function() {
-
         var self = this;
         var milestonesCollection = new MilestonesCollection();
         
         milestonesCollection.fetch({
             
             success: function(milestonesCollection, response, options) {
-                self.milestonesCollectionView = new MilestonesCollectionView({collection:milestonesCollection});
+                self.milestonesCollectionView = new MilestonesCollectionView( { collection:milestonesCollection } );
                 self.showChildView('milestones', self.milestonesCollectionView);
             },
             error: function() {
@@ -64,40 +69,22 @@ var AppLayoutView = Marionette.LayoutView.extend({
     },
 
     showMilestoneModal: function() {
-    	this.$('#milestonesModal').show();
+        this.showChildView('dialog', new NewMilestoneModalItemView({ model: new MilestoneModel() }) );
     },
 
-    hideMilestoneModal: function(e) {
-        if (e) {
-            e.stopPropagation();
-        }
-
-        this.$('#milestonesModal').hide();
+    hideMilestoneModal: function() {
+        this.dialog.empty({preventDestroy: true});
     },
 
-    addMilestoneToCollection: function() {
-        var self = this;
+    onChildAddMilestone: function (childView, message) {
+        this.milestonesCollectionView.collection.add(message);
+        this.dialog.empty( { preventDestroy: true } );
+    },
 
-        var milestoneObject = {
-            name: this.ui.modelName.val(),
-            percent_complete: this.ui.modelComplete.val(),
-            data_started: this.ui.modelStarted.val(), 
-            due_date: this.ui.modelDue.val(), 
-            cost: this.ui.modelCost.val()
-        };
-    	
-        this.milestonesCollectionView.collection.create(milestoneObject, {
-            wait: true,
-            success:function(collection, response) {
-                //self.hideModal();
-
-                self.hideMilestoneModal();
-            },
-            error: function() {
-                alert('some error');
-            }
-        });
+    onChildClickMilestone: function (message) {
+        this.showChildView('dialog', new NewMilestoneModalItemView({ model: message }) );
     }
+
 });
 
 module.exports = AppLayoutView;

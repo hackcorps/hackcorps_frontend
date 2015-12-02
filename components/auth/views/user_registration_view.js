@@ -39,6 +39,7 @@ var UserRegistrationView = Marionette.ItemView.extend({
 			});
 
 			this.model.save({}, {
+				wait: true,
 				success: function(model, response, options) {
 					
 					window.localStorage.clear();
@@ -47,16 +48,14 @@ var UserRegistrationView = Marionette.ItemView.extend({
 					window.localStorage.setItem('role', response.user.role);
 					window.localStorage.setItem('organization', response.user.organization);
 
-					console.log(response);
-
-					/*window.location.replace('#');
-					window.location.reload();*/				
+					window.location.replace('/#');
+					window.location.reload();				
 				},
 				error: function (model, xhr, options) {
 					
 					alert('Some error!');
 
-					window.location.replace('#');
+					window.location.replace('/#')
 					window.location.reload();
 				}
 			});

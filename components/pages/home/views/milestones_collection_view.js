@@ -1,8 +1,6 @@
 'use strict';
 
-var Backbone = require('backbone'),
-    Marionette = require('backbone.marionette'),
-    MilestonesCollection = require('../entities/milestones.js'),
+var Marionette = require('backbone.marionette'),
     NoMilestonesView = require('./no_milestones_view.js'),
     MilestonesItemView = require('./milestone_item_view.js');
 

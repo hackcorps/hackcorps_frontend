@@ -178,6 +178,7 @@ $form_text_color: #000000;
 
 /*NEW PASSWORD*/
 .recovery_password_create_container {
+
 	background-color: $container_background;
 	color: $form_text_color;
 
@@ -201,3 +202,51 @@ $form_text_color: #000000;
 	}
 }
 /*FINISH NEW PASSWORD*/
+
+/*MILESTONE MODAL*/
+#milestonesModal {
+
+	position: absolute;
+	z-index: 3;
+	top: 20px;
+
+	color: $form_text_color;
+
+	form {
+		position: relative;
+		margin-top: 13%;
+		background-color: $form_background_color;
+
+		border: 7px solid $form_border_color;
+
+		.form-group {
+			
+			@extend .form_group_content;
+
+			margin: 4%;
+
+		}
+
+		.close {
+			margin-top: 1%;
+			margin-right: 2%;
+		}
+
+		.submit_button {
+			margin-left: 4%;
+			margin-bottom: 4%;
+		}
+
+		.delete_button {
+			margin-left: 4%;
+			margin-bottom: 4%;
+		}
+
+		.update_button {
+			position: absolute;
+			right: 4%;
+		}
+	}
+}
+
+/*FINISH MILESTONE MODAL*/

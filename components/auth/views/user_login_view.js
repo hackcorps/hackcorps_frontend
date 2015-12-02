@@ -71,20 +71,19 @@ var UserLoginView = Marionette.ItemView.extend({
 
 			this.model.save({}, {
 				success: function(model, response, options) {
-					console.log(response);
 
 					window.localStorage.setItem('auth_token', response.user.auth_token);
 					window.localStorage.setItem('email', response.user.email);
 					window.localStorage.setItem('role', response.user.role);
 					
+					window.location.replace('/#');
 					window.location.reload();
-
 				},
 				error: function (model, xhr, options) {
 
 					alert('Some error!');
 
-					window.location.replace('#');
+					window.location.replace('/#');
 					window.location.reload();
 				}
 			});
