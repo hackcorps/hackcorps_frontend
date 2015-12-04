@@ -2,7 +2,8 @@
 
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
-	template = require('../templates/header_template.html');
+	template = require('../templates/header_template.html'),
+	loader = require('../../../layout/loader.js');
 	
 var HeaderView = Marionette.ItemView.extend({
 
@@ -33,6 +34,7 @@ var HeaderView = Marionette.ItemView.extend({
 
 	logoutUser: function (e) {
 		e.preventDefault();
+		loader.show();
 
 		var self = this;
 		var auth_token = window.localStorage.getItem('auth_token');
@@ -52,7 +54,7 @@ var HeaderView = Marionette.ItemView.extend({
 				window.localStorage.setItem('auth_token', '');
 
 				App.execute('logged_out');
-
+				loader.hide();
 			},
 			error: function (data) {
 				
@@ -60,6 +62,7 @@ var HeaderView = Marionette.ItemView.extend({
 
 				window.location.replace('#');
 				window.location.reload();
+				loader.hide();
 			}
 		});
 	}

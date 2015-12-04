@@ -9,12 +9,22 @@ $panel_text_color: #000000;
 
 /*extend*/
 
+/*LOADER*/
+.loader {
+	display: none;
+	position: fixed;
+	top: 45%;
+	left: 45%;
+	z-index: 999999;
+}
+/*FINISH LOADER*/
+
 /*LEFT PANEL*/
-.status-panel {
+.updates-panel {
 	padding-right: 0px;
 	padding-left: 0px;
 
-	.status-panel-header {
+	.updates-panel-header {
 		width: 100%;
 
 		background-color: $left_header_background;
@@ -25,6 +35,49 @@ $panel_text_color: #000000;
 			color: #ffffff;
 			font-size: 5em;
 			padding: 20px;
+			margin: 0px;
+		}
+	}
+
+	.updates-panel-content {
+
+		background-color: $left_container_background;
+
+		.new-stand-up-container {
+			height: 50px;
+		}
+
+		button {
+
+			float: right;
+			margin: 10px;
+			cursor: context-menu;
+		}
+
+		.no-stand-ups {
+			font-size: 1.5em;
+		}
+	}
+
+	.status-container {
+		margin: 0px 20px;
+
+		.stand-up-container {
+			.date {
+				font-size: 1.2em;
+				font-weight: bold;
+				margin-bottom: 5px;
+			}
+
+			.stand-ups {
+				list-style: none;
+				text-align: justify;
+
+				.status-text {
+					font-size: 1.5em;
+					margin-bottom: 15px;
+				}
+			}
 		}
 	}
 }
@@ -63,6 +116,7 @@ $panel_text_color: #000000;
 
 			float: right;
 			margin: 10px;
+			cursor: context-menu;
 		}
 
 		.no-milestones {
@@ -75,7 +129,7 @@ $panel_text_color: #000000;
 
 		margin: 15px 0px;
 
-		cursor: pointer;
+		cursor: context-menu;
 
 		.milestone-header {
 
@@ -111,6 +165,8 @@ $panel_text_color: #000000;
 			    box-shadow: 0 0 1px gray;
 			    font-size:10px;
 			    font-weight:bold;
+			    cursor: cell;
+			    z-index: 2;
 			}
 		}
 

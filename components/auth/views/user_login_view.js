@@ -3,7 +3,8 @@
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
 	template = require('../templates/user_login_template.html'),
-	UserLoginModel = require('../entities/user_login_model.js');
+	UserLoginModel = require('../entities/user_login_model.js'),
+	loader = require('../../layout/loader.js');
 
 var UserLoginView = Marionette.ItemView.extend({
 
@@ -63,6 +64,7 @@ var UserLoginView = Marionette.ItemView.extend({
 	loginUser: function() {
 
 		if(this.validateLogin()) {
+			loader.show();
 
 			this.model.set({
 				email: this.$('#email_login').val(),
@@ -78,6 +80,7 @@ var UserLoginView = Marionette.ItemView.extend({
 					
 					window.location.replace('/#');
 					window.location.reload();
+					loader.hide();
 				},
 				error: function (model, xhr, options) {
 
@@ -85,6 +88,7 @@ var UserLoginView = Marionette.ItemView.extend({
 
 					window.location.replace('/#');
 					window.location.reload();
+					loader.hide();
 				}
 			});
 		}

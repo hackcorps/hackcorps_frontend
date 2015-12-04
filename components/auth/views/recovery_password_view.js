@@ -3,7 +3,8 @@
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
 	template = require('../templates/recovery_password_template.html'),
-	RecoveryPasswordModel = require('../entities/recovery_password_model.js');
+	RecoveryPasswordModel = require('../entities/recovery_password_model.js'),
+	loader = require('../../layout/loader.js');
 
 var RecoveryPasswordView = Marionette.ItemView.extend({
 
@@ -47,6 +48,7 @@ var RecoveryPasswordView = Marionette.ItemView.extend({
 	recoveryPassword: function () {
 		
 		if(this.validateRecovery()) {
+			loader.show();
 
 			this.model.set({
 				email: this.$('.email_recovery').val(),
@@ -57,6 +59,7 @@ var RecoveryPasswordView = Marionette.ItemView.extend({
 
 					window.location.replace('/#');
 					window.location.reload();
+					loader.hide();
 				},
 				error: function (model, xhr, options) {
 					
@@ -64,6 +67,7 @@ var RecoveryPasswordView = Marionette.ItemView.extend({
 
 					window.location.replace('/#');
 					window.location.reload();
+					loader.hide();
 				}
 			});
 		}

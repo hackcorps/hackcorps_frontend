@@ -3,11 +3,19 @@
 require('./styles/main.scss');
 
 var Backbone = require('backbone'),
-	Marionette = require('backbone.marionette');
+	Marionette = require('backbone.marionette'),
+	loader = require('./layout/loader.js');
 
 var App = window.App = new Marionette.Application();
 
+var loaderImg = document.createElement('img');
+loaderImg.setAttribute('src', 'images/loader.gif');
+loaderImg.setAttribute('alt', 'loading...');
+loaderImg.setAttribute('class', 'loader');
+document.body.appendChild(loaderImg);
+
 App.on('before:start', function() {
+
 	var RegionContainer = Marionette.LayoutView.extend({
 		el: '#app-container',
 
@@ -57,6 +65,7 @@ App.commands.setHandler('logged_in', function() {
 });
 
 App.on('start', function() {
+
 	if(Backbone.history) {
 		Backbone.history.start();
 	}
@@ -79,7 +88,6 @@ App.on('start', function() {
 	} else {
     	App.execute('logged_out');
   	}
-
 });
 
 module.exports = App;
