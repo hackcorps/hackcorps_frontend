@@ -6,8 +6,7 @@ module.exports = {
 	entry: './app.js',
 	output: {
 		path: './build/', 
-		filename: 'bundle.js',
-		publicPath: '/public/assets'
+		filename: 'bundle.js'
 	},
 	resolve: {
 		modulesDirectories: ['node_modules'],
@@ -25,7 +24,7 @@ module.exports = {
 		],*/
 		loaders: [
 			{
-				test: /\.(png|jpg|ttf|eot|woff)$/,
+				test: /\.(png|jpg|gif|ttf|eot|woff)$/,
 				loader: 'url-loader?limit=10000',
 				exclude: /node_modules/
 			},

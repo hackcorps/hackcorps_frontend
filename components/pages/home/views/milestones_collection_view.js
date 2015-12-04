@@ -12,7 +12,17 @@ var MilestonesCollectionView = Marionette.CollectionView.extend({
     
     emptyView: NoMilestonesView,
     
-    childView: MilestonesItemView
+    childView: MilestonesItemView,
+
+    viewComparator: 'percent_complete',
+
+    onShow: function() {
+    	this.haveRendered();
+    },
+
+    haveRendered: function() {
+    	this.triggerMethod('panels:rendered');
+    }
     
 });
 

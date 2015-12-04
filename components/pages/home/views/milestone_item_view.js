@@ -8,7 +8,8 @@ var MilestonesItemView = Marionette.ItemView.extend({
     template: template,
 
     events: {
-    	'click .milestone-container': 'showEditMilestoneModal'
+    	'click .milestone-container': 'showEditMilestoneModal',
+        'click .ok-button': 'completeMilestone'
     },
 
     modelEvents: {
@@ -16,11 +17,29 @@ var MilestonesItemView = Marionette.ItemView.extend({
   	},
 
     onModelChange: function() {
-    	this.render();;
+    	this.render();
     },
 
     showEditMilestoneModal: function() {
         App.vent.trigger('click:milestone', this.model);
+    },
+
+    completeMilestone: function(e) {
+        e.stopPropagation();
+
+        if( this.model.get('percent_complete') >= 100) {
+            return;
+        }
+
+        this.model.set( {'percent_complete': '100'} );
+        this.model.save( {}, {
+            wait: true,
+            success:function(model, response) {
+            },
+            error: function() {
+                alert('some error');
+            }
+        });
     }
 });
 

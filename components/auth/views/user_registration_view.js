@@ -3,7 +3,8 @@
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
 	template = require('../templates/user_registration_template.hbs'),
-	UserRegistrationModel = require('../entities/user_registration_model.js');
+	UserRegistrationModel = require('../entities/user_registration_model.js'),
+	loader = require('../../layout/loader.js');
 
 var UserRegistrationView = Marionette.ItemView.extend({
 
@@ -30,6 +31,7 @@ var UserRegistrationView = Marionette.ItemView.extend({
 			inviteToken = window.localStorage.getItem('invite_token');
 
 		if(this.validateForm('signup')) {
+			loader.show();
 
 			this.model.set({
 				full_name: this.$('#username').val(),
@@ -49,7 +51,8 @@ var UserRegistrationView = Marionette.ItemView.extend({
 					window.localStorage.setItem('organization', response.user.organization);
 
 					window.location.replace('/#');
-					window.location.reload();				
+					window.location.reload();	
+					loader.hide	();		
 				},
 				error: function (model, xhr, options) {
 					
@@ -57,6 +60,7 @@ var UserRegistrationView = Marionette.ItemView.extend({
 
 					window.location.replace('/#')
 					window.location.reload();
+					loader.hide();
 				}
 			});
 		}

@@ -8,6 +8,10 @@ var MilestonesCollection = Backbone.Collection.extend({
 	/*url: 'http://localhost:3000/api/v1/milestones',*/
 	model: MilestoneModel,
 
+	comparator: function(milestone) {
+        return milestone.get('percent_complete');
+    },
+
 	parse: function(response) {
 		return response.milestones;
 	}
