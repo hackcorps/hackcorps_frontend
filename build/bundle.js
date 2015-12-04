@@ -17498,8 +17498,8 @@
 
 			$.ajax({
 				type: 'DELETE',
-				/*url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',*/
-				url: 'http://localhost:3000/api/v1/users/sign_out',
+				url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
+				/*url: 'http://localhost:3000/api/v1/users/sign_out',*/
 				dataType: 'json',
 				crossDomain: true,
 				xhrFields: { withCredentials: false },
@@ -18972,8 +18972,8 @@
 	__webpack_require__(50);
 
 	var UserRegistrationModel = Backbone.Model.extend({
-		/*urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',*/
-		urlRoot: 'http://localhost:3000/api/v1/users',
+		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',
+		/*urlRoot: 'http://localhost:3000/api/v1/users',*/
 		paramRoot: 'user',
 
 		defaults: {
@@ -19161,8 +19161,8 @@
 	__webpack_require__(50);
 
 	var UserLoginModel = Backbone.Model.extend({
-		/*urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_in',*/
-		urlRoot: 'http://localhost:3000/api/v1/users/sign_in',
+		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_in',
+		/*urlRoot: 'http://localhost:3000/api/v1/users/sign_in',*/
 		paramRoot: 'user',
 
 		defaults: {
@@ -19276,8 +19276,8 @@
 	__webpack_require__(50);
 
 	var RecoveryPasswordModel = Backbone.Model.extend({
-		/*urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/password',*/
-		urlRoot: 'http://localhost:3000/api/v1/users/password',
+		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
+		/*urlRoot: 'http://localhost:3000/api/v1/users/password',*/
 
 		paramRoot: 'user',
 
@@ -19353,8 +19353,8 @@
 
 			$.ajax({
 				type: 'PUT',
-				/*url: 'http://hackdashboard.herokuapp.com/api/v1/users/password',*/
-				urlRoot: 'http://localhost:3000/api/v1/users/password',
+				url: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
+				/*urlRoot: 'http://localhost:3000/api/v1/users/password',*/
 				dataType: 'json',
 				crossDomain: true,
 				xhrFields: { withCredentials: false },
@@ -22199,8 +22199,8 @@
 	__webpack_require__(50);
 
 	var MilestoneModel = Backbone.Model.extend({
-	    /*urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/milestones',*/
-	    urlRoot: 'http://localhost:3000/api/v1/milestones',
+	    urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+	    /*urlRoot: 'http://localhost:3000/api/v1/milestones',*/
 	    paramRoot: 'milestone',
 
 	    defaults: {
@@ -22226,8 +22226,8 @@
 	var MilestoneModel = __webpack_require__(69);
 
 	var MilestonesCollection = Backbone.Collection.extend({
-		/*url: 'http://hackdashboard.herokuapp.com/api/v1/milestones',*/
-		url: 'http://localhost:3000/api/v1/milestones',
+		url: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+		/*url: 'http://localhost:3000/api/v1/milestones',*/
 		model: MilestoneModel,
 
 		comparator: function comparator(milestone) {
@@ -33938,8 +33938,8 @@
 	__webpack_require__(50);
 
 	var StandUpModel = Backbone.Model.extend({
-	    /*urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/stand_ups',*/
-	    urlRoot: 'http://localhost:3000/api/v1/stand_ups',
+	    urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/stand_ups',
+	    /*urlRoot: 'http://localhost:3000/api/v1/stand_ups',*/
 	    paramRoot: 'stand_up',
 
 	    defaults: {
@@ -33965,8 +33965,8 @@
 	var StandUpModel = __webpack_require__(166);
 
 	var StandUpsCollection = Backbone.Collection.extend({
-		/*url: 'http://hackdashboard.herokuapp.com/api/v1/stand_ups',*/
-		url: 'http://localhost:3000/api/v1/stand_ups',
+		url: 'http://hackdashboard.herokuapp.com/api/v1/stand_ups',
+		/*url: 'http://localhost:3000/api/v1/stand_ups',*/
 		model: StandUpModel,
 
 		parse: function parse(response) {
