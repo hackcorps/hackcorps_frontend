@@ -1,9 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
-/*var ExtractTextPlugin = require('extract-text-webpack-plugin');*/
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	entry: './app.js',
+	entry: [
+       /* 'webpack-dev-server/client?http://localhost:3000',*/
+        './app.js'
+    ],
 	output: {
 		path: './build/', 
 		filename: 'bundle.js'
@@ -13,6 +16,7 @@ module.exports = {
 		extensions: ['', '.js', '.es6']
 	},
 	watch: true,
+    keepalive: true,
 	devtool: 'sourse-map',
 	module: {
 		/*preLoaders: [
@@ -33,7 +37,7 @@ module.exports = {
 				loader: 'babel',
 				exclude: /node_modules/
 			},
-	/*		{
+			{
 				test: /\.scss$/,
 				loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader?sourceMap'),
 				exclude: /node_modules/
@@ -42,37 +46,31 @@ module.exports = {
 				test: /\.css$/,
 				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap'),
 				exclude: /node_modules/
-			},*/
-			{
+			},
+/*			{
 				test: /\.scss$/,
 				loader: 'style-loader!css-loader!sass-loader?sourceMap!autoprefixer-loader', 
-				include: path.join(__dirname, 'components/styles')
+				include: path.join(__dirname, 'app/styles')
 			},
 			{
 				test: /\.css$/,
 				loader: 'style-loader!css-loader?sourceMap!autoprefixer-loader', 
-				include: path.join(__dirname, 'components/styles')
-			},
+				include: path.join(__dirname, 'app/styles')
+			},*/
 			{ 
 				test: /\.html$/, 
 				loader: 'html-loader',
-				include: path.join(__dirname, 'components')
+				exclude: /node_modules/
 			},
 			{
 				test: /\.hbs/,
 				loader: 'handlebars-loader',
-				exclude: /(node_modules|bower_components|web_modules)/
+				exclude: /node_modules/
 			}
 		]
 	},
-	/*node: {
-        fs: "empty"
-    },*/
-    /*amd: { 
-    	jQuery: true 
-    },*/
 	plugins: [
-		/*new ExtractTextPlugin('styles.css'),*/
+		new ExtractTextPlugin('styles.css'),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
@@ -80,5 +78,22 @@ module.exports = {
 			'root.jQuery': 'jquery',
 			'_': 'underscore'
 		})
-	]
+	],
+	// test environment build
+	test: function (config) {
+	  return {
+	    entry: './tests.webpack.js',
+	    output: _.assign({}, config.output, {
+	      // client assets are output to dist/test/
+	      path: path.join(config.output.path, 'test'),
+	      publicPath: undefined // no assets CDN
+	    }),
+	    devtool: 'inline-source-map', // sourcemap support
+	    plugins: config.plugins.concat(
+	      new webpack.DefinePlugin({
+	        'typeof window': JSON.stringify("object")
+	      })
+	    )
+	  };
+	}
 }
