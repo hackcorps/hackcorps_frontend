@@ -22117,7 +22117,7 @@
 	    + alias4(((helper = (helper = helpers.noted_at || (depth0 != null ? depth0.noted_at : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"noted_at","hash":{},"data":data}) : helper)))
 	    + "\" />\n	        <p class=\"error updates_text_error\">Enter a valid Date!</p>\n	    </div>\n	    <div class=\"form-group\">\n	        <label for=\"milestone\">Milestone:</label>\n	        <select id=\"milestone-id\" name=\"milstonelist\" class=\"milestone-select col-xs-10\">\n			</select>\n	    </div>\n	    <div class=\"form-group\">\n	        <label for=\"status\" class=\"label-status-text\">My daily status:</label>\n	        <textarea id=\"status-text\"name=\"status\" type=\"text\" class=\"form-control\" rows=\"8\" autofocus=\"true\">"
 	    + alias4(((helper = (helper = helpers.update_text || (depth0 != null ? depth0.update_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"update_text","hash":{},"data":data}) : helper)))
-	    + "\n	        </textarea>\n	        <p class=\"error updates_text_error\">Enter a valid Status!</p>\n	    </div>\n	    	<div>\n"
+	    + "</textarea>\n	        <p class=\"error updates_text_error\">Enter a valid Status!</p>\n	    </div>\n	    	<div>\n"
 	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.milestone_id : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
 	    + "			</div>\n	</form>\n</div>";
 	},"useData":true});
