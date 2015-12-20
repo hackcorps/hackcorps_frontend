@@ -57,6 +57,10 @@ $panel_text_color: #000000;
 		.no-stand-ups {
 			font-size: 1.5em;
 		}
+
+		.no-summaries {
+			font-size: 1.5em;
+		}
 	}
 
 	.status-container {
@@ -76,6 +80,32 @@ $panel_text_color: #000000;
 				.status-text {
 					font-size: 1.5em;
 					margin-bottom: 15px;
+				}
+			}
+		}
+	}
+
+	.summaries-container {
+		margin: 0px 20px;
+
+		.summary-container {
+			.date {
+				font-size: 1.2em;
+				font-weight: bold;
+				margin-bottom: 5px;
+			}
+
+			.summaries {
+				list-style: none;
+				text-align: justify;
+
+				.status-text {
+					font-size: 1.5em;
+					margin-bottom: 15px;
+
+					span {
+						font-weight: bold;
+					}
 				}
 			}
 		}

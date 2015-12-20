@@ -2,7 +2,7 @@
 
 var Backbone = require('backbone'),
     Marionette = require('backbone.marionette'),
-    AppLayoutView = require('./views/app_layout_view.js');
+    AppLayoutView = require('./views/page_layout_view.js');
 
 var HomeController = Marionette.ItemView.extend({
     

@@ -41,8 +41,8 @@ var HeaderView = Marionette.ItemView.extend({
 
 		$.ajax({
 			type: 'DELETE',
-			url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
-			/*url: 'http://localhost:3000/api/v1/users/sign_out',*/
+			// url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
+			url: 'http://localhost:3000/api/v1/users/sign_out',
 			dataType: 'json',
 			crossDomain: true,
 			xhrFields: {withCredentials: false},

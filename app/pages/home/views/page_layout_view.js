@@ -12,10 +12,15 @@ var Backbone = require('backbone'),
     StandUpModel = require('../entities/stand_up_model.js'),
     StandUpsCollection = require('../entities/stand_ups_collections.js'),
     StandUpsCollectionView = require('./stand_ups/stand_ups_collection_view.js'),
+    SummaryItemView = require('./summaries/summary_item_view.js'),
+    NewSummaryModalItemView = require('./summaries/new_summary_modal_item_view.js'),
+    SummaryModel = require('../entities/summary_model.js'),
+    SummariesCollection = require('../entities/summaries_collections.js'),
+    SummariesCollectionView = require('./summaries/summaries_collection_view.js'),
     template = require('../templates/app_layout_template.hbs'),
     loader = require('../../../layout/loader.js');
 
-var AppLayoutView = Marionette.LayoutView.extend({
+var PageLayoutView = Marionette.LayoutView.extend({
 
     template: template,
 
@@ -28,6 +33,7 @@ var AppLayoutView = Marionette.LayoutView.extend({
     events: {
     	'click .new-milestone': 'showMilestoneModal',
         'click .new-stand-up': 'showStandUpModal',
+        'click .new-summary': 'showSummaryModal',
     	'click .close': 'hideModal'
     },
 
@@ -60,19 +66,23 @@ var AppLayoutView = Marionette.LayoutView.extend({
 
     onRender: function() {
         var self = this,
-            milestonesCollection = new MilestonesCollection(),
             standUpsCollection = new StandUpsCollection();
-        
-        milestonesCollection.fetch({
-            
-            success: function(milestonesCollection, response, options) {
-                self.milestonesCollectionView = new MilestonesCollectionView( { collection:milestonesCollection } );
-                self.showChildView('milestones', self.milestonesCollectionView);
-            },
-            error: function() {
-                alert('some error');
-            }
+
+        var fetchingMilestones = App.request('milestone:entities');
+
+        $.when(fetchingMilestones).done(function(milestones){
+            self.milestonesCollectionView = new MilestonesCollectionView( { collection:milestones } );
+            self.showChildView('milestones', self.milestonesCollectionView);
         });
+
+        // var fetchingSummaries = App.request('summary:entities');
+
+        // $.when(fetchingSummaries).done(function(summaries){
+        //     alert();
+        //     console.log(summaries);
+        //     self.summariesCollectionView = new SummariesCollectionView( { collection:summaries } );
+        //     self.showChildView('updates', self.summariesCollectionView);
+        // });
 
         standUpsCollection.fetch({
             
@@ -112,6 +122,10 @@ var AppLayoutView = Marionette.LayoutView.extend({
         _.each(milestNameArr, function(milst){ 
             $('.milestone-select').append('<option>'+milst+'</option>');
         });
+    },
+
+    showSummaryModal: function() {
+        this.showChildView('dialog', new NewSummaryModalItemView({ model: new SummaryModel() }) );
     },
 
     hideModal: function() {
@@ -154,4 +168,4 @@ var AppLayoutView = Marionette.LayoutView.extend({
 
 });
 
-module.exports = AppLayoutView;
+module.exports = PageLayoutView;
