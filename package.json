@@ -17,7 +17,10 @@
     "jquery": "~2.1.4",
     "underscore": "^1.8.3",
     "jquery-ui": "~1.10.5",
-    "moment": "~2.10.6"
+    "moment": "~2.10.6",
+    "less": "~2.5.3",
+    "less-loader": "~2.2.2",
+    "bootstrap-webpack": "0.0.5"
   },
   "devDependencies": {
     "webpack": "^1.12.2",

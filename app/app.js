@@ -1,6 +1,7 @@
 'use strict';
 
 require('./styles/main.scss');
+require('bootstrap-webpack');
 
 var Backbone = require('backbone'),
 	Marionette = require('backbone.marionette'),
