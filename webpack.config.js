@@ -1,11 +1,11 @@
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path'),
+	webpack = require('webpack'),
+	ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: [
        /* 'webpack-dev-server/client?http://localhost:3000',*/
-        './app.js'
+        './main.js'
     ],
 	output: {
 		path: './build/', 
@@ -66,7 +66,16 @@ module.exports = {
 				test: /\.hbs/,
 				loader: 'handlebars-loader',
 				exclude: /node_modules/
-			}
+			},
+			{ 
+		    test: /bootstrap\/js\//, 
+		    loader: 'imports?jQuery=jquery' 
+		   	},
+		   	{ test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
+		   	{ test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: "url?limit=10000&mimetype=application/font-woff" },
+		   	{ test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
+		   	{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
+		   	{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" }
 		]
 	},
 	plugins: [

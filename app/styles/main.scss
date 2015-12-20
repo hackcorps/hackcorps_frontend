@@ -3,7 +3,6 @@
 @import './pages/_index.scss';
 @import './pages/_home.scss';
 @import './pages/_auth.scss';
-@import './vendor/jquery-ui.min.css';
 
 * {
 	margin: 0;
@@ -14,6 +13,4 @@
 body {
 	font-family: Roboto;
 	font-size: 1em;
-/*	color: $white;
-	background-color: #81ac50;*/
 }
