@@ -86,6 +86,7 @@ module.exports = {
 			'window.jQuery': 'jquery',
 			'root.jQuery': 'jquery',
 			'_': 'underscore'
+			'Backbone': 'backbone'
 		})
 	],
 	// test environment build

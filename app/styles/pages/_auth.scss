@@ -310,3 +310,54 @@ $form_text_color: #000000;
 	}
 }
 /*FINISH MILESTONE MODAL*/
+
+/*SUMMARY MODAL*/
+#summaryModal {
+
+	position: absolute;
+	z-index: 3;
+	top: 50px;
+
+	color: $form_text_color;
+
+	form {
+		position: relative;
+		margin-top: 13%;
+		background-color: $form_background_color;
+
+		border: 7px solid $form_border_color;
+
+		.form-group {
+			
+			@extend .form_group_content;
+
+			margin: 4%;
+
+		}
+
+		.label-status-text {
+			margin-top: 10px;
+		}
+
+		.close {
+			margin-top: 1%;
+			margin-right: 2%;
+		}
+
+		.submit_button {
+			margin-left: 4%;
+			margin-bottom: 4%;
+		}
+
+		.delete_button {
+			margin-left: 4%;
+			margin-bottom: 4%;
+		}
+
+		.update_button {
+			position: absolute;
+			right: 4%;
+		}
+	}
+}
+/*FINISH SUMMARY MODAL*/

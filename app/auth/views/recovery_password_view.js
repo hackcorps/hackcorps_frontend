@@ -1,7 +1,6 @@
 'use strict';
 
-var Backbone = require('backbone'),
-	Marionette = require('backbone.marionette'),
+var Marionette = require('backbone.marionette'),
 	template = require('../templates/recovery_password_template.html'),
 	RecoveryPasswordModel = require('../entities/recovery_password_model.js'),
 	loader = require('../../layout/loader.js');

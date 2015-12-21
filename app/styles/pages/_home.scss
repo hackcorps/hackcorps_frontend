@@ -54,7 +54,21 @@ $panel_text_color: #000000;
 			cursor: context-menu;
 		}
 
+		.show-stand-ups {
+			margin: 10px;
+			color: green;
+			cursor: context-menu;
+		}
+
+		.show-stand-ups:hover {
+			text-decoration: underline;
+		}
+
 		.no-stand-ups {
+			font-size: 1.5em;
+		}
+
+		.no-summaries {
 			font-size: 1.5em;
 		}
 	}
@@ -76,6 +90,41 @@ $panel_text_color: #000000;
 				.status-text {
 					font-size: 1.5em;
 					margin-bottom: 15px;
+
+					span {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+
+	.summaries-container {
+		margin: 0px 20px;
+
+		.summary-container {
+			.date {
+				font-size: 2em;
+				font-weight: bold;
+				margin-bottom: 5px;
+			}
+
+			.summary {
+				font-size: 1.5em;
+			}
+
+			.summaries {
+				margin-left: 15px;
+				list-style-type: circle;
+				text-align: justify;
+				font-size: 1.5em;
+
+				.status-text {
+					margin-bottom: 15px;
+
+					span {
+						font-weight: bold;
+					}
 				}
 			}
 		}

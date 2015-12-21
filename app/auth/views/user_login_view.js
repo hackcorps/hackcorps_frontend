@@ -1,7 +1,6 @@
 'use strict';
 
-var Backbone = require('backbone'),
-	Marionette = require('backbone.marionette'),
+var Marionette = require('backbone.marionette'),
 	template = require('../templates/user_login_template.html'),
 	UserLoginModel = require('../entities/user_login_model.js'),
 	loader = require('../../layout/loader.js');

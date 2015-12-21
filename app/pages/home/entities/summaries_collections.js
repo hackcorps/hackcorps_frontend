@@ -14,4 +14,27 @@ var SummariesCollection = Backbone.Collection.extend({
 
 });
 
+var API = {
+	    getSummaryEntities: function() {
+	      var summaries = new SummariesCollection();
+	      var defer = $.Deferred();
+	      
+	      summaries.fetch({
+	      	success: function(data){
+	        	defer.resolve(data);
+	        },
+	        error: function() {
+                alert('some error');
+            }
+	      });
+	      
+	      var promise = defer.promise();
+	      return promise;
+	    }
+	};
+
+App.reqres.setHandler('summary:entities', function(){
+	return API.getSummaryEntities();
+});
+
 module.exports = SummariesCollection;

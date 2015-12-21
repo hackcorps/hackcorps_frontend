@@ -1,0 +1,11 @@
+<div class="summary-container">
+	<p class="date">{{noted_date}}</p>
+	<p class="summary">{{text}}</p>
+	<ul class="summaries">
+		{{#each stand_ups}}
+		<li class="summary-item">
+			<p class="status-text">{{update_text}} <span> - {{user}}</span></p>
+		</li>
+		{{/each}}
+	</ul>
+</div>
