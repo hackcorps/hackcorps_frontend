@@ -20,7 +20,7 @@ var SummaryItemView = Marionette.ItemView.extend({
     },
 
     showEditSummaryModal: function() {
-        App.vent.trigger('click:standup', this.model);
+        App.vent.trigger('click:summary', this.model);
     }
 });
 

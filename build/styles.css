@@ -141,6 +141,12 @@ input.quote-email {
       float: right;
       margin: 10px;
       cursor: context-menu; }
+    .updates-panel .updates-panel-content .show-stand-ups {
+      margin: 10px;
+      color: green;
+      cursor: context-menu; }
+    .updates-panel .updates-panel-content .show-stand-ups:hover {
+      text-decoration: underline; }
     .updates-panel .updates-panel-content .no-stand-ups {
       font-size: 1.5em; }
     .updates-panel .updates-panel-content .no-summaries {
@@ -157,17 +163,22 @@ input.quote-email {
       .updates-panel .status-container .stand-up-container .stand-ups .status-text {
         font-size: 1.5em;
         margin-bottom: 15px; }
+        .updates-panel .status-container .stand-up-container .stand-ups .status-text span {
+          font-weight: bold; }
   .updates-panel .summaries-container {
     margin: 0px 20px; }
     .updates-panel .summaries-container .summary-container .date {
-      font-size: 1.2em;
+      font-size: 2em;
       font-weight: bold;
       margin-bottom: 5px; }
+    .updates-panel .summaries-container .summary-container .summary {
+      font-size: 1.5em; }
     .updates-panel .summaries-container .summary-container .summaries {
-      list-style: none;
-      text-align: justify; }
+      margin-left: 15px;
+      list-style-type: circle;
+      text-align: justify;
+      font-size: 1.5em; }
       .updates-panel .summaries-container .summary-container .summaries .status-text {
-        font-size: 1.5em;
         margin-bottom: 15px; }
         .updates-panel .summaries-container .summary-container .summaries .status-text span {
           font-weight: bold; }

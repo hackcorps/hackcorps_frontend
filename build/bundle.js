@@ -135,8 +135,7 @@
 	__webpack_require__(72);
 	__webpack_require__(76);
 
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
+	var Marionette = __webpack_require__(100),
 	    loader = __webpack_require__(103);
 
 	var App = window.App = new Marionette.Application();
@@ -20000,8 +19999,7 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
+	var Marionette = __webpack_require__(100),
 	    template = __webpack_require__(106),
 	    loader = __webpack_require__(103);
 
@@ -20041,8 +20039,8 @@
 
 			$.ajax({
 				type: 'DELETE',
-				// url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
-				url: 'http://localhost:3000/api/v1/users/sign_out',
+				url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
+				// url: 'http://localhost:3000/api/v1/users/sign_out',
 				dataType: 'json',
 				crossDomain: true,
 				xhrFields: { withCredentials: false },
@@ -20119,8 +20117,7 @@
 
 	'use strict';
 
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
+	var Marionette = __webpack_require__(100),
 	    UserRegistrationView = __webpack_require__(112),
 	    HeaderView = __webpack_require__(105),
 	    UserLoginView = __webpack_require__(135),
@@ -20169,8 +20166,7 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
+	var Marionette = __webpack_require__(100),
 	    template = __webpack_require__(113),
 	    UserRegistrationModel = __webpack_require__(133),
 	    loader = __webpack_require__(103);
@@ -21515,8 +21511,8 @@
 	__webpack_require__(134);
 
 	var UserRegistrationModel = Backbone.Model.extend({
-		// urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',
-		urlRoot: 'http://localhost:3000/api/v1/users',
+		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users',
+		// urlRoot: 'http://localhost:3000/api/v1/users',
 		paramRoot: 'user',
 
 		defaults: {
@@ -21579,8 +21575,7 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
+	var Marionette = __webpack_require__(100),
 	    template = __webpack_require__(136),
 	    UserLoginModel = __webpack_require__(137),
 	    loader = __webpack_require__(103);
@@ -21704,8 +21699,8 @@
 	__webpack_require__(134);
 
 	var UserLoginModel = Backbone.Model.extend({
-		// urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_in',
-		urlRoot: 'http://localhost:3000/api/v1/users/sign_in',
+		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_in',
+		// urlRoot: 'http://localhost:3000/api/v1/users/sign_in',
 		paramRoot: 'user',
 
 		defaults: {
@@ -21722,8 +21717,7 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
+	var Marionette = __webpack_require__(100),
 	    template = __webpack_require__(139),
 	    RecoveryPasswordModel = __webpack_require__(140),
 	    loader = __webpack_require__(103);
@@ -21819,8 +21813,8 @@
 	__webpack_require__(134);
 
 	var RecoveryPasswordModel = Backbone.Model.extend({
-		// urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
-		urlRoot: 'http://localhost:3000/api/v1/users/password',
+		urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
+		// urlRoot: 'http://localhost:3000/api/v1/users/password',
 
 		paramRoot: 'user',
 
@@ -21838,8 +21832,7 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
+	var Marionette = __webpack_require__(100),
 	    template = __webpack_require__(142),
 	    RecoveryPasswordCreateModel = __webpack_require__(143),
 	    loader = __webpack_require__(103);
@@ -21897,7 +21890,7 @@
 			$.ajax({
 				type: 'PUT',
 				url: 'http://hackdashboard.herokuapp.com/api/v1/users/password',
-				/*urlRoot: 'http://localhost:3000/api/v1/users/password',*/
+				// url: 'http://localhost:3000/api/v1/users/password',
 				dataType: 'json',
 				crossDomain: true,
 				xhrFields: { withCredentials: false },
@@ -21964,9 +21957,8 @@
 
 	'use strict';
 
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
-	    AppLayoutView = __webpack_require__(256);
+	var Marionette = __webpack_require__(100),
+	    AppLayoutView = __webpack_require__(145);
 
 	var HomeController = Marionette.ItemView.extend({
 
@@ -21985,7 +21977,202 @@
 	module.exports = HomeController;
 
 /***/ },
-/* 145 */,
+/* 145 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($, _) {'use strict';
+
+	var Marionette = __webpack_require__(100),
+	    MilestoneItemView = __webpack_require__(146),
+	    NewMilestoneModalItemView = __webpack_require__(149),
+	    MilestoneModel = __webpack_require__(153),
+	    MilestonesCollection = __webpack_require__(154),
+	    MilestonesCollectionView = __webpack_require__(155),
+	    StandUpItemView = __webpack_require__(158),
+	    NewStandUpModalItemView = __webpack_require__(160),
+	    StandUpModel = __webpack_require__(250),
+	    StandUpsCollection = __webpack_require__(251),
+	    StandUpsCollectionView = __webpack_require__(252),
+	    SummaryItemView = __webpack_require__(255),
+	    NewSummaryModalItemView = __webpack_require__(257),
+	    SummaryModel = __webpack_require__(259),
+	    SummariesCollection = __webpack_require__(260),
+	    SummariesCollectionView = __webpack_require__(261),
+	    template = __webpack_require__(264),
+	    loader = __webpack_require__(103);
+
+	var PageLayoutView = Marionette.LayoutView.extend({
+
+	    template: template,
+
+	    regions: {
+	        updates: '#updates-region',
+	        dialog: '#dialog-region',
+	        milestones: '#milestones-region'
+	    },
+
+	    events: {
+	        'click .new-milestone': 'showMilestoneModal',
+	        'click .new-stand-up': 'showStandUpModal',
+	        'click .new-summary': 'showSummaryModal',
+	        'click .show-stand-ups': 'showStandUps',
+	        'click .close': 'hideModal'
+	    },
+
+	    childEvents: {
+	        'added:milestone': 'onChildAddMilestone',
+	        'added:standup': 'onChildAddStandup',
+	        'added:summary': 'onChildAddSummary',
+	        'entity:action': 'hideModal',
+	        'trigger:milestone:id': 'onChildTriggerMilestoneId',
+	        'panels:rendered': 'onWindowResize'
+	    },
+
+	    onShow: function onShow() {
+	        loader.hide();
+	    },
+
+	    initialize: function initialize() {
+	        var self = this;
+
+	        App.vent.on('click:milestone', function (message) {
+	            self.onChildClickMilestone(message);
+	        });
+
+	        App.vent.on('click:standup', function (message) {
+	            self.onChildClickStandUp(message);
+	        });
+
+	        App.vent.on('click:summary', function (message) {
+	            self.onChildClickSummary(message);
+	        });
+	    },
+
+	    onRender: function onRender() {
+	        var self = this,
+	            fetchingMilestones = App.request('milestone:entities'),
+	            fetchingSummaries = App.request('summary:entities');
+
+	        $.when(fetchingMilestones).done(function (milestones) {
+	            self.milestonesCollectionView = new MilestonesCollectionView({ collection: milestones });
+	            self.showChildView('milestones', self.milestonesCollectionView);
+	        });
+
+	        $.when(fetchingSummaries).done(function (summaries) {
+	            self.summariesCollectionView = new SummariesCollectionView({ collection: summaries });
+	            self.showChildView('updates', self.summariesCollectionView);
+	        });
+	    },
+
+	    showMilestoneModal: function showMilestoneModal() {
+	        this.showChildView('dialog', new NewMilestoneModalItemView({ model: new MilestoneModel() }));
+	    },
+
+	    showStandUpModal: function showStandUpModal() {
+	        this.showChildView('dialog', new NewStandUpModalItemView({ model: new StandUpModel() }));
+	        var milestNameArr = this.milestonesCollectionView.collection.pluck('name');
+	        _.each(milestNameArr, function (milst) {
+	            $('.milestone-select').append('<option>' + milst + '</option>');
+	        });
+	    },
+
+	    showSummaryModal: function showSummaryModal() {
+	        this.showChildView('dialog', new NewSummaryModalItemView({ model: new SummaryModel() }));
+	    },
+
+	    onChildAddMilestone: function onChildAddMilestone(childView, message) {
+	        this.milestonesCollectionView.collection.add(message);
+	        this.onWindowResize();
+	        this.dialog.empty({ preventDestroy: true });
+	    },
+
+	    onChildAddStandup: function onChildAddStandup(childView, message) {
+	        this.standUpsCollectionView.collection.add(message);
+	        this.onWindowResize();
+	        this.dialog.empty({ preventDestroy: true });
+	    },
+
+	    onChildAddSummary: function onChildAddSummary(childView, message) {
+	        this.summariesCollectionView.collection.add(message);
+	        this.onWindowResize();
+	        this.dialog.empty({ preventDestroy: true });
+	    },
+
+	    onChildClickMilestone: function onChildClickMilestone(message) {
+	        this.showChildView('dialog', new NewMilestoneModalItemView({ model: message }));
+	    },
+
+	    onChildClickStandUp: function onChildClickStandUp(message) {
+	        this.showChildView('dialog', new NewStandUpModalItemView({ model: message }));
+	        var milestNameArr = this.milestonesCollectionView.collection.pluck('name');
+	        _.each(milestNameArr, function (milst) {
+	            $('.milestone-select').append('<option>' + milst + '</option>');
+	        });
+	    },
+
+	    onChildClickSummary: function onChildClickSummary(message) {
+	        this.showChildView('dialog', new NewSummaryModalItemView({ model: message }));
+	    },
+
+	    showStandUps: function showStandUps() {
+	        var self = this,
+	            standUpsCollection = new StandUpsCollection();
+
+	        // var fetchingSummaries = App.request('summary:entities');
+
+	        // $.when(fetchingSummaries).done(function(summaries){
+	        //     alert();
+	        //     console.log(summaries);
+	        //     self.summariesCollectionView = new SummariesCollectionView( { collection:summaries } );
+	        //     self.showChildView('updates', self.summariesCollectionView);
+	        // });
+
+	        standUpsCollection.fetch({
+
+	            success: function success(standUpsCollection, response, options) {
+	                self.standUpsCollectionView = new StandUpsCollectionView({ collection: standUpsCollection });
+	                self.showChildView('updates', self.standUpsCollectionView);
+	            },
+	            error: function error() {
+	                alert('some error');
+	            }
+	        });
+	    },
+
+	    hideModal: function hideModal() {
+	        this.onWindowResize();
+	        this.dialog.empty({ preventDestroy: true });
+	    },
+
+	    onChildTriggerMilestoneId: function onChildTriggerMilestoneId(childView, message) {
+	        var milestone = this.milestonesCollectionView.collection.findWhere({ name: message }),
+	            mid = milestone.id;
+
+	        App.reqres.setHandler('get:milestone:id', function () {
+	            return mid;
+	        });
+	    },
+
+	    onWindowResize: function onWindowResize() {
+	        var rightPanel = $('.milestones-panel-content'),
+	            leftPanel = $('.milestones-panel-content'),
+	            body = document.body,
+	            html = document.documentElement,
+	            height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight),
+	            windowHeight = window.innerHeight,
+	            navbarHeight = document.getElementsByClassName('navbar')[0].clientHeight,
+	            milstonesHeaderHeight = document.getElementsByClassName('milestones-panel-header')[0].clientHeight,
+	            needHeight = height - (navbarHeight + milstonesHeaderHeight);
+
+	        $(rightPanel).css('height', needHeight + 'px');
+	    }
+
+	});
+
+	module.exports = PageLayoutView;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(86), __webpack_require__(99)))
+
+/***/ },
 /* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22145,7 +22332,7 @@
 	            wait: true,
 	            success: function success(model, response) {
 
-	                self.triggerMethod('updated:milestone');
+	                self.triggerMethod('entity:action');
 	            },
 	            error: function error() {
 	                alert('some error');
@@ -22160,7 +22347,7 @@
 	        this.model.destroy({
 	            wait: true,
 	            success: function success(model, response) {
-	                self.triggerMethod('deleted:milestone');
+	                self.triggerMethod('entity:action');
 	            },
 	            error: function error() {
 	                alert('some error');
@@ -24582,8 +24769,8 @@
 	__webpack_require__(134);
 
 	var MilestoneModel = Backbone.Model.extend({
-	    // urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
-	    urlRoot: 'http://localhost:3000/api/v1/milestones',
+	    urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+	    // urlRoot: 'http://localhost:3000/api/v1/milestones',
 	    paramRoot: 'milestone',
 
 	    defaults: {
@@ -24609,8 +24796,8 @@
 	var MilestoneModel = __webpack_require__(153);
 
 	var MilestonesCollection = Backbone.Collection.extend({
-		// url: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
-		url: 'http://localhost:3000/api/v1/milestones',
+		url: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+		// url: 'http://localhost:3000/api/v1/milestones',
 		model: MilestoneModel,
 
 		parse: function parse(response) {
@@ -24744,9 +24931,9 @@
 
 	  return "<div class=\"stand-up-container\">\n	<p class=\"date\">"
 	    + alias4(((helper = (helper = helpers.noted_at || (depth0 != null ? depth0.noted_at : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"noted_at","hash":{},"data":data}) : helper)))
-	    + "</p>\n	<!-- <p class=\"summary\"></p> -->\n	<ul class=\"stand-ups\">\n		<li class=\"stand-up\">\n			<p class=\"status-text\">"
+	    + "</p>\n	<ul class=\"stand-ups\">\n		<li class=\"stand-up\">\n			<p class=\"status-text\">"
 	    + alias4(((helper = (helper = helpers.update_text || (depth0 != null ? depth0.update_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"update_text","hash":{},"data":data}) : helper)))
-	    + " <span> "
+	    + "<span> - "
 	    + alias4(((helper = (helper = helpers.user || (depth0 != null ? depth0.user : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"user","hash":{},"data":data}) : helper)))
 	    + "</span></p>\n		</li>\n	</ul>\n</div>";
 	},"useData":true});
@@ -24825,7 +25012,7 @@
 	            wait: true,
 	            success: function success(model, response) {
 
-	                self.triggerMethod('updated:standup');
+	                self.triggerMethod('entity:action');
 	            },
 	            error: function error() {
 	                alert('some error');
@@ -24840,7 +25027,7 @@
 	        this.model.destroy({
 	            wait: true,
 	            success: function success(model, response) {
-	                self.triggerMethod('deleted:standup');
+	                self.triggerMethod('entity:action');
 	            },
 	            error: function error() {
 	                alert('some error');
@@ -36341,8 +36528,8 @@
 	__webpack_require__(134);
 
 	var StandUpModel = Backbone.Model.extend({
-	    // urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/stand_ups',
-	    urlRoot: 'http://localhost:3000/api/v1/stand_ups',
+	    urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/stand_ups',
+	    // urlRoot: 'http://localhost:3000/api/v1/stand_ups',
 	    paramRoot: 'stand_up',
 
 	    defaults: {
@@ -36368,8 +36555,8 @@
 	var StandUpModel = __webpack_require__(250);
 
 	var StandUpsCollection = Backbone.Collection.extend({
-		// url: 'http://hackdashboard.herokuapp.com/api/v1/stand_ups',
-		url: 'http://localhost:3000/api/v1/stand_ups',
+		url: 'http://hackdashboard.herokuapp.com/api/v1/stand_ups',
+		// url: 'http://localhost:3000/api/v1/stand_ups',
 		model: StandUpModel,
 
 		parse: function parse(response) {
@@ -36439,195 +36626,10 @@
 /* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Handlebars = __webpack_require__(114);
-	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    return "<div>\n	<div class=\"updates-panel col-xs-7\">\n		<div class=\"updates-panel-header\">\n			<p>Updates</p>\n		</div>\n		<div class=\"updates-panel-content\">\n			<div class=\"new-stand-up-container\">\n				<button class=\"btn btn-sm btn-default new-stand-up\">Add status</button>\n				<button class=\"btn btn-sm btn-default new-summary\">Add summary</button>\n			</div>\n			<div id=\"updates-region\"></div>\n		</div>\n	</div>\n	<div id=\"dialog-region\">\n	</div>\n	<div class=\"milestones-panel col-xs-5\">\n		<div class=\"milestones-panel-header\">\n			<p>Milestones</p>\n		</div>\n		<div class=\"milestones-panel-content\">\n			<div class=\"new-milestone-container\">\n				<button class=\"btn btn-sm btn-default new-milestone\">New milestone</button>\n			</div>\n			<div id=\"milestones-region\"></div>\n		</div>\n	</div>\n<div>";
-	},"useData":true});
-
-/***/ },
-/* 256 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function($, _) {'use strict';
-
-	var Backbone = __webpack_require__(98),
-	    Marionette = __webpack_require__(100),
-	    MilestoneItemView = __webpack_require__(146),
-	    NewMilestoneModalItemView = __webpack_require__(149),
-	    MilestoneModel = __webpack_require__(153),
-	    MilestonesCollection = __webpack_require__(154),
-	    MilestonesCollectionView = __webpack_require__(155),
-	    StandUpItemView = __webpack_require__(158),
-	    NewStandUpModalItemView = __webpack_require__(160),
-	    StandUpModel = __webpack_require__(250),
-	    StandUpsCollection = __webpack_require__(251),
-	    StandUpsCollectionView = __webpack_require__(252),
-	    SummaryItemView = __webpack_require__(258),
-	    NewSummaryModalItemView = __webpack_require__(260),
-	    SummaryModel = __webpack_require__(262),
-	    SummariesCollection = __webpack_require__(263),
-	    SummariesCollectionView = __webpack_require__(264),
-	    template = __webpack_require__(255),
-	    loader = __webpack_require__(103);
-
-	var PageLayoutView = Marionette.LayoutView.extend({
-
-	    template: template,
-
-	    regions: {
-	        updates: '#updates-region',
-	        dialog: '#dialog-region',
-	        milestones: '#milestones-region'
-	    },
-
-	    events: {
-	        'click .new-milestone': 'showMilestoneModal',
-	        'click .new-stand-up': 'showStandUpModal',
-	        'click .new-summary': 'showSummaryModal',
-	        'click .close': 'hideModal'
-	    },
-
-	    childEvents: {
-	        'added:milestone': 'onChildAddMilestone',
-	        'added:standup': 'onChildAddStandup',
-	        'deleted:milestone': 'hideModal',
-	        'updated:milestone': 'hideModal',
-	        'deleted:standup': 'hideModal',
-	        'updated:standup': 'hideModal',
-	        'trigger:milestone:id': 'onChildTriggerMilestoneId',
-	        'panels:rendered': 'onWindowResize'
-	    },
-
-	    onShow: function onShow() {
-	        loader.hide();
-	    },
-
-	    initialize: function initialize() {
-	        var self = this;
-
-	        App.vent.on('click:milestone', function (message) {
-	            self.onChildClickMilestone(message);
-	        });
-
-	        App.vent.on('click:standup', function (message) {
-	            self.onChildClickStandUp(message);
-	        });
-	    },
-
-	    onRender: function onRender() {
-	        var self = this,
-	            standUpsCollection = new StandUpsCollection();
-
-	        var fetchingMilestones = App.request('milestone:entities');
-
-	        $.when(fetchingMilestones).done(function (milestones) {
-	            self.milestonesCollectionView = new MilestonesCollectionView({ collection: milestones });
-	            self.showChildView('milestones', self.milestonesCollectionView);
-	        });
-
-	        // var fetchingSummaries = App.request('summary:entities');
-
-	        // $.when(fetchingSummaries).done(function(summaries){
-	        //     alert();
-	        //     console.log(summaries);
-	        //     self.summariesCollectionView = new SummariesCollectionView( { collection:summaries } );
-	        //     self.showChildView('updates', self.summariesCollectionView);
-	        // });
-
-	        standUpsCollection.fetch({
-
-	            success: function success(standUpsCollection, response, options) {
-	                self.standUpsCollectionView = new StandUpsCollectionView({ collection: standUpsCollection });
-	                self.showChildView('updates', self.standUpsCollectionView);
-	            },
-	            error: function error() {
-	                alert('some error');
-	            }
-	        });
-	    },
-
-	    onWindowResize: function onWindowResize() {
-	        var rightPanel = $('.milestones-panel-content'),
-	            leftPanel = $('.milestones-panel-content'),
-	            body = document.body,
-	            html = document.documentElement,
-	            height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight),
-	            windowHeight = window.innerHeight,
-	            navbarHeight = document.getElementsByClassName('navbar')[0].clientHeight,
-	            milstonesHeaderHeight = document.getElementsByClassName('milestones-panel-header')[0].clientHeight,
-	            needHeight = height - (navbarHeight + milstonesHeaderHeight);
-
-	        $(rightPanel).css('height', needHeight + 'px');
-	    },
-
-	    showMilestoneModal: function showMilestoneModal() {
-	        this.showChildView('dialog', new NewMilestoneModalItemView({ model: new MilestoneModel() }));
-	    },
-
-	    showStandUpModal: function showStandUpModal() {
-	        this.showChildView('dialog', new NewStandUpModalItemView({ model: new StandUpModel() }));
-	        var milestNameArr = this.milestonesCollectionView.collection.pluck('name');
-	        _.each(milestNameArr, function (milst) {
-	            $('.milestone-select').append('<option>' + milst + '</option>');
-	        });
-	    },
-
-	    showSummaryModal: function showSummaryModal() {
-	        this.showChildView('dialog', new NewSummaryModalItemView({ model: new SummaryModel() }));
-	    },
-
-	    hideModal: function hideModal() {
-	        this.onWindowResize();
-	        this.dialog.empty({ preventDestroy: true });
-	    },
-
-	    onChildAddMilestone: function onChildAddMilestone(childView, message) {
-	        this.milestonesCollectionView.collection.add(message);
-	        this.onWindowResize();
-	        this.dialog.empty({ preventDestroy: true });
-	    },
-
-	    onChildAddStandup: function onChildAddStandup(childView, message) {
-	        this.standUpsCollectionView.collection.add(message);
-	        this.onWindowResize();
-	        this.dialog.empty({ preventDestroy: true });
-	    },
-
-	    onChildClickMilestone: function onChildClickMilestone(message) {
-	        this.showChildView('dialog', new NewMilestoneModalItemView({ model: message }));
-	    },
-
-	    onChildClickStandUp: function onChildClickStandUp(message) {
-	        this.showChildView('dialog', new NewStandUpModalItemView({ model: message }));
-	        var milestNameArr = this.milestonesCollectionView.collection.pluck('name');
-	        _.each(milestNameArr, function (milst) {
-	            $('.milestone-select').append('<option>' + milst + '</option>');
-	        });
-	    },
-
-	    onChildTriggerMilestoneId: function onChildTriggerMilestoneId(childView, message) {
-	        var milestone = this.milestonesCollectionView.collection.findWhere({ name: message }),
-	            mid = milestone.id;
-
-	        App.reqres.setHandler('get:milestone:id', function () {
-	            return mid;
-	        });
-	    }
-
-	});
-
-	module.exports = PageLayoutView;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(86), __webpack_require__(99)))
-
-/***/ },
-/* 257 */,
-/* 258 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	var Marionette = __webpack_require__(100),
-	    template = __webpack_require__(259);
+	    template = __webpack_require__(256);
 
 	var SummaryItemView = Marionette.ItemView.extend({
 
@@ -36646,23 +36648,23 @@
 	    },
 
 	    showEditSummaryModal: function showEditSummaryModal() {
-	        App.vent.trigger('click:standup', this.model);
+	        App.vent.trigger('click:summary', this.model);
 	    }
 	});
 
 	module.exports = SummaryItemView;
 
 /***/ },
-/* 259 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Handlebars = __webpack_require__(114);
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
 	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-	  return "		<li class=\"summary\">\n			<p class=\"status-text\">"
+	  return "		<li class=\"summary-item\">\n			<p class=\"status-text\">"
 	    + alias4(((helper = (helper = helpers.update_text || (depth0 != null ? depth0.update_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"update_text","hash":{},"data":data}) : helper)))
-	    + " <span> "
+	    + " <span> - "
 	    + alias4(((helper = (helper = helpers.user || (depth0 != null ? depth0.user : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"user","hash":{},"data":data}) : helper)))
 	    + "</span></p>\n		</li>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -36678,13 +36680,13 @@
 	},"useData":true});
 
 /***/ },
-/* 260 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Marionette = __webpack_require__(100),
-	    template = __webpack_require__(261),
+	    template = __webpack_require__(258),
 	    moment = __webpack_require__(162);
 
 	var NewSummaryModalItemView = Marionette.ItemView.extend({
@@ -36692,33 +36694,28 @@
 	    template: template,
 
 	    events: {
-	        'click .submit_button': 'sendStandUpToCollection',
-	        'click .update_button': 'onClickUpdateStandUp',
-	        'click .delete_button': 'onClickDeleteStandUp'
+	        'click .submit_button': 'sendSummaryToCollection',
+	        'click .update_button': 'onClickUpdateSummary',
+	        'click .delete_button': 'onClickDeleteSummary'
 	    },
 
 	    ui: {
-	        notedAt: 'input#status-date',
-	        milestone: 'select#milestone-id',
 	        updateText: '#status-text'
 	    },
 
 	    sendSummaryToCollection: function sendSummaryToCollection() {
-	        this.triggerMilestoneId();
 
-	        var self = this,
-	            milestoneId = App.reqres.request('get:milestone:id');
+	        var self = this;
 
-	        var standUpObject = {
-	            noted_at: this.ui.notedAt.val(),
-	            milestone_id: milestoneId,
-	            update_text: this.ui.updateText.val()
+	        var summaryObject = {
+	            noted_date: moment().format('dddd MMMM Do YYYY'),
+	            text: this.ui.updateText.val()
 	        };
 
-	        this.model.save(standUpObject, {
+	        this.model.save(summaryObject, {
 	            wait: true,
 	            success: function success(model, response) {
-	                self.triggerMethod('added:standup', response.stand_up);
+	                self.triggerMethod('added:summary', response.stand_up_summary);
 	            },
 	            error: function error() {
 	                alert('some error');
@@ -36726,22 +36723,20 @@
 	        });
 	    },
 
-	    onClickUpdateStandUp: function onClickUpdateStandUp() {
-	        this.triggerMilestoneId();
+	    onClickUpdateSummary: function onClickUpdateSummary() {
 
-	        var self = this,
-	            milestoneId = App.reqres.request('get:milestone:id');
+	        var self = this;
 
-	        var standUpObject = {
-	            milestone_id: milestoneId,
-	            update_text: this.ui.updateText.val()
+	        var summaryObject = {
+	            noted_date: moment().format('dddd MMMM Do YYYY'),
+	            text: this.ui.updateText.val()
 	        };
 
-	        this.model.save(standUpObject, {
+	        this.model.save(summaryObject, {
 	            wait: true,
 	            success: function success(model, response) {
 
-	                self.triggerMethod('updated:standup');
+	                self.triggerMethod('entity:action');
 	            },
 	            error: function error() {
 	                alert('some error');
@@ -36749,14 +36744,15 @@
 	        });
 	    },
 
-	    onClickDeleteStandUp: function onClickDeleteStandUp(e) {
+	    onClickDeleteSummary: function onClickDeleteSummary(e) {
 
 	        var self = this;
 
 	        this.model.destroy({
 	            wait: true,
 	            success: function success(model, response) {
-	                self.triggerMethod('deleted:standup');
+
+	                self.triggerMethod('entity:action');
 	            },
 	            error: function error() {
 	                alert('some error');
@@ -36769,7 +36765,7 @@
 	module.exports = NewSummaryModalItemView;
 
 /***/ },
-/* 261 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Handlebars = __webpack_require__(114);
@@ -36783,20 +36779,20 @@
 	  return "<div id=\"summaryModal\" class=\"col-sm-3 col-sm-offset-4 col-xs-8 col-xs-offset-2\">\n	<form role=\"form\">\n		<button type=\"button\" class=\"close close_modal\"><span>&times;</span></button>\n	    <div class=\"form-group\">\n	        <label for=\"status\" class=\"label-status-text\">Daily summary:</label>\n	        <textarea id=\"status-text\" name=\"status\" type=\"text\" class=\"form-control\" rows=\"8\" autofocus=\"true\">"
 	    + container.escapeExpression(((helper = (helper = helpers.text || (depth0 != null ? depth0.text : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"text","hash":{},"data":data}) : helper)))
 	    + "</textarea>\n	        <p class=\"error updates_text_error\">Enter a valid Summary!</p>\n	    </div>\n	    	<div>\n"
-	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.milestone : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.text : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
 	    + "			</div>\n	</form>\n</div>";
 	},"useData":true});
 
 /***/ },
-/* 262 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	__webpack_require__(134);
 
 	var SummaryModel = Backbone.Model.extend({
-	    // urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/stand_up_summaries',
-	    urlRoot: 'http://localhost:3000/api/v1/stand_up_summaries',
+	    urlRoot: 'http://hackdashboard.herokuapp.com/api/v1/stand_up_summaries',
+	    // urlRoot: 'http://localhost:3000/api/v1/stand_up_summaries',
 	    paramRoot: 'stand_up_summary',
 
 	    defaults: {
@@ -36811,17 +36807,17 @@
 	module.exports = SummaryModel;
 
 /***/ },
-/* 263 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 	__webpack_require__(134);
 
-	var SummaryModel = __webpack_require__(262);
+	var SummaryModel = __webpack_require__(259);
 
 	var SummariesCollection = Backbone.Collection.extend({
-		// url: 'http://hackdashboard.herokuapp.com/api/v1/stand_up_summaries',
-		url: 'http://localhost:3000/api/v1/stand_up_summaries',
+		url: 'http://hackdashboard.herokuapp.com/api/v1/stand_up_summaries',
+		// url: 'http://localhost:3000/api/v1/stand_up_summaries',
 		model: SummaryModel,
 
 		parse: function parse(response) {
@@ -36857,14 +36853,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(86)))
 
 /***/ },
-/* 264 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Marionette = __webpack_require__(100),
-	    NoSummariesView = __webpack_require__(265),
-	    SummaryItemView = __webpack_require__(258);
+	    NoSummariesView = __webpack_require__(262),
+	    SummaryItemView = __webpack_require__(255);
 
 	var SummariesCollectionView = Marionette.CollectionView.extend({
 
@@ -36889,13 +36885,13 @@
 	module.exports = SummariesCollectionView;
 
 /***/ },
-/* 265 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Marionette = __webpack_require__(100),
-	    template = __webpack_require__(266);
+	    template = __webpack_require__(263);
 
 	var NoSummariesView = Marionette.ItemView.extend({
 
@@ -36906,10 +36902,19 @@
 	module.exports = NoSummariesView;
 
 /***/ },
-/* 266 */
+/* 263 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n\t<div class=\"alert alert-warning no-summaries\" role=\"alert\">You have any stand-ups now.</div>\n</div>";
+	module.exports = "<div>\n\t<div class=\"alert alert-warning no-summaries\" role=\"alert\">You have any stand-ups summaries now.</div>\n</div>";
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Handlebars = __webpack_require__(114);
+	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+	    return "<div>\n	<div class=\"updates-panel col-xs-7\">\n		<div class=\"updates-panel-header\">\n			<p>Updates</p>\n		</div>\n		<div class=\"updates-panel-content\">\n			<div class=\"new-stand-up-container\">\n				<button class=\"btn btn-sm btn-default new-stand-up\">Add status</button>\n				<button class=\"btn btn-sm btn-default new-summary\">Add summary</button>\n				<p class=\"pull-left show-stand-ups\">Show stand-ups</p>\n			</div>\n			<div id=\"updates-region\"></div>\n		</div>\n	</div>\n	<div id=\"dialog-region\">\n	</div>\n	<div class=\"milestones-panel col-xs-5\">\n		<div class=\"milestones-panel-header\">\n			<p>Milestones</p>\n		</div>\n		<div class=\"milestones-panel-content\">\n			<div class=\"new-milestone-container\">\n				<button class=\"btn btn-sm btn-default new-milestone\">New milestone</button>\n			</div>\n			<div id=\"milestones-region\"></div>\n		</div>\n	</div>\n<div>";
+	},"useData":true});
 
 /***/ }
 /******/ ]);

@@ -29,7 +29,7 @@ var NewMilestoneModalItemView = Marionette.ItemView.extend({
     },
 
     sendMilestoneToCollection: function() {
-        
+    
         var self = this;
 
         var milestoneObject = {
@@ -67,7 +67,7 @@ var NewMilestoneModalItemView = Marionette.ItemView.extend({
             wait: true,
             success:function(model, response) {
 
-                self.triggerMethod('updated:milestone');
+                self.triggerMethod('entity:action');
             },
             error: function() {
                 alert('some error');
@@ -82,7 +82,7 @@ var NewMilestoneModalItemView = Marionette.ItemView.extend({
         this.model.destroy({
             wait: true,
             success:function(model, response) {
-                self.triggerMethod('deleted:milestone');
+                self.triggerMethod('entity:action');
             },
             error: function() {
                 alert('some error');

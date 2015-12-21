@@ -3,8 +3,7 @@
 require('./styles/main.scss');
 require('bootstrap-webpack');
 
-var Backbone = require('backbone'),
-	Marionette = require('backbone.marionette'),
+var Marionette = require('backbone.marionette'),
 	loader = require('./layout/loader.js');
 
 var App = window.App = new Marionette.Application();

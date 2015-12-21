@@ -9,33 +9,28 @@ var NewSummaryModalItemView = Marionette.ItemView.extend({
     template: template,
 
     events: {
-        'click .submit_button': 'sendStandUpToCollection',
-        'click .update_button': 'onClickUpdateStandUp',
-        'click .delete_button': 'onClickDeleteStandUp'
+        'click .submit_button': 'sendSummaryToCollection',
+        'click .update_button': 'onClickUpdateSummary',
+        'click .delete_button': 'onClickDeleteSummary'
     },
 
     ui: {
-        notedAt: 'input#status-date',
-        milestone: 'select#milestone-id',
         updateText: '#status-text'
     },
 
     sendSummaryToCollection: function() {
-        this.triggerMilestoneId();
-        
-        var self = this,
-            milestoneId = App.reqres.request('get:milestone:id');
 
-        var standUpObject = {
-            noted_at: this.ui.notedAt.val(),
-            milestone_id: milestoneId,
-            update_text: this.ui.updateText.val(),
+        var self = this;
+
+        var summaryObject = {
+            noted_date: moment().format('dddd MMMM Do YYYY'),
+            text: this.ui.updateText.val()
         };
         
-        this.model.save(standUpObject, {
+        this.model.save(summaryObject, {
             wait: true,
             success:function(model, response) {
-                self.triggerMethod('added:standup', response.stand_up );
+                self.triggerMethod('added:summary', response.stand_up_summary );
             },
             error: function() {
                 alert('some error');
@@ -43,22 +38,20 @@ var NewSummaryModalItemView = Marionette.ItemView.extend({
         });
     },
 
-    onClickUpdateStandUp: function() {
-        this.triggerMilestoneId();
+    onClickUpdateSummary: function() {
 
-        var self = this,
-        milestoneId = App.reqres.request('get:milestone:id');
+        var self = this;
 
-        var standUpObject = {
-            milestone_id: milestoneId,
-            update_text: this.ui.updateText.val(),
+        var summaryObject = {
+            noted_date: moment().format('dddd MMMM Do YYYY'),
+            text: this.ui.updateText.val()
         };
 
-        this.model.save(standUpObject, {
+        this.model.save(summaryObject, {
             wait: true,
             success:function(model, response) {
 
-                self.triggerMethod('updated:standup');
+                self.triggerMethod('entity:action');
             },
             error: function() {
                 alert('some error');
@@ -66,14 +59,15 @@ var NewSummaryModalItemView = Marionette.ItemView.extend({
         });
     },
 
-    onClickDeleteStandUp: function(e) {
+    onClickDeleteSummary: function(e) {
 
         var self = this;
 
         this.model.destroy({
             wait: true,
             success:function(model, response) {
-                self.triggerMethod('deleted:standup');
+
+                self.triggerMethod('entity:action');
             },
             error: function() {
                 alert('some error');

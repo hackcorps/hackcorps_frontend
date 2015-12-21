@@ -1,7 +1,6 @@
 'use strict';
 
-var Backbone = require('backbone'),
-	Marionette = require('backbone.marionette'),
+var Marionette = require('backbone.marionette'),
 	template = require('../templates/header_template.html'),
 	loader = require('../../../layout/loader.js');
 	
@@ -41,8 +40,8 @@ var HeaderView = Marionette.ItemView.extend({
 
 		$.ajax({
 			type: 'DELETE',
-			// url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
-			url: 'http://localhost:3000/api/v1/users/sign_out',
+			url: 'http://hackdashboard.herokuapp.com/api/v1/users/sign_out',
+			// url: 'http://localhost:3000/api/v1/users/sign_out',
 			dataType: 'json',
 			crossDomain: true,
 			xhrFields: {withCredentials: false},

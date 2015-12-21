@@ -1,7 +1,6 @@
 'use strict';
 
-var Backbone = require('backbone'),
-    Marionette = require('backbone.marionette'),
+var Marionette = require('backbone.marionette'),
     UserRegistrationView = require('./views/user_registration_view.js'),
     HeaderView = require('../layout/header/views/header_view.js'),
     UserLoginView = require('./views/user_login_view.js'),

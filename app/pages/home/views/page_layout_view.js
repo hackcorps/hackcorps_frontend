@@ -1,7 +1,6 @@
 'use strict';
 
-var Backbone = require('backbone'),
-    Marionette = require('backbone.marionette'),
+var Marionette = require('backbone.marionette'),
     MilestoneItemView = require('./milestone_item_view.js'),
     NewMilestoneModalItemView = require('./new_milestone_modal_item_view.js'),
     MilestoneModel = require('../entities/milestone_model.js'),
@@ -34,16 +33,15 @@ var PageLayoutView = Marionette.LayoutView.extend({
     	'click .new-milestone': 'showMilestoneModal',
         'click .new-stand-up': 'showStandUpModal',
         'click .new-summary': 'showSummaryModal',
+        'click .show-stand-ups': 'showStandUps',
     	'click .close': 'hideModal'
     },
 
     childEvents: {
         'added:milestone': 'onChildAddMilestone',
         'added:standup': 'onChildAddStandup',
-        'deleted:milestone': 'hideModal',
-        'updated:milestone': 'hideModal',
-        'deleted:standup': 'hideModal',
-        'updated:standup': 'hideModal',
+        'added:summary': 'onChildAddSummary',
+        'entity:action': 'hideModal',
         'trigger:milestone:id': 'onChildTriggerMilestoneId',
         'panels:rendered': 'onWindowResize'
     },
@@ -62,18 +60,82 @@ var PageLayoutView = Marionette.LayoutView.extend({
         App.vent.on('click:standup', function(message) {
             self.onChildClickStandUp(message);
         });
+
+        App.vent.on('click:summary', function(message) {
+            self.onChildClickSummary(message);
+        });
     },
 
     onRender: function() {
         var self = this,
-            standUpsCollection = new StandUpsCollection();
-
-        var fetchingMilestones = App.request('milestone:entities');
+            fetchingMilestones = App.request('milestone:entities'),
+            fetchingSummaries = App.request('summary:entities');
 
         $.when(fetchingMilestones).done(function(milestones){
             self.milestonesCollectionView = new MilestonesCollectionView( { collection:milestones } );
             self.showChildView('milestones', self.milestonesCollectionView);
         });
+
+        $.when(fetchingSummaries).done(function(summaries){
+            self.summariesCollectionView = new SummariesCollectionView( { collection:summaries } );
+            self.showChildView('updates', self.summariesCollectionView);
+        });
+
+    },
+
+    showMilestoneModal: function() {
+        this.showChildView('dialog', new NewMilestoneModalItemView({ model: new MilestoneModel() }) );
+    },
+
+    showStandUpModal: function() {
+        this.showChildView('dialog', new NewStandUpModalItemView({ model: new StandUpModel() }) );
+        var milestNameArr = this.milestonesCollectionView.collection.pluck('name');
+        _.each(milestNameArr, function(milst){ 
+            $('.milestone-select').append('<option>'+milst+'</option>');
+        });
+    },
+
+    showSummaryModal: function() {
+        this.showChildView('dialog', new NewSummaryModalItemView({ model: new SummaryModel() }) );
+    },
+
+    onChildAddMilestone: function (childView, message) {
+        this.milestonesCollectionView.collection.add(message);
+        this.onWindowResize();
+        this.dialog.empty( { preventDestroy: true } );
+    },
+
+    onChildAddStandup: function (childView, message) {
+        this.standUpsCollectionView.collection.add(message);
+        this.onWindowResize();
+        this.dialog.empty( { preventDestroy: true } );
+    },
+
+    onChildAddSummary: function (childView, message) {
+        this.summariesCollectionView.collection.add(message);
+        this.onWindowResize();
+        this.dialog.empty( { preventDestroy: true } );
+    },
+
+    onChildClickMilestone: function (message) {
+        this.showChildView('dialog', new NewMilestoneModalItemView({ model: message }) );
+    },
+
+    onChildClickStandUp: function (message) {
+        this.showChildView('dialog', new NewStandUpModalItemView({ model: message }) );
+        var milestNameArr = this.milestonesCollectionView.collection.pluck('name');
+        _.each(milestNameArr, function(milst){ 
+            $('.milestone-select').append('<option>'+milst+'</option>');
+        });
+    },
+
+    onChildClickSummary: function (message) {
+        this.showChildView('dialog', new NewSummaryModalItemView({ model: message }) );
+    },
+
+    showStandUps: function() {
+        var self = this,
+            standUpsCollection = new StandUpsCollection();
 
         // var fetchingSummaries = App.request('summary:entities');
 
@@ -94,7 +156,20 @@ var PageLayoutView = Marionette.LayoutView.extend({
                 alert('some error');
             }
         });
+    },
 
+    hideModal: function() {
+        this.onWindowResize();
+        this.dialog.empty({preventDestroy: true});
+    },
+
+    onChildTriggerMilestoneId: function(childView, message) {
+        var milestone = this.milestonesCollectionView.collection.findWhere( { name: message } ),
+            mid = milestone.id;
+
+        App.reqres.setHandler('get:milestone:id', function() {
+            return mid;
+        });
     },
 
     onWindowResize: function() {
@@ -110,60 +185,6 @@ var PageLayoutView = Marionette.LayoutView.extend({
             needHeight = height - (navbarHeight + milstonesHeaderHeight);
 
             $(rightPanel).css('height', needHeight+'px');
-    },
-
-    showMilestoneModal: function() {
-        this.showChildView('dialog', new NewMilestoneModalItemView({ model: new MilestoneModel() }) );
-    },
-
-    showStandUpModal: function() {
-        this.showChildView('dialog', new NewStandUpModalItemView({ model: new StandUpModel() }) );
-        var milestNameArr = this.milestonesCollectionView.collection.pluck('name');
-        _.each(milestNameArr, function(milst){ 
-            $('.milestone-select').append('<option>'+milst+'</option>');
-        });
-    },
-
-    showSummaryModal: function() {
-        this.showChildView('dialog', new NewSummaryModalItemView({ model: new SummaryModel() }) );
-    },
-
-    hideModal: function() {
-        this.onWindowResize();
-        this.dialog.empty({preventDestroy: true});
-    },
-
-    onChildAddMilestone: function (childView, message) {
-        this.milestonesCollectionView.collection.add(message);
-        this.onWindowResize();
-        this.dialog.empty( { preventDestroy: true } );
-    },
-
-    onChildAddStandup: function (childView, message) {
-        this.standUpsCollectionView.collection.add(message);
-        this.onWindowResize();
-        this.dialog.empty( { preventDestroy: true } );
-    },
-
-    onChildClickMilestone: function (message) {
-        this.showChildView('dialog', new NewMilestoneModalItemView({ model: message }) );
-    },
-
-    onChildClickStandUp: function (message) {
-        this.showChildView('dialog', new NewStandUpModalItemView({ model: message }) );
-        var milestNameArr = this.milestonesCollectionView.collection.pluck('name');
-        _.each(milestNameArr, function(milst){ 
-            $('.milestone-select').append('<option>'+milst+'</option>');
-        });
-    },
-
-    onChildTriggerMilestoneId: function(childView, message) {
-        var milestone = this.milestonesCollectionView.collection.findWhere( { name: message } ),
-            mid = milestone.id;
-
-        App.reqres.setHandler('get:milestone:id', function() {
-            return mid;
-        });
     }
 
 });
