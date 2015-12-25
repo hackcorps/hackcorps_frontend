@@ -31,9 +31,13 @@ var NewSummaryModalItemView = Marionette.ItemView.extend({
             wait: true,
             success:function(model, response) {
                 self.triggerMethod('added:summary', response.stand_up_summary );
+                self.triggerMethod('entity:action');
+
             },
-            error: function() {
+            error: function(model, response) {
                 alert('some error');
+
+                console.log(response);
             }
         });
     },

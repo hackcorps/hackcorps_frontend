@@ -36,14 +36,17 @@ var NewMilestoneModalItemView = Marionette.ItemView.extend({
             name: this.ui.modelName.val(),
             percent_complete: this.ui.modelComplete.val(),
             data_started: this.ui.modelStarted.val(), 
-            due_date: this.ui.modelDue.val(), 
+            due_date: new Date(this.ui.modelDue.val()), 
             cost: this.ui.modelCost.val()
         };
+
+        console.log(milestoneObject);
         
         this.model.save(milestoneObject, {
             wait: true,
             success:function(model, response) {
                 self.triggerMethod('added:milestone', response.milestone );
+                self.triggerMethod('entity:action');
             },
             error: function() {
                 alert('some error');

@@ -20,10 +20,10 @@ var API = {
 	      var defer = $.Deferred();
 	      
 	      summaries.fetch({
-	      	success: function(data){
+	      	success: function(data, response){
 	        	defer.resolve(data);
 	        },
-	        error: function() {
+	        error: function(data, response) {
                 alert('some error');
             }
 	      });
