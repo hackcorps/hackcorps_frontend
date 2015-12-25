@@ -151,6 +151,8 @@ var PageLayoutView = Marionette.LayoutView.extend({
             success: function(standUpsCollection, response, options) {
                 self.standUpsCollectionView = new StandUpsCollectionView( { collection:standUpsCollection } );
                 self.showChildView('updates', self.standUpsCollectionView);
+
+                $('.show-stand-ups').removeClass('.show-stand-ups').addClass('.hide-stand-ups').text('Hide stand-ups');
             },
             error: function() {
                 alert('some error');

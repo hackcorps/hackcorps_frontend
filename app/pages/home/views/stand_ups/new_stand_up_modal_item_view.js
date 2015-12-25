@@ -45,10 +45,13 @@ var NewStandUpModalItemView = Marionette.ItemView.extend({
         this.model.save(standUpObject, {
             wait: true,
             success:function(model, response) {
-                self.triggerMethod('added:standup', response.stand_up );
+                //self.triggerMethod('added:standup', response.stand_up );
+                self.triggerMethod('entity:action');
+                alert('Stand up added successfully');
+
             },
-            error: function() {
-                alert('some error');
+            error: function(model, response) {
+                alert(response.responseJSON.errors.daily_limit[0]);
             }
         });
     },

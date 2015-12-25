@@ -9,9 +9,7 @@ var StandUpModel = Backbone.Model.extend({
     defaults: {
         update_text: '',
         noted_at: '',
-        user_id: '',
         milestone_id: '', 
-        stand_up_summary_id: null,
         id: null
     }
     
