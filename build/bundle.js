@@ -24818,8 +24818,8 @@
 	var MilestoneModel = __webpack_require__(167);
 
 	var MilestonesCollection = Backbone.Collection.extend({
-		// url: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
-		url: 'http://localhost:3000/api/v1/milestones',
+		url: 'http://hackdashboard.herokuapp.com/api/v1/milestones',
+		// url: 'http://localhost:3000/api/v1/milestones',
 		model: MilestoneModel,
 
 		parse: function parse(response) {
