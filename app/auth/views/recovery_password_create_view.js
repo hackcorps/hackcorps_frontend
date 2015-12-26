@@ -30,8 +30,7 @@ var RecoveryPasswordCreateView = Marionette.ItemView.extend({
 		$(selector).css('visibility', 'hidden');
 	},
 
-	validateRecovery: function() {
-		
+	validateRecovery: function() {		
 		var regExPassword = /^.{8,}$/,
 			password = $('#password').val(),
 			confirm = $('#confirm').val();

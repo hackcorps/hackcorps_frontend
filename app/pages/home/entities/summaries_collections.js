@@ -15,23 +15,23 @@ var SummariesCollection = Backbone.Collection.extend({
 });
 
 var API = {
-	    getSummaryEntities: function() {
-	      var summaries = new SummariesCollection();
-	      var defer = $.Deferred();
+	getSummaryEntities: function() {
+	    var summaries = new SummariesCollection();
+	    var defer = $.Deferred();
 	      
-	      summaries.fetch({
+	    summaries.fetch({
 	      	success: function(data, response){
 	        	defer.resolve(data);
 	        },
 	        error: function(data, response) {
                 alert('some error');
             }
-	      });
+	    });
 	      
-	      var promise = defer.promise();
-	      return promise;
-	    }
-	};
+	    var promise = defer.promise();
+	    return promise;
+	}
+};
 
 App.reqres.setHandler('summary:entities', function(){
 	return API.getSummaryEntities();

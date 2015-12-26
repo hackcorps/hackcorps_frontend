@@ -66,7 +66,6 @@ var UserRegistrationView = Marionette.ItemView.extend({
 	},
 
 	focusedInput: function(e) {
-
 		var selector = '.' + e.target.id;
 
 		if(selector == '.username') {
@@ -79,8 +78,7 @@ var UserRegistrationView = Marionette.ItemView.extend({
 	},
 
 	validateForm: function(dataValidate, data) {
-
-		var regexTextValid = /^([A-Z][a-z ,.'`-]{2,30})$/,
+		var regexTextValid = /^(\S+) (\S*) ?\b(\S+)$/,
 			regexPasswordValid = /^.{8,}$/,
 			inputs;
 
@@ -133,7 +131,6 @@ var UserRegistrationView = Marionette.ItemView.extend({
 	},
 
 	checkForm: function (e) {
-
 		var selector = e.target.id,
 			data = this.$('#' + selector).val();
 

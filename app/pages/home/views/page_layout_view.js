@@ -1,11 +1,11 @@
 'use strict';
 
 var Marionette = require('backbone.marionette'),
-    MilestoneItemView = require('./milestone_item_view.js'),
-    NewMilestoneModalItemView = require('./new_milestone_modal_item_view.js'),
+    MilestoneItemView = require('./milestones/milestone_item_view.js'),
+    NewMilestoneModalItemView = require('./milestones/new_milestone_modal_item_view.js'),
     MilestoneModel = require('../entities/milestone_model.js'),
     MilestonesCollection = require('../entities/milestones_collections.js'),
-    MilestonesCollectionView = require('./milestones_collection_view.js'),
+    MilestonesCollectionView = require('./milestones/milestones_collection_view.js'),
     StandUpItemView = require('./stand_ups/stand_up_item_view.js'),
     NewStandUpModalItemView = require('./stand_ups/new_stand_up_modal_item_view.js'),
     StandUpModel = require('../entities/stand_up_model.js'),
@@ -16,7 +16,7 @@ var Marionette = require('backbone.marionette'),
     SummaryModel = require('../entities/summary_model.js'),
     SummariesCollection = require('../entities/summaries_collections.js'),
     SummariesCollectionView = require('./summaries/summaries_collection_view.js'),
-    template = require('../templates/app_layout_template.hbs'),
+    template = require('../templates/page_layout_template.hbs'),
     loader = require('../../../layout/loader.js');
 
 var PageLayoutView = Marionette.LayoutView.extend({
@@ -34,10 +34,14 @@ var PageLayoutView = Marionette.LayoutView.extend({
         'click .new-stand-up': 'showStandUpModal',
         'click .new-summary': 'showSummaryModal',
         'click .show-stand-ups': 'showStandUps',
+        'click .hide-stand-ups': 'hideStandUps',
     	'click .close': 'hideModal'
     },
 
     childEvents: {
+        show: function() {
+            loader.hide();
+        },
         'added:milestone': 'onChildAddMilestone',
         'added:standup': 'onChildAddStandup',
         'added:summary': 'onChildAddSummary',
@@ -46,8 +50,8 @@ var PageLayoutView = Marionette.LayoutView.extend({
         'panels:rendered': 'onWindowResize'
     },
 
-    onShow: function() {
-        loader.hide();
+    onBeforeShow: function() {
+        loader.show();
     },
 
     initialize: function() {
@@ -106,6 +110,10 @@ var PageLayoutView = Marionette.LayoutView.extend({
     },
 
     onChildAddStandup: function (childView, message) {
+        if(!this.standUpsCollectionView) {
+            this.standUpsCollectionView = new StandUpsCollectionView( { collection: new StandUpsCollection() } );
+        };
+
         this.standUpsCollectionView.collection.add(message);
         this.onWindowResize();
         this.dialog.empty( { preventDestroy: true } );
@@ -134,30 +142,27 @@ var PageLayoutView = Marionette.LayoutView.extend({
     },
 
     showStandUps: function() {
-        var self = this,
-            standUpsCollection = new StandUpsCollection();
+        if (!this.standUpsCollectionView) {
+            var self = this;
 
-        // var fetchingSummaries = App.request('summary:entities');
+            var fetchingStandUps = App.request('standup:entities');
 
-        // $.when(fetchingSummaries).done(function(summaries){
-        //     alert();
-        //     console.log(summaries);
-        //     self.summariesCollectionView = new SummariesCollectionView( { collection:summaries } );
-        //     self.showChildView('updates', self.summariesCollectionView);
-        // });
+            $.when(fetchingStandUps).done(function(standups){
 
-        standUpsCollection.fetch({
-            
-            success: function(standUpsCollection, response, options) {
-                self.standUpsCollectionView = new StandUpsCollectionView( { collection:standUpsCollection } );
-                self.showChildView('updates', self.standUpsCollectionView);
+                self.standUpsCollectionView = new StandUpsCollectionView( { collection:standups } );
+                self.updates.show(self.standUpsCollectionView, {preventDestroy: true});
 
-                $('.show-stand-ups').removeClass('.show-stand-ups').addClass('.hide-stand-ups').text('Hide stand-ups');
-            },
-            error: function() {
-                alert('some error');
-            }
-        });
+                $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide stand-ups');
+            });
+        }
+        
+        this.updates.show(this.standUpsCollectionView, {preventDestroy: true});
+        $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide stand-ups');
+    },
+
+    hideStandUps: function() {
+        this.updates.show(this.summariesCollectionView, {preventDestroy: true});
+        $('.hide-stand-ups').addClass('show-stand-ups').removeClass('hide-stand-ups').text('Show stand-ups');
     },
 
     hideModal: function() {

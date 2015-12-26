@@ -19,13 +19,13 @@ var Router = Marionette.AppRouter.extend({
 App.API = {
 
 	showIndexView: function() {
-		App.regions.main.show(new IndexView);
-		App.regions.header.show(new HeaderView);
+		App.regions.main.show( new IndexView() );
+		App.regions.header.show( new HeaderView() );
 	},
 	showHomeView: function() {
-		App.regions.header.show(new HeaderView);
+		App.regions.header.show( new HeaderView() );
 		var homeController = new HomeController();
-		homeController.renderAppLayoutView();
+		homeController.renderPageLayoutView();
 	},
 
 	showLoginView: function() {

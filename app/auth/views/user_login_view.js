@@ -27,7 +27,6 @@ var UserLoginView = Marionette.ItemView.extend({
   	},
 
   	focusedInput: function(e) {
-
 		var selector = '.' + e.target.id;
 
 		if (selector == '.email_login') {
@@ -61,7 +60,6 @@ var UserLoginView = Marionette.ItemView.extend({
 	},
 
 	loginUser: function() {
-
 		if(this.validateLogin()) {
 			loader.show();
 
