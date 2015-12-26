@@ -1,7 +1,7 @@
 'use strict';
 
 var Marionette = require('backbone.marionette'),
-    template = require('../templates/milestone_item_template.hbs');
+    template = require('../../templates/milestones/milestone_item_template.hbs');
 
 var MilestonesItemView = Marionette.ItemView.extend({
 

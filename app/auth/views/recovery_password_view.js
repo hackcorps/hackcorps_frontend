@@ -31,8 +31,7 @@ var RecoveryPasswordView = Marionette.ItemView.extend({
 		$(selector).css('visibility', 'hidden');
 	},
 
-	validateRecovery: function() {
-		
+	validateRecovery: function() {	
 		var regExEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
 			email = $('.email_recovery').val();
 
@@ -44,8 +43,7 @@ var RecoveryPasswordView = Marionette.ItemView.extend({
 			}
 	},
 
-	recoveryPassword: function () {
-		
+	recoveryPassword: function () {		
 		if(this.validateRecovery()) {
 			loader.show();
 

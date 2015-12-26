@@ -15,6 +15,7 @@ loaderImg.setAttribute('class', 'loader');
 document.body.appendChild(loaderImg);
 
 App.on('before:start', function() {
+	loader.show();
 
 	var RegionContainer = Marionette.LayoutView.extend({
 		el: '#app-container',
@@ -88,6 +89,8 @@ App.on('start', function() {
 	} else {
     	App.execute('logged_out');
   	}
+
+  	loader.hide();
 });
 
 module.exports = App;

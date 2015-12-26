@@ -3,7 +3,7 @@
     require('jquery-ui/datepicker');
 
 var Marionette = require('backbone.marionette'),
-    template = require('../templates/new_milestone_modal_template.hbs');
+    template = require('../../templates/milestones/new_milestone_modal_template.hbs');
 
 var NewMilestoneModalItemView = Marionette.ItemView.extend({
 
@@ -29,7 +29,6 @@ var NewMilestoneModalItemView = Marionette.ItemView.extend({
     },
 
     sendMilestoneToCollection: function() {
-    
         var self = this;
 
         var milestoneObject = {
@@ -39,8 +38,6 @@ var NewMilestoneModalItemView = Marionette.ItemView.extend({
             due_date: new Date(this.ui.modelDue.val()), 
             cost: this.ui.modelCost.val()
         };
-
-        console.log(milestoneObject);
         
         this.model.save(milestoneObject, {
             wait: true,

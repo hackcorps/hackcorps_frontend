@@ -45,7 +45,7 @@ var NewStandUpModalItemView = Marionette.ItemView.extend({
         this.model.save(standUpObject, {
             wait: true,
             success:function(model, response) {
-                //self.triggerMethod('added:standup', response.stand_up );
+                self.triggerMethod('added:standup', response.stand_up );
                 self.triggerMethod('entity:action');
                 alert('Stand up added successfully');
 
@@ -80,7 +80,6 @@ var NewStandUpModalItemView = Marionette.ItemView.extend({
     },
 
     onClickDeleteStandUp: function(e) {
-
         var self = this;
 
         this.model.destroy({
