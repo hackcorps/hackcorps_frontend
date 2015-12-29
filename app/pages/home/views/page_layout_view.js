@@ -33,8 +33,8 @@ var PageLayoutView = Marionette.LayoutView.extend({
     	'click .new-milestone': 'showMilestoneModal',
         'click .new-stand-up': 'showStandUpModal',
         'click .new-summary': 'showSummaryModal',
-        'click .show-stand-ups': 'showStandUps',
-        'click .hide-stand-ups': 'hideStandUps',
+        'click .show-stand-ups': 'showSummaries',
+        'click .hide-stand-ups': 'hideSummaries',
     	'click .close': 'hideModal'
     },
 
@@ -73,16 +73,16 @@ var PageLayoutView = Marionette.LayoutView.extend({
     onRender: function() {
         var self = this,
             fetchingMilestones = App.request('milestone:entities'),
-            fetchingSummaries = App.request('summary:entities');
+            fetchingStandUps = App.request('standup:entities');
 
         $.when(fetchingMilestones).done(function(milestones){
             self.milestonesCollectionView = new MilestonesCollectionView( { collection:milestones } );
             self.showChildView('milestones', self.milestonesCollectionView);
         });
 
-        $.when(fetchingSummaries).done(function(summaries){
-            self.summariesCollectionView = new SummariesCollectionView( { collection:summaries } );
-            self.showChildView('updates', self.summariesCollectionView);
+        $.when(fetchingStandUps).done(function(standups){
+            self.standUpsCollectionView = new StandUpsCollectionView( { collection:standups } );
+            self.updates.show(self.standUpsCollectionView);
         });
 
     },
@@ -141,28 +141,27 @@ var PageLayoutView = Marionette.LayoutView.extend({
         this.showChildView('dialog', new NewSummaryModalItemView({ model: message }) );
     },
 
-    showStandUps: function() {
-        if (!this.standUpsCollectionView) {
+    showSummaries: function() {
+        if (!this.summariesCollectionView) {
             var self = this;
 
-            var fetchingStandUps = App.request('standup:entities');
+            var fetchingSummaries = App.request('summary:entities');
 
-            $.when(fetchingStandUps).done(function(standups){
+            $.when(fetchingSummaries).done(function(summaries){
+                self.summariesCollectionView = new SummariesCollectionView( { collection:summaries } );
+                self.showChildView('updates', self.SummariesCollectionView, { preventDestroy: true } );
 
-                self.standUpsCollectionView = new StandUpsCollectionView( { collection:standups } );
-                self.updates.show(self.standUpsCollectionView, {preventDestroy: true});
-
-                $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide stand-ups');
+                $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide Summaries');
             });
+        } else {
+            this.updates.show(this.summariesCollectionView, {preventDestroy: true});
+            $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide Summaries');
         }
-        
-        this.updates.show(this.standUpsCollectionView, {preventDestroy: true});
-        $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide stand-ups');
     },
-
-    hideStandUps: function() {
-        this.updates.show(this.summariesCollectionView, {preventDestroy: true});
-        $('.hide-stand-ups').addClass('show-stand-ups').removeClass('hide-stand-ups').text('Show stand-ups');
+ 
+    hideSummaries: function() {
+        this.updates.show(this.standUpsCollectionView, {preventDestroy: true});
+        $('.hide-stand-ups').addClass('show-stand-ups').removeClass('hide-stand-ups').text('Show Summaries');
     },
 
     hideModal: function() {
