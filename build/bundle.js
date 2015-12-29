@@ -22029,8 +22029,8 @@
 	        'click .new-milestone': 'showMilestoneModal',
 	        'click .new-stand-up': 'showStandUpModal',
 	        'click .new-summary': 'showSummaryModal',
-	        'click .show-stand-ups': 'showStandUps',
-	        'click .hide-stand-ups': 'hideStandUps',
+	        'click .show-stand-ups': 'showSummaries',
+	        'click .hide-stand-ups': 'hideSummaries',
 	        'click .close': 'hideModal'
 	    },
 
@@ -22069,16 +22069,16 @@
 	    onRender: function onRender() {
 	        var self = this,
 	            fetchingMilestones = App.request('milestone:entities'),
-	            fetchingSummaries = App.request('summary:entities');
+	            fetchingStandUps = App.request('standup:entities');
 
 	        $.when(fetchingMilestones).done(function (milestones) {
 	            self.milestonesCollectionView = new MilestonesCollectionView({ collection: milestones });
 	            self.showChildView('milestones', self.milestonesCollectionView);
 	        });
 
-	        $.when(fetchingSummaries).done(function (summaries) {
-	            self.summariesCollectionView = new SummariesCollectionView({ collection: summaries });
-	            self.showChildView('updates', self.summariesCollectionView);
+	        $.when(fetchingStandUps).done(function (standups) {
+	            self.standUpsCollectionView = new StandUpsCollectionView({ collection: standups });
+	            self.updates.show(self.standUpsCollectionView);
 	        });
 	    },
 
@@ -22136,28 +22136,27 @@
 	        this.showChildView('dialog', new NewSummaryModalItemView({ model: message }));
 	    },
 
-	    showStandUps: function showStandUps() {
-	        if (!this.standUpsCollectionView) {
+	    showSummaries: function showSummaries() {
+	        if (!this.summariesCollectionView) {
 	            var self = this;
 
-	            var fetchingStandUps = App.request('standup:entities');
+	            var fetchingSummaries = App.request('summary:entities');
 
-	            $.when(fetchingStandUps).done(function (standups) {
+	            $.when(fetchingSummaries).done(function (summaries) {
+	                self.summariesCollectionView = new SummariesCollectionView({ collection: summaries });
+	                self.showChildView('updates', self.SummariesCollectionView, { preventDestroy: true });
 
-	                self.standUpsCollectionView = new StandUpsCollectionView({ collection: standups });
-	                self.updates.show(self.standUpsCollectionView, { preventDestroy: true });
-
-	                $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide stand-ups');
+	                $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide Summaries');
 	            });
+	        } else {
+	            this.updates.show(this.summariesCollectionView, { preventDestroy: true });
+	            $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide Summaries');
 	        }
-
-	        this.updates.show(this.standUpsCollectionView, { preventDestroy: true });
-	        $('.show-stand-ups').addClass('hide-stand-ups').removeClass('show-stand-ups').text('Hide stand-ups');
 	    },
 
-	    hideStandUps: function hideStandUps() {
-	        this.updates.show(this.summariesCollectionView, { preventDestroy: true });
-	        $('.hide-stand-ups').addClass('show-stand-ups').removeClass('hide-stand-ups').text('Show stand-ups');
+	    hideSummaries: function hideSummaries() {
+	        this.updates.show(this.standUpsCollectionView, { preventDestroy: true });
+	        $('.hide-stand-ups').addClass('show-stand-ups').removeClass('hide-stand-ups').text('Show Summaries');
 	    },
 
 	    hideModal: function hideModal() {
@@ -22249,7 +22248,7 @@
 
 	var Handlebars = __webpack_require__(128);
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
-	    return "				<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>\n";
+	    return "				<span><img class=\"full-width-image\" src=\"../../../../images/ic_done_black.png\" /></span>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
@@ -36666,7 +36665,7 @@
 /* 268 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n\t<div class=\"alert alert-warning no-stand-ups\" role=\"alert\">You have any stand-ups now.</div>\n</div>";
+	module.exports = "<div>\n\t<div class=\"alert alert-warning no-stand-ups\" role=\"alert\">You have any stand-ups today.</div>\n</div>";
 
 /***/ },
 /* 269 */
@@ -36952,7 +36951,7 @@
 /* 277 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n\t<div class=\"alert alert-warning no-summaries\" role=\"alert\">You have any stand-ups summaries now.</div>\n</div>";
+	module.exports = "<div>\n\t<div class=\"alert alert-warning no-summaries\" role=\"alert\">You have any summaries now.</div>\n</div>";
 
 /***/ },
 /* 278 */
@@ -36960,7 +36959,7 @@
 
 	var Handlebars = __webpack_require__(128);
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    return "<div>\n	<div class=\"updates-panel col-xs-7\">\n		<div class=\"updates-panel-header\">\n			<p>Updates</p>\n		</div>\n		<div class=\"updates-panel-content\">\n			<div class=\"new-stand-up-container\">\n				<button class=\"btn btn-sm btn-default new-stand-up\">Add status</button>\n				<button class=\"btn btn-sm btn-default new-summary\">Add summary</button>\n				<p class=\"pull-left stand-ups-button show-stand-ups\">Show stand-ups</p>\n			</div>\n			<div id=\"updates-region\"></div>\n		</div>\n	</div>\n	<div id=\"dialog-region\">\n	</div>\n	<div class=\"milestones-panel col-xs-5\">\n		<div class=\"milestones-panel-header\">\n			<p>Milestones</p>\n		</div>\n		<div class=\"milestones-panel-content\">\n			<div class=\"new-milestone-container\">\n				<button class=\"btn btn-sm btn-default new-milestone\">New milestone</button>\n			</div>\n			<div id=\"milestones-region\"></div>\n		</div>\n	</div>\n<div>";
+	    return "<div>\n	<div class=\"updates-panel col-xs-7\">\n		<div class=\"updates-panel-header\">\n			<p>Updates</p>\n		</div>\n		<div class=\"updates-panel-content\">\n			<div class=\"new-stand-up-container\">\n				<button class=\"btn btn-sm btn-default new-stand-up\">Add status</button>\n				<button class=\"btn btn-sm btn-default new-summary\">Add summary</button>\n				<p class=\"pull-left stand-ups-button show-stand-ups\">Show Summaries</p>\n			</div>\n			<div id=\"updates-region\"></div>\n		</div>\n	</div>\n	<div id=\"dialog-region\">\n	</div>\n	<div class=\"milestones-panel col-xs-5\">\n		<div class=\"milestones-panel-header\">\n			<p>Milestones</p>\n		</div>\n		<div class=\"milestones-panel-content\">\n			<div class=\"new-milestone-container\">\n				<button class=\"btn btn-sm btn-default new-milestone\">New milestone</button>\n			</div>\n			<div id=\"milestones-region\"></div>\n		</div>\n	</div>\n<div>";
 	},"useData":true});
 
 /***/ }
